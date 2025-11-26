@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên hệ - VietPlywood</title>
+    <title>Sản phẩm - VietPlywood</title>
     <style>
         * {
             margin: 0;
@@ -15,6 +15,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
             line-height: 1.6;
+            background: #fff;
         }
 
         header {
@@ -40,12 +41,14 @@
             gap: 0.5rem;
             font-weight: 600;
             color: #333;
+            font-size: 1.2rem;
+            text-decoration: none;
         }
 
         .logo img {
             width: 30px;
             height: 30px;
-            background: #e0e0e0;
+            background: #e0e0e0; /* Placeholder color */
         }
 
         nav {
@@ -164,119 +167,97 @@
             text-decoration: none;
         }
 
-        .contact-container {
+        /* --- PRODUCT LISTING STYLES --- */
+        .product-listing-container {
             max-width: 1200px;
             margin: 4rem auto;
             padding: 0 2rem;
         }
 
-        .contact-intro {
+        .product-intro {
             text-align: center;
             margin-bottom: 3rem;
         }
 
-        .contact-intro h2 {
+        .product-intro h2 {
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
         }
 
-        .contact-intro p {
+        .product-intro p {
             color: #666;
             font-size: 0.95rem;
         }
 
-        .contact-content {
+        .product-grid {
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            margin-top: 3rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
-        .info-item {
-            display: flex;
-            gap: 1rem;
+        .product-card {
+            border: 1px solid #eee;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none; /* Make the whole card clickable visually */
+            color: inherit;
         }
 
-        .info-icon {
-            width: 40px;
-            height: 40px;
-            background: #f5f5f5;
-            border-radius: 50%;
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            background: #f5f5f5; /* Placeholder color */
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            font-size: 1.5rem;
+            color: #b8904d;
         }
 
-        .info-content h3 {
-            font-size: 1rem;
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-content h3 {
+            font-size: 1.25rem;
             margin-bottom: 0.5rem;
             color: #333;
         }
 
-        .info-content p {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.5;
-        }
-
-        .contact-form {
-            background: #fff;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        .product-content p {
             font-size: 0.95rem;
-            font-family: inherit;
-            transition: border-color 0.3s;
+            color: #666;
+            margin-bottom: 1rem;
+            /* Cắt bớt mô tả nếu quá dài */
+            min-height: 4.5em;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #b8904d;
+        .product-content .detail-link {
+            display: inline-block;
+            text-decoration: none;
+            color: #b8904d;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
+        .product-content .detail-link:hover {
+            opacity: 0.8;
         }
 
-        .submit-btn {
-            background: #b8904d;
-            color: #fff;
-            border: none;
-            padding: 0.8rem 3rem;
-            font-size: 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+        /* --- END PRODUCT LISTING STYLES --- */
 
-        .submit-btn:hover {
-            background: #a17d3e;
-        }
 
         footer {
             background: #f8f8f8;
@@ -315,6 +296,11 @@
             list-style: none;
         }
 
+        .footer-contact p {
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
         .footer-bottom {
             max-width: 1200px;
             margin: 2rem auto 0;
@@ -323,6 +309,12 @@
             text-align: center;
             color: #666;
             font-size: 0.85rem;
+        }
+
+        @media (max-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
@@ -346,13 +338,12 @@
                 gap: 1rem;
             }
 
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -370,13 +361,13 @@
 <body>
 <header>
     <div class="header-container">
-        <div class="logo">
+        <a href="./index.html" class="logo">
             <img src="" alt="Logo">
             <span>VIETPLYWOOD</span>
-        </div>
+        </a>
         <nav>
             <a href="./index.html">Trang chủ</a>
-            <a href="./product.html">Sản phẩm</a>
+            <a href="./product.html" style="color: #b8904d;">Sản phẩm</a>
             <a href="./blog.html">Blog</a>
             <a href="./contact.html">Liên hệ</a>
         </nav>
@@ -399,111 +390,109 @@
 </header>
 
 <section class="hero-section">
-    <h1>Liên hệ</h1>
+    <h1>Sản phẩm</h1>
     <div class="breadcrumb">
-        <a href="./index.html">Trang chủ</a> / Liên hệ
+        <a href="./index.html">Trang chủ</a> / Sản phẩm
     </div>
 </section>
 
-<div class="contact-container">
-    <div class="contact-intro">
-        <h2>Liên lạc với chúng tôi</h2>
-        <p>Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn</p>
+<div class="product-listing-container">
+    <div class="product-intro">
+        <h2>Các dòng Ván Ép Chất lượng cao</h2>
+        <p>Vietplywood cung cấp đa dạng sản phẩm ván ép cho mọi nhu cầu xây dựng và nội thất, đạt tiêu chuẩn xuất khẩu quốc tế.</p>
     </div>
 
-    <div class="contact-content">
-        <div class="contact-info">
-            <div class="info-item">
-                <div class="info-icon">📍</div>
-                <div class="info-content">
-                    <h3>Địa chỉ</h3>
-                    <p>Số 123, Đường ABC,<br>Quận 1, Thành phố<br>Hồ Chí Minh</p>
-                </div>
+    <div class="product-grid">
+        <a href="./product-detail-phuphim.html" class="product-card">
+            <div class="product-image">
+
             </div>
-
-            <div class="info-item">
-                <div class="info-icon">📞</div>
-                <div class="info-content">
-                    <h3>Hotline</h3>
-                    <p>Mobile: +84 912 345 678</p>
-                </div>
+            <div class="product-content">
+                <h3>Ván ép phủ phim</h3>
+                <p>
+                    Ván ép được phủ lớp phim phenolic chống nước, chống bám bẩn. Sản phẩm có độ bền và khả năng chịu lực vượt trội, thường dùng làm ván khuôn trong xây dựng.
+                </p>
+                <span class="detail-link">Xem chi tiết &rarr;</span>
             </div>
+        </a>
 
-            <div class="info-item">
-                <div class="info-icon">✉️</div>
-                <div class="info-content">
-                    <h3>Email</h3>
-                    <p>contact@vietplywood.com</p>
-                </div>
+        <a href="./product-detail-bintagor.html" class="product-card">
+            <div class="product-image">
+
             </div>
-        </div>
+            <div class="product-content">
+                <h3>Ván ép mặt bintagor</h3>
+                <p>
+                    Sản phẩm được phủ lớp veneer bintagor tự nhiên. Rất được ưa chuộng cho các hạng mục nội thất như tủ, kệ, vách ngăn và ốp tường, mang lại vẻ đẹp ấm cúng, sang trọng.
+                </p>
+                <span class="detail-link">Xem chi tiết &rarr;</span>
+            </div>
+        </a>
 
-        <div class="contact-form">
-            <form>
-                <div class="form-group">
-                    <label for="name">Tên</label>
-                    <input type="text" id="name" name="name" placeholder="Nhập họ và tên">
-                </div>
+        <a href="./product-detail-okoume.html" class="product-card">
+            <div class="product-image">
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email">
-                </div>
+            </div>
+            <div class="product-content">
+                <h3>Ván ép mặt okoume</h3>
+                <p>
+                    Thường dùng trong gia công mộc công nghiệp, cắt CNC và các sản phẩm cần được ép phủ sơn hoàn thiện. Ván có bề mặt mịn, dễ dàng xử lý và hoàn thiện bề mặt.
+                </p>
+                <span class="detail-link">Xem chi tiết &rarr;</span>
+            </div>
+        </a>
 
-                <div class="form-group">
-                    <label for="phone">Số điện thoại</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại">
-                </div>
+        <a href="./product-detail-chadan.html" class="product-card">
+            <div class="product-image">
 
-                <div class="form-group">
-                    <label for="message">Nội dung</label>
-                    <textarea id="message" name="message" placeholder="Để lại lời nhắn của bạn tại đây..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Gửi</button>
-            </form>
-        </div>
+            </div>
+            <div class="product-content">
+                <h3>Ván ép chà dán</h3>
+                <p>
+                    Loại ván cơ bản, sử dụng cho các mục đích không yêu cầu bề mặt hoàn thiện cao như làm pallet, robbin (thùng gỗ) hoặc các cấu trúc nội thất ẩn, giúp tối ưu chi phí.
+                </p>
+                <span class="detail-link">Xem chi tiết &rarr;</span>
+            </div>
+        </a>
     </div>
 </div>
 
 <footer>
     <div class="footer-content">
-        <div class="footer-section">
+        <div class="footer-section footer-contact">
             <h3>Vietplywood Co., Ltd</h3>
-            <p>Địa chỉ: Tầng 3, Số 123, Đường ABC</p>
-            <p>Điện thoại: 028 1234 5678</p>
+            <p>Địa chỉ: Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
+            <p>Hotline: (+84)916 884 008</p>
+            <p>Email: tmdvvietnam@gmail.com</p>
         </div>
 
         <div class="footer-section">
             <h3>Thông tin</h3>
             <ul>
-                <li><a href="#">Về chúng tôi</a></li>
-                <li><a href="#">Chính sách</a></li>
-                <li><a href="#">Điều khoản</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Sản phẩm</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Liên hệ</a></li>
             </ul>
         </div>
 
         <div class="footer-section">
             <h3>Hỗ trợ</h3>
             <ul>
-                <li><a href="#">Liên hệ</a></li>
+                <li><a href="#">Chính sách đổi trả</a></li>
+                <li><a href="#">Điều khoản sử dụng</a></li>
                 <li><a href="#">Câu hỏi thường gặp</a></li>
-                <li><a href="#">Hướng dẫn</a></li>
             </ul>
         </div>
 
         <div class="footer-section">
-            <h3>Theo dõi</h3>
-            <ul>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">LinkedIn</a></li>
-            </ul>
+            <h3>Đăng ký nhận tin</h3>
+            <p>Đăng ký để nhận thông tin mới nhất về sản phẩm và khuyến mãi.</p>
         </div>
     </div>
 
     <div class="footer-bottom">
-        <p>© 2024 CÔNG TY TNHH SẢN XUẤT GỖ DÁN VIỆT NAM. All rights reserved.</p>
+        <p>© 2024 CÔNG TY TNHH XUẤT NHẬP KHẨU TMDV VIỆT NAM. All rights reserved.</p>
     </div>
 </footer>
 

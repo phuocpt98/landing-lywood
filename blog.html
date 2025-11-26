@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - VietPlywood</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: #fff;
+        }
+
+        header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: #333;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 30px;
+            height: 30px;
+            background: #e0e0e0; /* Placeholder color */
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #b8904d;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-top: 1px solid #eee;
+            padding: 1rem;
+            flex-direction: column;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 0.8rem 1rem;
+            color: #333;
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            background: #f5f5f5;
+            color: #b8904d;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 300px;
+            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), #e8e1d5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .breadcrumb {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        /* --- BLOG STYLES --- */
+        .blog-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        /* Sidebar Widget Styles */
+        .sidebar-widget {
+            border: 1px solid #eee; /* Khung viền cũ */
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+
+        /* Sidebar: Search Bar */
+        .search-bar {
+            position: relative;
+            /* Không có khung viền */
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            background: none;
+            border: none;
+            padding: 0 1rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .search-bar button:hover {
+            color: #b8904d;
+        }
+
+        /* Sidebar: Blog Categories */
+        .sidebar-categories {
+            /* Không có khung viền */
+        }
+
+        .sidebar-categories h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .category-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-item a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .category-item a:hover {
+            color: #b8904d;
+        }
+
+        .category-item span {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Sidebar: Recent Posts (Gần đây) - Có khung viền */
+        .sidebar-recent-posts {
+            /* Sử dụng lớp sidebar-widget để có khung viền */
+        }
+
+        .sidebar-recent-posts h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .recent-post-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem; /* Tăng khoảng cách giữa các bài viết */
+        }
+
+        .recent-post-item {
+            display: flex;
+            gap: 1rem; /* Khoảng cách giữa ảnh và nội dung */
+            align-items: flex-start; /* Căn trên cùng */
+        }
+
+        .recent-post-thumb {
+            width: 70px; /* Kích thước ảnh nhỏ */
+            height: 70px;
+            flex-shrink: 0; /* Không cho ảnh co lại */
+            overflow: hidden;
+            border-radius: 4px; /* Bo góc ảnh */
+            background: #e0e0e0; /* Placeholder color */
+        }
+
+        .recent-post-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .recent-post-content a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.95rem;
+            line-height: 1.3; /* Khoảng cách dòng cho tiêu đề */
+            font-weight: 500;
+            transition: color 0.3s;
+            display: block; /* Để tiêu đề chiếm hết chiều rộng và ngày xuống dòng */
+            margin-bottom: 0.3rem;
+        }
+
+        .recent-post-content a:hover {
+            color: #b8904d;
+        }
+
+        .recent-post-date {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+
+        .blog-post {
+            background: #fff;
+        }
+
+        .post-image {
+            width: 100%;
+            height: 250px;
+            background: #e0e0e0; /* Placeholder color */
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post:hover .post-image img {
+            transform: scale(1.05);
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 0.8rem;
+        }
+
+        .post-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .post-meta span::before {
+            content: "•";
+            color: #b8904d;
+            font-weight: bold;
+        }
+
+        .post-meta span:first-child::before {
+            content: none;
+        }
+
+
+        .post-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .post-title a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        .post-title a:hover {
+            color: #b8904d;
+        }
+
+        .post-excerpt {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .read-more {
+            text-decoration: none;
+            color: #b8904d;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: opacity 0.3s;
+        }
+
+        .read-more:hover {
+            opacity: 0.8;
+        }
+
+        .pagination {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            color: #333;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .pagination a:hover,
+        .pagination a.active {
+            background: #b8904d;
+            color: #fff;
+            border-color: #b8904d;
+        }
+
+
+        /* --- END BLOG STYLES --- */
+
+
+        footer {
+            background: #f8f8f8;
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 0.9rem;
+            color: #666;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #b8904d;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-contact p {
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 992px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 2rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .header-icons {
+                display: flex;
+                gap: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <a href="./index.html" class="logo">
+            <img src="" alt="Logo">
+            <span>VIETPLYWOOD</span>
+        </a>
+        <nav>
+            <a href="./index.html">Trang chủ</a>
+            <a href="./product.html">Sản phẩm</a>
+            <a href="./blog.html" style="color: #b8904d;">Blog</a>
+            <a href="./contact.html">Liên hệ</a>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="header-icons">
+            <button class="icon-btn" aria-label="Tìm kiếm">🔍</button>
+            <button class="icon-btn" aria-label="Ngôn ngữ">VN</button>
+        </div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu">
+        <a href="./index.html">Trang chủ</a>
+        <a href="./product.html">Sản phẩm</a>
+        <a href="./blog.html">Blog</a>
+        <a href="./contact.html">Liên hệ</a>
+    </nav>
+</header>
+
+<section class="hero-section">
+    <h1>Blog</h1>
+    <div class="breadcrumb">
+        <a href="./index.html">Trang chủ</a> / Blog
+    </div>
+</section>
+
+<div class="blog-container">
+    <div class="main-content">
+        <article class="blog-post">
+            <div class="post-image">
+                <img src="placeholder-1.jpg" alt="Dự báo giá ván ép phủ phim 2026">
+            </div>
+            <div class="post-meta">
+                <span>Admin</span>
+                <span>14 Oct 2022</span>
+                <span>Wood</span>
+            </div>
+            <h2 class="post-title">
+                <a href="./post-1.html">Dự báo giá ván ép phủ phim 2026 tiếp tục tăng mạnh</a>
+            </h2>
+            <p class="post-excerpt">
+                Bước sang 2026, thị trường ván ép phủ phim dự đoán tiếp tục tăng trưởng mạnh mẽ do tác động từ đầu tư công và nhu cầu xây dựng. Hãy cùng tìm hiểu về diễn biến giá ván ép phủ phim...
+            </p>
+            <a href="./post-1.html" class="read-more">Đọc thêm &rarr;</a>
+        </article>
+
+        <article class="blog-post">
+            <div class="post-image">
+                <img src="placeholder-2.jpg" alt="Lót sàn khu vực máy móc">
+            </div>
+            <div class="post-meta">
+                <span>Admin</span>
+                <span>14 Oct 2022</span>
+                <span>Hardmode</span>
+            </div>
+            <h2 class="post-title">
+                <a href="./post-2.html">Lót sàn khu vực máy móc bằng ván phủ phim chịu lực</a>
+            </h2>
+            <p class="post-excerpt">
+                Trong các công xưởng, khu vực lắp đặt máy móc, sàn nhà không chỉ chịu lực thông thường mà còn phải chống chịu rung động. Ván phủ phim chịu lực cao là giải pháp được nhiều nhà máy lựa chọn...
+            </p>
+            <a href="./post-2.html" class="read-more">Đọc thêm &rarr;</a>
+        </article>
+
+        <article class="blog-post">
+            <div class="post-image">
+                <img src="placeholder-3.jpg" alt="Ván phủ phim làm sàn gác xép">
+            </div>
+            <div class="post-meta">
+                <span>Admin</span>
+                <span>14 Oct 2022</span>
+                <span>Wood</span>
+            </div>
+            <h2 class="post-title">
+                <a href="./post-3.html">Ván phủ phim có phù hợp làm sàn gác xép?</a>
+            </h2>
+            <p class="post-excerpt">
+                Tìm kiếm vật liệu thi công gác xép là một trong những nhu cầu phổ biến. Ván phủ phim có độ bền cao có thể được sử dụng làm sàn gác xép, đặc biệt với những công trình đòi hỏi vật liệu vững chắc.
+            </p>
+            <a href="./post-3.html" class="read-more">Đọc thêm &rarr;</a>
+        </article>
+
+        <div class="pagination">
+            <a href="#">&larr; Previous</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">Next &rarr;</a>
+        </div>
+
+    </div>
+
+    <aside class="sidebar">
+        <div class="search-bar">
+            <input type="text" placeholder="Tìm kiếm...">
+            <button aria-label="Tìm kiếm">🔍</button>
+        </div>
+
+        <div class="sidebar-categories">
+            <h3>Blog</h3>
+            <ul class="category-list">
+                <li class="category-item">
+                    <a href="#">Bản tin Vietplywood</a>
+                    <span>2</span>
+                </li>
+                <li class="category-item">
+                    <a href="#">Tin xuất khẩu</a>
+                    <span>8</span>
+                </li>
+                <li class="category-item">
+                    <a href="#">Sự kiện</a>
+                    <span>7</span>
+                </li>
+                <li class="category-item">
+                    <a href="#">Dành cho Doanh nghiệp</a>
+                    <span>1</span>
+                </li>
+                <li class="category-item">
+                    <a href="#">Hoạt động</a>
+                    <span>6</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sidebar-widget sidebar-recent-posts">
+            <h3>Gần đây</h3>
+            <ul class="recent-post-list">
+                <li>
+                    <div class="recent-post-item">
+                        <div class="recent-post-thumb">
+                            <img src="thumb-1.jpg" alt="Ván ép phủ phim 2026">
+                        </div>
+                        <div class="recent-post-content">
+                            <a href="#">Dự báo giá ván ép phủ phim năm 2026 vẫn tiếp tục tăng</a>
+                            <span class="recent-post-date">14 Oct 2022</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="recent-post-item">
+                        <div class="recent-post-thumb">
+                            <img src="thumb-2.jpg" alt="Ván phủ phim trong kho lạnh">
+                        </div>
+                        <div class="recent-post-content">
+                            <a href="#">Ván phủ phim trong kho lạnh: bí quyết chống ẩm</a>
+                            <span class="recent-post-date">12 Oct 2022</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="recent-post-item">
+                        <div class="recent-post-thumb">
+                            <img src="thumb-3.jpg" alt="Giá ván ép phủ phim Hà Nam">
+                        </div>
+                        <div class="recent-post-content">
+                            <a href="#">Giá ván ép phủ phim tại Hà Nam mới nhất</a>
+                            <span class="recent-post-date">10 Oct 2022</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="recent-post-item">
+                        <div class="recent-post-thumb">
+                            <img src="thumb-4.jpg" alt="Nhu cầu ván ép phủ phim 2025">
+                        </div>
+                        <div class="recent-post-content">
+                            <a href="#">Nhu cầu ván ép phủ phim tăng mạnh trong năm 2025</a>
+                            <span class="recent-post-date">08 Oct 2022</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="recent-post-item">
+                        <div class="recent-post-thumb">
+                            <img src="thumb-5.jpg" alt="Ván phủ phim sàn gác xép">
+                        </div>
+                        <div class="recent-post-content">
+                            <a href="#">Ván phủ phim có phù hợp làm sàn gác xép?</a>
+                            <span class="recent-post-date">06 Oct 2022</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </aside>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section footer-contact">
+            <h3>Vietplywood Co., Ltd</h3>
+            <p>Địa chỉ: Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
+            <p>Hotline: (+84)916 884 008</p>
+            <p>Email: tmdvvietnam@gmail.com</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Thông tin</h3>
+            <ul>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Sản phẩm</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Hỗ trợ</h3>
+            <ul>
+                <li><a href="#">Chính sách đổi trả</a></li>
+                <li><a href="#">Điều khoản sử dụng</a></li>
+                <li><a href="#">Câu hỏi thường gặp</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Đăng ký nhận tin</h3>
+            <p>Đăng ký để nhận thông tin mới nhất về sản phẩm và khuyến mãi.</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2024 CÔNG TY TNHH XUẤT NHẬP KHẨU TMDV VIỆT NAM. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+    });
+
+    const menuLinks = mobileMenu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        });
+    });
+</script>
+</body>
+</html>
