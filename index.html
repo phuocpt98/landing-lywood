@@ -145,11 +145,10 @@
 
         /* Hero Section */
         .hero-section {
-            background-image: url('hero-bg.jpg'), linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)); /* Thêm background image và overlay tối */
-            background-blend-mode: overlay;
+            background-image: url('hero-bg.jpg'); /* Đảm bảo có ảnh nền */
             background-size: cover;
             background-position: center;
-            height: 600px;
+            height: 450px; /* Chiều cao hero section vừa phải */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -157,45 +156,88 @@
             text-align: center;
             color: #fff;
             position: relative;
+            padding: 0 2rem;
+        }
+
+        /* Overlay cho hero section để chữ dễ đọc hơn */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Lớp phủ tối nhẹ */
+            z-index: 1;
+        }
+
+        .hero-section > * { /* Đảm bảo nội dung nằm trên lớp phủ */
+            position: relative;
+            z-index: 2;
         }
 
         .hero-section h1 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
             font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Thêm bóng chữ */
         }
 
-        /* Statistics Bar */
-        .stats-bar {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.6); /* Nền tối mờ cho thanh stats */
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-around;
+        .hero-section p.slogan { /* Thêm lớp cho slogan */
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            max-width: 800px;
+        }
+
+        /* NEW Stats Section */
+        .stats-section {
+            background: #f4f4f4; /* Nền sáng hơn cho phần thống kê */
+            padding: 3rem 2rem;
+        }
+
+        .stats-container {
             max-width: 1200px;
             margin: 0 auto;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
         }
 
         .stat-item {
-            text-align: center;
-            color: #fff;
+            background: #fff;
+            padding: 2rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .stat-item .icon {
+            font-size: 2.5rem;
+            color: #b8904d; /* Màu vàng đồng */
+            margin-bottom: 0.8rem;
         }
 
         .stat-item h2 {
-            font-size: 2rem;
-            color: #b8904d; /* Màu vàng đồng */
-            margin-bottom: 0.3rem;
+            font-size: 2.5rem; /* Kích thước số liệu lớn hơn */
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
         .stat-item p {
-            font-size: 0.9rem;
-            color: #ccc;
+            font-size: 1rem;
+            color: #666;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-weight: 500;
         }
 
         /* Products Section */
@@ -415,20 +457,14 @@
         }
 
         @media (max-width: 992px) {
-            .stats-bar {
-                flex-wrap: wrap;
-                gap: 1rem;
-                justify-content: space-between;
-                padding: 1rem 2rem;
-            }
-            .stat-item {
-                flex: 1 1 45%; /* 2 items per row */
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
             }
             .product-grid-home {
                 grid-template-columns: repeat(2, 1fr);
             }
             .reason-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -463,7 +499,15 @@
             }
 
             .hero-section h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+
+            .hero-section p.slogan {
+                font-size: 1.2rem;
+            }
+
+            .reason-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -471,8 +515,14 @@
             .footer-content {
                 grid-template-columns: 1fr;
             }
-            .stat-item {
-                flex: 1 1 100%; /* 1 item per row */
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            .stat-item h2 {
+                font-size: 2rem;
+            }
+            .stat-item p {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -510,24 +560,26 @@
 
 <section class="hero-section">
     <h1>VIỆT PLYWOOD</h1>
-    <p style="font-size: 1.2rem; margin-top: 1rem; font-weight: 300; letter-spacing: 1px;">KHÁCH HÀNG TIÊU BIỂU</p>
+    <p class="slogan">NHÀ CUNG CẤP VÁN ÉP CHẤT LƯỢNG CAO HÀNG ĐẦU VIỆT NAM</p>
+</section>
 
-    <div class="stats-bar">
+<section class="stats-section">
+    <div class="stats-container">
         <div class="stat-item">
-            <h2>12+</h2>
-            <p>năm kinh nghiệm</p>
+            <div class="icon">🏆</div> <h2>12+</h2>
+            <p>Năm kinh nghiệm</p>
         </div>
         <div class="stat-item">
-            <h2>47+</h2>
-            <p>thị trường xuất khẩu</p>
+            <div class="icon">🌍</div> <h2>47+</h2>
+            <p>Thị trường xuất khẩu</p>
         </div>
         <div class="stat-item">
-            <h2>04</h2>
-            <p>châu lục</p>
+            <div class="icon">🗺️</div> <h2>04</h2>
+            <p>Châu lục</p>
         </div>
         <div class="stat-item">
-            <h2>350+</h2>
-            <p>khách hàng</p>
+            <div class="icon">🤝</div> <h2>350+</h2>
+            <p>Khách hàng</p>
         </div>
     </div>
 </section>

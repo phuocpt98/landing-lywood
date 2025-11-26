@@ -15,6 +15,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
             line-height: 1.6;
+            background: #fff;
         }
 
         header {
@@ -40,12 +41,14 @@
             gap: 0.5rem;
             font-weight: 600;
             color: #333;
+            font-size: 1.2rem;
+            text-decoration: none;
         }
 
         .logo img {
             width: 30px;
             height: 30px;
-            background: #e0e0e0;
+            background: #e0e0e0; /* Placeholder color */
         }
 
         nav {
@@ -164,101 +167,109 @@
             text-decoration: none;
         }
 
+        /* --- CONTACT STYLES --- */
         .contact-container {
             max-width: 1200px;
             margin: 4rem auto;
             padding: 0 2rem;
-        }
-
-        .contact-intro {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .contact-intro h2 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-intro p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        .contact-content {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: 1fr 1.5fr;
             gap: 4rem;
-            margin-top: 3rem;
         }
 
         .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+            padding-right: 2rem;
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1rem;
         }
 
         .info-item {
             display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
             gap: 1rem;
         }
 
         .info-icon {
-            width: 40px;
-            height: 40px;
-            background: #f5f5f5;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+            font-size: 1.5rem;
+            color: #b8904d;
         }
 
-        .info-content h3 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            color: #333;
+        .info-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
         }
 
-        .info-content p {
-            font-size: 0.9rem;
+        .info-details p, .info-details a {
+            font-size: 0.95rem;
             color: #666;
-            line-height: 1.5;
+            text-decoration: none;
         }
 
+        /* Contact Form Styles */
         .contact-form {
-            background: #fff;
+            background: #fcfcfc;
+            padding: 2rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .form-group label {
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .contact-form label {
             display: block;
-            margin-bottom: 0.5rem;
             font-size: 0.9rem;
             color: #333;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
         }
 
-        .form-group input,
-        .form-group textarea {
+        /* Highlight required fields */
+        .contact-form label span {
+            color: red;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form input[type="tel"],
+        .contact-form textarea {
             width: 100%;
             padding: 0.8rem;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 0.95rem;
-            font-family: inherit;
             transition: border-color 0.3s;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
+        .contact-form input:focus,
+        .contact-form textarea:focus {
             border-color: #b8904d;
+            outline: none;
         }
 
-        .form-group textarea {
+        .contact-form textarea {
             resize: vertical;
             min-height: 120px;
         }
@@ -266,17 +277,44 @@
         .submit-btn {
             background: #b8904d;
             color: #fff;
+            padding: 0.8rem 1.5rem;
             border: none;
-            padding: 0.8rem 3rem;
-            font-size: 1rem;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
             transition: background 0.3s;
+            width: 100%;
         }
 
         .submit-btn:hover {
-            background: #a17d3e;
+            background: #a17c3e;
         }
+
+        /* Message box for success/error */
+        #form-message {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            border-radius: 4px;
+            display: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+
+        /* --- FOOTER STYLES (REUSED) --- */
 
         footer {
             background: #f8f8f8;
@@ -315,6 +353,11 @@
             list-style: none;
         }
 
+        .footer-contact p {
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
         .footer-bottom {
             max-width: 1200px;
             margin: 2rem auto 0;
@@ -324,6 +367,17 @@
             color: #666;
             font-size: 0.85rem;
         }
+
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .contact-info {
+                padding-right: 0;
+            }
+        }
+
 
         @media (max-width: 768px) {
             .header-container {
@@ -346,11 +400,6 @@
                 gap: 1rem;
             }
 
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -370,15 +419,15 @@
 <body>
 <header>
     <div class="header-container">
-        <div class="logo">
+        <a href="./index.html" class="logo">
             <img src="" alt="Logo">
             <span>VIETPLYWOOD</span>
-        </div>
+        </a>
         <nav>
             <a href="./index.html">Trang chủ</a>
             <a href="./product.html">Sản phẩm</a>
             <a href="./blog.html">Blog</a>
-            <a href="./contact.html">Liên hệ</a>
+            <a href="./contact.html" style="color: #b8904d;">Liên hệ</a>
         </nav>
         <button class="hamburger" id="hamburger" aria-label="Menu">
             <span></span>
@@ -406,108 +455,125 @@
 </section>
 
 <div class="contact-container">
-    <div class="contact-intro">
+    <div class="contact-info">
         <h2>Liên lạc với chúng tôi</h2>
-        <p>Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn</p>
+        <p>Liên hệ với chúng tôi ngay để có nhiều thông tin về sản phẩm và dịch vụ.</p>
+
+        <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-details">
+                <h4>Địa chỉ</h4>
+                <p>Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div class="info-details">
+                <h4>Hotline</h4>
+                <p>Mobile: <a href="tel:+84916884008">(+84) 916 884 008</a></p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <div class="info-icon">✉️</div>
+            <div class="info-details">
+                <h4>Email</h4>
+                <p><a href="mailto:tmdvvietnam@gmail.com">tmdvvietnam@gmail.com</a></p>
+            </div>
+        </div>
+
+        <div style="height: 250px; background: #eee; border-radius: 6px; margin-top: 2rem; display: flex; justify-content: center; align-items: center; color: #666;">
+            [Vị trí bản đồ]
+        </div>
+
     </div>
 
-    <div class="contact-content">
-        <div class="contact-info">
-            <div class="info-item">
-                <div class="info-icon">📍</div>
-                <div class="info-content">
-                    <h3>Địa chỉ</h3>
-                    <p>Số 123, Đường ABC,<br>Quận 1, Thành phố<br>Hồ Chí Minh</p>
-                </div>
-            </div>
+    <div class="contact-form">
+        <h3>Gửi yêu cầu</h3>
+        <form id="contactForm">
 
-            <div class="info-item">
-                <div class="info-icon">📞</div>
-                <div class="info-content">
-                    <h3>Hotline</h3>
-                    <p>Mobile: +84 912 345 678</p>
-                </div>
-            </div>
-
-            <div class="info-item">
-                <div class="info-icon">✉️</div>
-                <div class="info-content">
-                    <h3>Email</h3>
-                    <p>contact@vietplywood.com</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="contact-form">
-            <form>
+            <div class="form-row">
                 <div class="form-group">
-                    <label for="name">Tên</label>
-                    <input type="text" id="name" name="name" placeholder="Nhập họ và tên">
+                    <label for="name">Tên người liên hệ <span>*</span></label>
+                    <input type="text" id="name" name="name" placeholder="Nhập tên của bạn" required>
                 </div>
+                <div class="form-group">
+                    <label for="company">Tên công ty</label>
+                    <input type="text" id="company" name="company" placeholder="Công ty ABC">
+                </div>
+            </div>
 
+            <div class="form-row">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email">
+                    <input type="email" id="email" name="email" placeholder="example@mail.com">
                 </div>
-
                 <div class="form-group">
                     <label for="phone">Số điện thoại</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại">
+                    <input type="tel" id="phone" name="phone" placeholder="(+84) 9XX XXX XXX">
                 </div>
+            </div>
+            <p style="font-size: 0.85rem; color: #b8904d; margin-top: -0.5rem; margin-bottom: 1rem;">* Email HOẶC Số điện thoại là bắt buộc.</p>
 
-                <div class="form-group">
-                    <label for="message">Nội dung</label>
-                    <textarea id="message" name="message" placeholder="Để lại lời nhắn của bạn tại đây..."></textarea>
-                </div>
+            <div class="form-group">
+                <label for="title">Tiêu đề</label>
+                <input type="text" id="title" name="title" placeholder="Yêu cầu báo giá, Tham khảo sản phẩm,..." value="Tham khảo giá">
+            </div>
 
-                <button type="submit" class="submit-btn">Gửi</button>
-            </form>
-        </div>
+            <div class="form-group">
+                <label for="content">Nội dung</label>
+                <textarea id="content" name="content" placeholder="Xin chào. Tôi muốn hỏi về..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Gửi yêu cầu</button>
+
+            <div id="form-message" aria-live="polite"></div>
+        </form>
     </div>
 </div>
 
 <footer>
     <div class="footer-content">
-        <div class="footer-section">
+        <div class="footer-section footer-contact">
             <h3>Vietplywood Co., Ltd</h3>
-            <p>Địa chỉ: Tầng 3, Số 123, Đường ABC</p>
-            <p>Điện thoại: 028 1234 5678</p>
+            <p>Địa chỉ: Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
+            <p>Hotline: (+84)916 884 008</p>
+            <p>Email: tmdvvietnam@gmail.com</p>
         </div>
 
         <div class="footer-section">
             <h3>Thông tin</h3>
             <ul>
-                <li><a href="#">Về chúng tôi</a></li>
-                <li><a href="#">Chính sách</a></li>
-                <li><a href="#">Điều khoản</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="./product.html">Sản phẩm</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="./contact.html">Liên hệ</a></li>
             </ul>
         </div>
 
         <div class="footer-section">
             <h3>Hỗ trợ</h3>
             <ul>
-                <li><a href="#">Liên hệ</a></li>
+                <li><a href="#">Chính sách đổi trả</a></li>
+                <li><a href="#">Điều khoản sử dụng</a></li>
                 <li><a href="#">Câu hỏi thường gặp</a></li>
-                <li><a href="#">Hướng dẫn</a></li>
             </ul>
         </div>
 
         <div class="footer-section">
-            <h3>Theo dõi</h3>
-            <ul>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">LinkedIn</a></li>
-            </ul>
+            <h3>Đăng ký nhận tin</h3>
+            <p>Đăng ký để nhận thông tin mới nhất về sản phẩm và khuyến mãi.</p>
         </div>
     </div>
 
     <div class="footer-bottom">
-        <p>© 2024 CÔNG TY TNHH SẢN XUẤT GỖ DÁN VIỆT NAM. All rights reserved.</p>
+        <p>© 2024 CÔNG TY TNHH XUẤT NHẬP KHẨU TMDV VIỆT NAM. All rights reserved.</p>
     </div>
 </footer>
 
 <script>
+    // Menu di động
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -522,6 +588,91 @@
             hamburger.classList.remove('active');
             mobileMenu.classList.remove('active');
         });
+    });
+
+    // =======================================================
+    // LOGIC SUBMIT FORM LÊN GOOGLE SHEETS
+    // =======================================================
+    const form = document.getElementById('contactForm');
+    const formMessage = document.getElementById('form-message');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwKifCX1VmaEhwjIFO_HUTK-MX2hxIPzIsokzO7BGC4OIHHKSXl6Qt345C8p8LW3fc/exec';
+
+    function displayMessage(message, isSuccess) {
+        formMessage.textContent = message;
+        formMessage.className = isSuccess ? 'success' : 'error';
+        formMessage.style.display = 'block';
+    }
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Ngăn chặn form submit mặc định
+
+        formMessage.style.display = 'none'; // Ẩn thông báo cũ
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Đang gửi...';
+
+        // 1. Lấy dữ liệu và Chuẩn hóa (sử dụng FormData để dễ dàng lấy giá trị)
+        const formData = new FormData(form);
+        const name = formData.get('name').trim();
+        const ctyName = formData.get('company').trim();
+        const email = formData.get('email').trim();
+        const phone = formData.get('phone').trim();
+        const title = formData.get('title').trim();
+        const content = formData.get('content').trim();
+
+        // 2. Xác thực dữ liệu (Validation)
+        // Yêu cầu 1: Tên bắt buộc
+        if (name === "") {
+            displayMessage('Vui lòng nhập Tên người liên hệ.', false);
+            submitButton.disabled = false;
+            submitButton.textContent = 'Gửi yêu cầu';
+            return;
+        }
+
+        // Yêu cầu 2: Email HOẶC Số điện thoại là bắt buộc
+        if (email === "" && phone === "") {
+            displayMessage('Vui lòng nhập Email HOẶC Số điện thoại để chúng tôi liên hệ.', false);
+            submitButton.disabled = false;
+            submitButton.textContent = 'Gửi yêu cầu';
+            return;
+        }
+
+        // 3. Chuẩn bị dữ liệu gửi đi theo cấu trúc API mong muốn
+        const data = {
+            "company": ctyName || "", // Nếu trống thì gửi ""
+            "email": email || "",       // Nếu trống thì gửi ""
+            "title": title || "",       // Nếu trống thì gửi ""
+            "content": content || "",   // Nếu trống thì gửi ""
+            "phone": phone || ""        // Thêm trường SĐT để lưu trữ
+            // Lưu ý: Google Sheet Script API này chỉ nhận 4 cột bạn yêu cầu: cty name, email, title, content
+            // Nhưng tôi sẽ gửi thêm phone để nếu có thể thì script bên bạn vẫn nhận được.
+            // Nếu script chỉ xử lý 4 cột, phone sẽ bị bỏ qua.
+        };
+
+        // 4. Gửi dữ liệu bằng Fetch API
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors', // Sử dụng no-cors mode cho Google Script Web App
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                // Không thể kiểm tra response status trong no-cors mode,
+                // nên ta giả định thành công nếu không có lỗi network.
+                displayMessage('Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ lại sớm.', true);
+                form.reset(); // Xóa form sau khi gửi
+            })
+            .catch(error => {
+                // Xử lý lỗi network
+                console.error('Lỗi khi gửi:', error.message);
+                displayMessage('Lỗi khi gửi yêu cầu. Vui lòng thử lại hoặc liên hệ qua email/hotline.', false);
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Gửi yêu cầu';
+            });
     });
 </script>
 </body>
