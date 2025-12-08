@@ -4,552 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ - VietPlywood</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-            line-height: 1.6;
-            background: #fff;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
 
-        header {
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900;1,100..900&family=Montserrat:wght@100..900;1,100..900&display=swap" rel="stylesheet">
 
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-            color: #333;
-            font-size: 1.2rem;
-            text-decoration: none;
-        }
-
-        .logo img {
-            width: 30px;
-            height: 30px;
-            background: #e0e0e0; /* Placeholder color */
-        }
-
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #b8904d;
-        }
-
-        .header-icons {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .icon-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            color: #333;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #333;
-            border-radius: 2px;
-            transition: all 0.3s;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        .mobile-menu {
-            display: none;
-            position: absolute;
-            top: 60px;
-            left: 0;
-            right: 0;
-            background: #fff;
-            border-top: 1px solid #eee;
-            padding: 1rem;
-            flex-direction: column;
-            gap: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .mobile-menu.active {
-            display: flex;
-        }
-
-        .mobile-menu a {
-            padding: 0.8rem 1rem;
-            color: #333;
-            text-decoration: none;
-            font-size: 0.95rem;
-            border-radius: 4px;
-            transition: background 0.3s;
-        }
-
-        .mobile-menu a:hover {
-            background: #f5f5f5;
-            color: #b8904d;
-        }
-
-        /* --- HOMEPAGE SPECIFIC STYLES --- */
-
-        /* Hero Section */
-        .hero-section {
-            background-image: url('hero-bg.jpg'); /* Đảm bảo có ảnh nền */
-            background-size: cover;
-            background-position: center;
-            height: 450px; /* Chiều cao hero section vừa phải */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-            position: relative;
-            padding: 0 2rem;
-        }
-
-        /* Overlay cho hero section để chữ dễ đọc hơn */
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Lớp phủ tối nhẹ */
-            z-index: 1;
-        }
-
-        .hero-section > * { /* Đảm bảo nội dung nằm trên lớp phủ */
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-section h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Thêm bóng chữ */
-        }
-
-        .hero-section p.slogan { /* Thêm lớp cho slogan */
-            font-size: 1.5rem;
-            margin-top: 0.5rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            max-width: 800px;
-        }
-
-        /* NEW Stats Section */
-        .stats-section {
-            background: #f4f4f4; /* Nền sáng hơn cho phần thống kê */
-            padding: 3rem 2rem;
-        }
-
-        .stats-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .stat-item {
-            background: #fff;
-            padding: 2rem 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
-
-        .stat-item .icon {
-            font-size: 2.5rem;
-            color: #b8904d; /* Màu vàng đồng */
-            margin-bottom: 0.8rem;
-        }
-
-        .stat-item h2 {
-            font-size: 2.5rem; /* Kích thước số liệu lớn hơn */
-            color: #333;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .stat-item p {
-            font-size: 1rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 500;
-        }
-
-        /* Products Section */
-        .product-section {
-            max-width: 1200px;
-            margin: 6rem auto 4rem;
-            padding: 0 2rem;
-            text-align: center;
-        }
-
-        .product-section h2 {
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .product-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: #b8904d;
-        }
-
-        .product-grid-home {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .product-card-home {
-            border-radius: 4px;
-            overflow: hidden;
-            background: #fcfcfc;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .product-card-home:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-        }
-
-        .product-image-home {
-            height: 180px;
-            width: 100%;
-            overflow: hidden;
-            background: #e0e0e0;
-        }
-
-        .product-image-home img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .product-card-home:hover .product-image-home img {
-            transform: scale(1.05);
-        }
-
-        .product-content-home {
-            padding: 1.2rem;
-            text-align: left;
-        }
-
-        .product-content-home h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .product-content-home p {
-            font-size: 0.85rem;
-            color: #666;
-            min-height: 3.8em; /* 3 lines of text */
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .view-more-btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: #b8904d;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .view-more-btn:hover {
-            background: #a17c3e;
-        }
-
-        /* Why Choose Us Section */
-        .why-choose-us-section {
-            background: #f8f8f8;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .why-choose-us-section h2 {
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 10px;
-            color: #333;
-        }
-
-        .why-choose-us-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: #b8904d;
-        }
-
-        .reason-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .reason-card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 6px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-
-        .reason-icon {
-            font-size: 2.5rem;
-            color: #b8904d;
-            margin-bottom: 1rem;
-        }
-
-        .reason-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .reason-card p {
-            font-size: 0.95rem;
-            color: #666;
-        }
-
-
-        /* --- FOOTER STYLES (REUSED) --- */
-
-        footer {
-            background: #f8f8f8;
-            padding: 3rem 2rem 1.5rem;
-            margin-top: 5rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            font-size: 0.9rem;
-            color: #666;
-            text-decoration: none;
-            line-height: 1.8;
-        }
-
-        .footer-section a:hover {
-            color: #b8904d;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-contact p {
-            line-height: 1.8;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 2rem auto 0;
-            padding-top: 1.5rem;
-            border-top: 1px solid #ddd;
-            text-align: center;
-            color: #666;
-            font-size: 0.85rem;
-        }
-
-        @media (max-width: 992px) {
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .product-grid-home {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .reason-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-
-        @media (max-width: 768px) {
-            .header-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 1rem 2rem;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .header-icons {
-                display: flex;
-                gap: 1rem;
-            }
-
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .product-grid-home {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-section h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-section p.slogan {
-                font-size: 1.2rem;
-            }
-
-            .reason-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-            .stat-item h2 {
-                font-size: 2rem;
-            }
-            .stat-item p {
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+
 <header>
     <div class="header-container">
         <a href="./index.html" class="logo">
-            <img src="" alt="Logo">
+            <img src="./assets/images/logo.png" alt="Logo VietPlywood">
             <span>VIETPLYWOOD</span>
         </a>
-        <nav>
-            <a href="./index.html" style="color: #b8904d;">Trang chủ</a>
+
+        <nav class="desktop-nav">
+            <a href="./index.html" class="nav-active">Trang chủ</a>
             <a href="./product.html">Sản phẩm</a>
             <a href="./blog.html">Blog</a>
             <a href="./contact.html">Liên hệ</a>
         </nav>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div class="header-icons">
-            <button class="icon-btn" aria-label="Tìm kiếm">🔍</button>
-            <button class="icon-btn" aria-label="Ngôn ngữ">VN</button>
+
+        <div class="header-right">
+            <div class="header-icons">
+                <button class="icon-btn" aria-label="Tìm kiếm">🔍</button>
+                <button class="icon-btn language-btn">VN</button>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </div>
+
     <nav class="mobile-menu" id="mobile-menu">
         <a href="./index.html">Trang chủ</a>
         <a href="./product.html">Sản phẩm</a>
@@ -561,105 +55,106 @@
 <section class="hero-section">
     <h1>VIỆT PLYWOOD</h1>
     <p class="slogan">NHÀ CUNG CẤP VÁN ÉP CHẤT LƯỢNG CAO HÀNG ĐẦU VIỆT NAM</p>
+    <a href="./contact.html" class="btn btn-primary">LIÊN HỆ BÁO GIÁ</a>
 </section>
 
 <section class="stats-section">
     <div class="stats-container">
         <div class="stat-item">
-            <div class="icon">🏆</div> <h2>12+</h2>
+            <div class="icon">🏆</div> <h2>7+</h2>
             <p>Năm kinh nghiệm</p>
         </div>
         <div class="stat-item">
-            <div class="icon">🌍</div> <h2>47+</h2>
+            <div class="icon">🌍</div> <h2>6+</h2>
             <p>Thị trường xuất khẩu</p>
         </div>
         <div class="stat-item">
-            <div class="icon">🗺️</div> <h2>04</h2>
-            <p>Châu lục</p>
+            <div class="icon">🤝</div> <h2>20+</h2>
+            <p>Khách hàng B2B</p>
         </div>
         <div class="stat-item">
-            <div class="icon">🤝</div> <h2>350+</h2>
-            <p>Khách hàng</p>
+            <div class="icon">🏭</div> <h2>1000m²</h2>
+            <p>Diện tích nhà máy</p>
         </div>
     </div>
 </section>
 
 <section class="product-section">
-    <h2>Sản phẩm ván ép</h2>
+    <h2 class="section-title">Sản phẩm nổi bật</h2>
 
     <div class="product-grid-home">
         <a href="./product.html#phu-phim" class="product-card-home">
             <div class="product-image-home">
-                <img src="phu-phim.jpg" alt="Ván ép phủ phim">
+                <img src="./assets/images/index_sp_1.png" alt="Ván ép phủ phim">
             </div>
             <div class="product-content-home">
                 <h3>Ván ép phủ phim</h3>
                 <p>
-                    Chống nước, chống bám bẩn, độ bền cao, chịu lực tốt, thường dùng làm ván khuôn trong xây dựng.
+                    Chống nước, độ bền cao, chịu lực tốt, là vật liệu quan trọng trong hệ cốp pha bê tông xây dựng.
                 </p>
             </div>
         </a>
 
         <a href="./product.html#bintagor" class="product-card-home">
             <div class="product-image-home">
-                <img src="bintagor.jpg" alt="Ván ép mặt bintagor">
+                <img src="./assets/images/index_sp_2.png" alt="Ván ép mặt bintagor">
             </div>
             <div class="product-content-home">
-                <h3>Ván ép mặt bintagor</h3>
+                <h3>Ván ép mặt Bintangor</h3>
                 <p>
-                    Dùng trong các hạng mục nội thất tủ, kệ, vách ngăn, ốp tường, mang lại vẻ đẹp ấm cúng.
+                    Phù hợp cho nội thất tủ, kệ, vách ngăn. Cân bằng giữa chi phí, thẩm mỹ và độ bền cho số lượng lớn.
                 </p>
             </div>
         </a>
 
         <a href="./product.html#okoume" class="product-card-home">
             <div class="product-image-home">
-                <img src="okoume.jpg" alt="Ván ép mặt okoume">
+                <img src="./assets/images/index_sp_3.png" alt="Ván ép mặt okoume">
             </div>
             <div class="product-content-home">
-                <h3>Ván ép mặt okoume</h3>
+                <h3>Ván ép mặt Okoume</h3>
                 <p>
-                    Gia công mộc công nghiệp, cắt CNC, ép phủ sơn hoàn thiện, có bề mặt mịn, dễ xử lý.
+                    Bề mặt sáng, mịn, trọng lượng nhẹ, được ưa chuộng cho đồ nội thất cao cấp và thị trường xuất khẩu.
                 </p>
             </div>
         </a>
 
-        <a href="./product.html#chadan" class="product-card-home">
+        <a href="./product.html#trang" class="product-card-home">
             <div class="product-image-home">
-                <img src="cha-dan.jpg" alt="Ván ép chà dán">
+                <img src="./assets/images/index_sp_4.png" alt="Ván ép mặt trắng">
             </div>
             <div class="product-content-home">
-                <h3>Ván ép chà dán</h3>
+                <h3>Ván ép mặt Trắng</h3>
                 <p>
-                    Dùng cho pallet, robbin, nội thất ẩn hoặc các mục đích không yêu cầu bề mặt hoàn thiện cao, tối ưu chi phí.
+                    Sắc gỗ sáng, sạch, hiện đại, phù hợp cho nội thất văn phòng và phong cách tối giản (Minimalism).
                 </p>
             </div>
         </a>
     </div>
 
-    <a href="./product.html" class="view-more-btn">Xem thêm</a>
+    <a href="./product.html" class="btn btn-secondary view-more-btn">XEM TẤT CẢ SẢN PHẨM</a>
 </section>
 
 <section class="why-choose-us-section">
-    <h2>Lý do lựa chọn VIỆT PLYWOOD</h2>
+    <h2 class="section-title">Lợi thế cạnh tranh của VIỆT PLYWOOD</h2>
 
     <div class="reason-grid">
         <div class="reason-card">
             <div class="reason-icon">⭐</div>
             <h3>Chất lượng tiêu chuẩn xuất khẩu</h3>
-            <p>Sản phẩm đạt các tiêu chuẩn quốc tế nghiêm ngặt, đảm bảo độ bền và tuổi thọ cao cho mọi công trình.</p>
+            <p>Sản phẩm được kiểm soát nghiêm ngặt, quy trình chuẩn hóa, đáp ứng tiêu chuẩn kỹ thuật các thị trường quốc tế.</p>
         </div>
 
         <div class="reason-card">
-            <div class="reason-icon">📦</div>
-            <h3>Đa dạng chủng loại ván ép</h3>
-            <p>Cung cấp đầy đủ các dòng ván ép phủ phim, bintagor, okoume, chà dán... đáp ứng mọi nhu cầu thị trường.</p>
+            <div class="reason-icon">🏭</div>
+            <h3>Sản xuất chủ động tại Phú Thọ</h3>
+            <p>Nhà máy tại Việt Nam chủ động nguồn cung, đáp ứng đơn hàng container số lượng lớn, đảm bảo tiến độ giao hàng.</p>
         </div>
 
         <div class="reason-card">
-            <div class="reason-icon">🌎</div>
-            <h3>Kinh nghiệm 12+ năm & 47+ thị trường</h3>
-            <p>Uy tín được khẳng định qua hơn một thập kỷ hoạt động và mở rộng mạng lưới xuất khẩu trên 04 châu lục.</p>
+            <div class="reason-icon">💰</div>
+            <h3>Chi phí Tối ưu cho Khách hàng B2B</h3>
+            <p>Vị trí gần vùng nguyên liệu giúp tối ưu giá thành, mang lại giải pháp vật tư cạnh tranh nhất cho các dự án.</p>
         </div>
     </div>
 </section>
@@ -670,14 +165,12 @@
         <div class="footer-section footer-contact">
             <h3>Vietplywood Co., Ltd</h3>
             <p>Địa chỉ: Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
-            <p>Hotline: (+84)916 884 008</p>
-            <p>Email: tmdvvietnam@gmail.com</p>
         </div>
 
         <div class="footer-section">
-            <h3>Thông tin</h3>
+            <h3>Giới thiệu</h3>
             <ul>
-                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="./index.html"></a>Trang chủ</li>
                 <li><a href="./product.html">Sản phẩm</a></li>
                 <li><a href="./blog.html">Blog</a></li>
                 <li><a href="./contact.html">Liên hệ</a></li>
@@ -687,24 +180,30 @@
         <div class="footer-section">
             <h3>Hỗ trợ</h3>
             <ul>
-                <li><a href="#">Chính sách đổi trả</a></li>
-                <li><a href="#">Điều khoản sử dụng</a></li>
-                <li><a href="#">Câu hỏi thường gặp</a></li>
+
+                <p>Hotline: **(+84)916 884 008**</p>
+                <p>Email: tmdvvietnam@gmail.com</p>
+                <p>Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
             </ul>
         </div>
 
         <div class="footer-section">
             <h3>Đăng ký nhận tin</h3>
-            <p>Đăng ký để nhận thông tin mới nhất về sản phẩm và khuyến mãi.</p>
+            <p>Đăng ký để nhận thông tin mới nhất về sản phẩm.</p>
+            <form action="#" class="newsletter-form">
+                <input type="email" placeholder="Nhập email của bạn" required>
+                <button type="submit" class="btn btn-subscribe">Đăng ký</button>
+            </form>
         </div>
     </div>
 
     <div class="footer-bottom">
-        <p>© 2024 CÔNG TY TNHH XUẤT NHẬP KHẨU TMDV VIỆT NAM. All rights reserved.</p>
+        <p>© 2025 CÔNG TY TNHH XUẤT NHẬP KHẨU TMDV VIỆT NAM. All rights reserved.</p>
     </div>
 </footer>
 
 <script>
+    // JavaScript đơn giản để điều khiển menu mobile
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
 
