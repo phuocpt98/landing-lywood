@@ -104,7 +104,7 @@
         .nav-menu a:hover { color: var(--color-primary); }
         .lang-switch-btn { background: #fff; color: var(--color-primary); border: 1px solid var(--color-primary); padding: 5px 10px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.3s; }
         .lang-switch-btn:hover { background-color: var(--color-primary); color: white; }
-        .menu-toggle { display: none; font-size: 30px; cursor: pointer; color: var(--color-text-dark); padding: 5px; order: 3; } /* Mặc định ẩn trên desktop */
+        .menu-toggle { display: none; font-size: 30px; cursor: pointer; color: var(--color-text-dark); padding: 5px; order: 3; }
 
         .hero-section { background: linear-gradient(135deg, #f7f3f0 0%, var(--color-bg-light) 100%); padding: 80px 0 40px 0; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); }
         .hero-section h1 { font-size: 3rem; color: var(--color-secondary); margin-bottom: 0.5rem; font-weight: 700; letter-spacing: 1px; }
@@ -140,9 +140,9 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Đã sửa: dùng 'contain' để chống vỡ ảnh */
+            object-fit: contain; /* Dùng 'contain' để chống vỡ ảnh */
             transition: opacity 0.3s;
-            background-color: #f7f7f7; /* Nền cho ảnh */
+            background-color: #f7f7f7;
         }
 
         .thumbnail-grid {
@@ -159,7 +159,7 @@
         }
         .thumbnail-container img {
             width: 100%;
-            height: 70px; /* Chiều cao cố định cho ảnh nhỏ */
+            height: 70px;
             object-fit: cover;
             display: block;
         }
@@ -178,9 +178,6 @@
             font-size: 1.5rem;
             margin-bottom: 15px;
         }
-        .rating-stars span {
-            color: #ccc;
-        }
         .rating-stars .filled {
             color: var(--color-rating);
         }
@@ -193,7 +190,7 @@
             vertical-align: top;
         }
         .rating-stars .half-filled::before {
-            content: "\2605"; /* Full star unicode */
+            content: "\2605";
             position: absolute;
             width: 50%;
             overflow: hidden;
@@ -218,20 +215,18 @@
         }
 
         /* Attribute Selector (Buttons) */
+        .attribute-selector { margin-bottom: 30px; }
+        .attribute-selector h4 { font-size: 1rem; color: var(--color-secondary); margin-bottom: 10px; font-weight: 600; }
+        .attribute-options { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .attribute-options button { background: var(--color-bg-light); color: var(--color-text-dark); border: 1px solid #ddd; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s; font-weight: 500; }
+        .attribute-options button:hover { border-color: var(--color-primary); }
         .attribute-options button.selected {
             background: var(--color-primary);
             color: white;
             border-color: var(--color-primary);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        /* ... (Các style thuộc tính khác giữ nguyên) ... */
-        .attribute-selector { margin-bottom: 30px; }
-        .attribute-selector h4 { font-size: 1rem; color: var(--color-secondary); margin-bottom: 10px; font-weight: 600; }
-        .attribute-options { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-        .attribute-options button { background: var(--color-bg-light); color: var(--color-text-dark); border: 1px solid #ddd; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s; font-weight: 500; }
-        .attribute-options button:hover { border-color: var(--color-primary); }
         .attribute-options button:focus { outline: none; }
-
 
         /* Additional Info */
         .additional-info { padding-top: 20px; border-top: 1px solid #eee; margin-top: 20px; }
@@ -281,7 +276,7 @@
             .product-specs { padding-top: 20px; }
         }
 
-        /* FIX LỖI RESPONSIVE CHO MOBILE MENU VÀ LAYOUT DƯỚI 768PX */
+        /* FIX LỖI RESPONSIVE CHO MOBILE HEADER VÀ LAYOUT DƯỚI 768PX */
         @media (max-width: 768px) {
             .hero-section h1 { font-size: 2.5rem; }
             .product-main-info { gap: 30px; }
@@ -289,17 +284,23 @@
             .product-detail-container { margin: 2rem auto; padding: 0 10px; }
             .product-grid { grid-template-columns: 1fr; }
             .footer-content { grid-template-columns: 1fr; }
-            .thumbnail-grid { grid-template-columns: repeat(4, 1fr); } /* Giữ 4 ảnh nhỏ, có thể tràn */
+            .thumbnail-grid { grid-template-columns: repeat(4, 1fr); }
 
-            /* Sửa lỗi Menu: Hiển thị nút toggle và ẩn menu chính */
+            /* Sửa lỗi Header: */
+            .container-header {
+                max-width: 100%; /* Dùng toàn bộ chiều rộng */
+                padding: 0 15px;
+            }
+
             .menu-toggle {
                 display: block; /* Hiển thị nút menu trên mobile */
             }
+
             .nav-menu {
-                display: none; /* Ẩn menu chính */
-                flex-direction: column;
+                display: none; /* Ẩn menu chính theo mặc định */
+                flex-direction: column; /* Xếp dọc các mục menu */
                 position: absolute;
-                top: 80px; /* Vị trí dưới Header */
+                top: 80px;
                 left: 0;
                 width: 100%;
                 background: #fff;
@@ -307,6 +308,10 @@
                 padding: 10px 0;
                 gap: 0;
                 z-index: 999;
+                /* Ghi đè lại các thuộc tính flex desktop */
+                flex-grow: 0;
+                justify-content: flex-start;
+                padding-right: 0;
             }
             .nav-menu.active {
                 display: flex; /* Hiển thị menu khi có class 'active' */
@@ -321,7 +326,8 @@
                 padding: 15px 20px;
             }
             .lang-switch-btn {
-                margin-left: 10px;
+                /* Đảm bảo nút ngôn ngữ không chiếm quá nhiều không gian */
+                margin-left: auto; /* Đẩy ra xa logo */
             }
         }
     </style>
@@ -336,7 +342,7 @@
 
         <ul class="nav-menu">
             <li><a href="../../">Trang chủ</a></li>
-            <li><a href="">Sản phẩm</a></li>
+            <li><a href="./">Sản phẩm</a></li>
             <li><a href="../blogs">Blog</a></li>
             <li><a href="../concat">Liên hệ</a></li>
         </ul>
@@ -389,7 +395,7 @@
                 <span class="filled">&starf;</span>
                 <span class="half-filled"></span>
                 <span>&starf;</span>
-                <span style="color: #666; font-size: 1rem; margin-left: 10px;"> | (4.5/5)</span>
+                <span style="color: #666; font-size: 1rem; margin-left: 10px;"> | (4.5/5 - Dựa trên 100 lượt đánh giá)</span>
             </div>
             <span class="tag">#phuphim</span>
 
@@ -570,28 +576,24 @@
         const thumbnailImage = thumbnailContainer.querySelector('img');
         const allThumbnails = document.querySelectorAll('.thumbnail-container');
 
-        // 1. Lấy nguồn ảnh hiện tại của thumbnail.
-        // Dùng split('/').pop() để so sánh tên file, tránh bị lỗi do đường dẫn tuyệt đối/tương đối
+        // Lấy tên file để so sánh
         const thumbnailSrcFileName = thumbnailImage.src.split('/').pop();
         const mainSrcFileName = mainImage.src.split('/').pop();
 
-
-        // 2. Nếu ảnh đang hiển thị đã là ảnh chính, chỉ cần update active class và thoát
+        // Nếu ảnh đang hiển thị đã là ảnh chính, chỉ cần update active class và thoát
         if (mainSrcFileName === thumbnailSrcFileName) {
             allThumbnails.forEach(thumb => thumb.classList.remove('active'));
             thumbnailContainer.classList.add('active');
             return;
         }
 
-        // 3. Thực hiện SWAP (hoán đổi nguồn ảnh)
+        // Thực hiện SWAP (hoán đổi nguồn ảnh)
         const tempSrc = mainImage.src;
         mainImage.src = thumbnailImage.src;
         thumbnailImage.src = tempSrc;
 
-        // 4. Cập nhật active class: Bỏ active cũ, thêm active vào thumbnail vừa được click
+        // Cập nhật active class: Bỏ active cũ, thêm active vào thumbnail vừa được click
         allThumbnails.forEach(thumb => {
-            // Sau khi swap, thumbnail nào đang chứa ảnh chính ban đầu sẽ được active
-            // (Đơn giản nhất là active thumbnail vừa được click)
             thumb.classList.remove('active');
         });
         thumbnailContainer.classList.add('active');
@@ -602,7 +604,6 @@
         // Sử dụng toggle() để thêm/xóa class 'selected'
         button.classList.toggle('selected');
 
-        // Optional: Log the selection for development/debug
         const attributeContainer = button.closest('.attribute-options');
         const attributeName = attributeContainer.getAttribute('data-attribute');
         const selectedValue = button.getAttribute('data-value');
