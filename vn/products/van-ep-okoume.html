@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/svg+xml" href="../../assets/images/logo.svg" />
+    <title>Ván ép phủ phim - VIETPLYWOOD</title>
+
+    <meta name="description" content="Ván ép phủ phim là loại ván ép được phủ một lớp phim bảo vệ trên bề mặt, thường là phim phenolic hoặc melamine, giúp tăng cường độ bền và khả năng chịu nước.">
+    <meta name="robots" content="index, follow">
+
+    <script type="application/ld+json">
+        [
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "VIETPLYWOOD",
+                "url": "https://vietplywood.com",
+                "logo": "https://vietplywood.com/assets/images/logo.svg",
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+84916884008",
+                    "contactType": "Sales"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Khu Liên Đồng, Xã Thanh Sơn",
+                    "addressLocality": "Phú Thọ",
+                    "addressRegion": "Phú Thọ",
+                    "addressCountry": "VN"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Trang chủ",
+                        "item": "https://vietplywood.com/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Sản phẩm",
+                        "item": "../products"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Ván ép phủ phim"
+                    }
+                ]
+            }
+        ]
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* COLORS */
+        :root {
+            --color-primary: #8B6F47; /* Nâu thương hiệu */
+            --color-secondary: #513C2E; /* Nâu tối */
+            --color-bg-light: #F3EDE7; /* Nền nhạt */
+            --color-text-dark: #333;
+            --color-rating: #FFD700; /* Vàng kim cho sao */
+        }
+
+        /* Layout Fixes */
+        .container-header{
+            max-width: 95%;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 85%;
+            margin: 0 auto;
+        }
+        .product-detail-container {
+            max-width: 85%;
+            margin: 4rem auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER & HERO Section (Giữ nguyên cấu trúc) */
+        header { background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 20px 0; position: sticky; top: 0; z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo-link { font-size: 24px; font-weight: bold; color: var(--color-secondary); text-decoration: none; display: flex; align-items: center; }
+        .logo-link img { height: 40px; margin-right: 10px; }
+        .nav-menu { display: flex; list-style: none; gap: 40px; flex-grow: 1; justify-content: center; padding-right: 20px; }
+        .nav-menu a { text-decoration: none; color: var(--color-text-dark); font-weight: 500; transition: color 0.3s; }
+        .nav-menu li:nth-child(2) a { color: var(--color-primary); font-weight: 600; }
+        .nav-menu a:hover { color: var(--color-primary); }
+        .lang-switch-btn { background: #fff; color: var(--color-primary); border: 1px solid var(--color-primary); padding: 5px 10px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px; transition: all 0.3s; }
+        .lang-switch-btn:hover { background-color: var(--color-primary); color: white; }
+        .menu-toggle { display: none; font-size: 30px; cursor: pointer; color: var(--color-text-dark); padding: 5px; order: 3; }
+
+        .hero-section { background: linear-gradient(135deg, #f7f3f0 0%, var(--color-bg-light) 100%); padding: 80px 0 40px 0; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); }
+        .hero-section h1 { font-size: 3rem; color: var(--color-secondary); margin-bottom: 0.5rem; font-weight: 700; letter-spacing: 1px; }
+        .breadcrumb { color: #746456; font-size: 1rem; padding-top: 10px; }
+        .breadcrumb a { color: var(--color-primary); text-decoration: none; transition: color 0.3s; }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* ---------- PRODUCT DETAIL STYLES ---------- */
+
+        /* Main Info Section (Image & Specs) */
+        .product-main-info {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: flex-start;
+            margin-bottom: 50px;
+        }
+
+        /* Image Gallery */
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .main-image-container {
+            position: relative;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio */
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        /* START: FIX VỠ ẢNH / OBJECT-FIT FIX */
+        #main-product-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Đã đổi từ 'cover' sang 'contain' để chống vỡ ảnh (sẽ có padding trắng nếu tỷ lệ ảnh không khớp) */
+            transition: opacity 0.3s;
+            background-color: #f7f7f7; /* Nền cho ảnh khi dùng 'contain' */
+        }
+        /* END: FIX VỠ ẢNH / OBJECT-FIT FIX */
+
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .thumbnail-container {
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .thumbnail-container img {
+            width: 100%;
+            height: 70px; /* Chiều cao cố định cho ảnh nhỏ */
+            object-fit: cover;
+            display: block;
+        }
+        .thumbnail-container.active, .thumbnail-container:hover {
+            border-color: var(--color-primary);
+        }
+
+        /* Specs & Rating */
+        .product-specs h2 {
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+        }
+        .rating-stars {
+            color: var(--color-rating);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .rating-stars span {
+            color: #ccc;
+        }
+        .rating-stars .filled {
+            color: var(--color-rating);
+        }
+        /* Fix cho nửa sao */
+        .rating-stars .half-filled {
+            position: relative;
+            display: inline-block;
+            width: 1em;
+            overflow: hidden;
+            height: 1em;
+            vertical-align: top;
+        }
+        .rating-stars .half-filled::before {
+            content: "\2605"; /* Full star unicode */
+            position: absolute;
+            width: 50%;
+            overflow: hidden;
+            color: var(--color-rating);
+        }
+
+        .product-specs .tag {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .product-specs > p { /* target direct p to avoid styling all p tags */
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Attribute Selector (Buttons) */
+        .attribute-selector {
+            margin-bottom: 30px;
+        }
+        .attribute-selector h4 {
+            font-size: 1rem;
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .attribute-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .attribute-options button {
+            background: var(--color-bg-light);
+            color: var(--color-text-dark);
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        .attribute-options button:hover {
+            border-color: var(--color-primary);
+        }
+        .attribute-options button.selected {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .attribute-options button:focus {
+            outline: none;
+        }
+
+        /* Additional Info */
+        .additional-info {
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+        }
+
+        .additional-info div {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .additional-info strong {
+            color: var(--color-secondary);
+            font-weight: 600;
+            min-width: 120px;
+            display: inline-block;
+        }
+
+        .cta-button {
+            display: block;
+            background: var(--color-primary);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .cta-button:hover {
+            background: #6d5636;
+        }
+
+        /* Description & Related Products (Giữ nguyên) */
+        .feature-section { border-top: 2px solid var(--color-bg-light); padding-top: 40px; margin-bottom: 40px; }
+        .feature-section h3 { font-size: 1.8rem; color: var(--color-secondary); border-left: 5px solid var(--color-primary); padding-left: 15px; margin-bottom: 25px; line-height: 1.2; }
+        .feature-section h4 { font-size: 1.4rem; color: var(--color-primary); margin-top: 30px; margin-bottom: 10px; }
+        .feature-section ul { list-style: none; padding-left: 0; margin-top: 15px; }
+        .feature-section li { background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"><path fill="%238B6F47" d="M21 7l-9 9-4.5-4.5 1.41-1.41L12 13.17l7.59-7.59L21 7z"/></svg>') no-repeat left 8px; background-size: 10px; padding-left: 25px; margin-bottom: 10px; color: #555; }
+
+        .related-products { padding-top: 50px; border-top: 1px solid #eee; }
+        .related-products h3 { text-align: center; font-size: 2rem; color: var(--color-secondary); margin-bottom: 30px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .product-card { border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease; text-decoration: none; color: inherit; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); }
+        .product-card img { width: 100%; height: 180px; object-fit: cover; border-bottom: 3px solid var(--color-primary); }
+        .product-card-content { padding: 20px; }
+        .product-card-content h4 { font-size: 1.2rem; margin-bottom: 8px; color: var(--color-secondary); }
+        .product-card-content p { font-size: 14px; color: #666; line-height: 1.4; min-height: 4em; overflow: hidden; }
+        .view-more-button { display: inline-block; background: #fff; color: var(--color-primary); border: 2px solid var(--color-primary); padding: 10px 30px; border-radius: 4px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+        .view-more-button:hover { background: var(--color-primary); color: white; }
+
+        /* FOOTER (Giữ nguyên) */
+        footer { background: #F3EDE7; padding: 60px 0 30px; margin-top: 40px; }
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 40px; margin-bottom: 40px; }
+        .footer-section h3 { font-size: 18px; margin-bottom: 20px; color: #333; }
+        .footer-section p, .footer-section a { font-size: 14px; color: #666; text-decoration: none; display: block; margin-bottom: 10px; }
+        .footer-section a:hover { color: var(--color-primary); }
+        .newsletter-form input[type="email"] { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 10px; }
+        .newsletter-form button { background: var(--color-primary); color: white; border: none; padding: 12px 30px; border-radius: 4px; cursor: pointer; transition: background 0.3s; width: 100%; margin-bottom: 10px; }
+        .newsletter-form button:hover { background: #6d5636; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid #ddd; color: #666; font-size: 14px; }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .product-main-info { grid-template-columns: 1fr; }
+            .product-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+            .footer-content { grid-template-columns: 1fr 1fr; }
+            .product-specs { padding-top: 20px; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 2.5rem; }
+            .product-main-info { gap: 30px; }
+            .product-specs h2 { font-size: 2rem; text-align: center; }
+            .product-detail-container { margin: 2rem auto; }
+            .product-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+            .thumbnail-grid { grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="container-header">
+        <a href="../../index.html" class="logo-link">
+            <img src="../../assets/images/logo.svg" alt="Logo VietPlywood">
+            <span>VIETPLYWOOD</span>
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="../../">Trang chủ</a></li>
+            <li><a href="">Sản phẩm</a></li>
+            <li><a href="../blogs">Blog</a></li>
+            <li><a href="../concat">Liên hệ</a></li>
+        </ul>
+
+        <button class="lang-switch-btn" onclick="window.location.href='#'">🌐 VN</button>
+
+        <div class="menu-toggle" onclick="toggleMenu()">
+            &#9776;
+        </div>
+    </nav>
+</header>
+
+<section class="hero-section">
+    <h1>Ván ép phủ phim</h1>
+    <div class="breadcrumb">
+        <a href="../../">Trang chủ</a> / <a href="../products">Sản phẩm</a> / Ván ép phủ phim
+    </div>
+</section>
+
+<div class="product-detail-container">
+
+    <div class="product-main-info">
+
+        <div class="product-gallery">
+            <div class="main-image-container">
+                <img id="main-product-image" src="../../assets/images/van_phu_phim_1.png" alt="Ván ép phủ phim - Ảnh chính">
+            </div>
+            <div class="thumbnail-grid" id="thumbnail-gallery">
+                <div class="thumbnail-container" onclick="swapImage(this)">
+                    <img src="../../assets/images/van_phu_phim_2.png" alt="Ảnh 1">
+                </div>
+                <div class="thumbnail-container" onclick="swapImage(this)">
+                    <img src="../../assets/images/van_phu_phim_3.png" alt="Ảnh 2">
+                </div>
+                <div class="thumbnail-container" onclick="swapImage(this)">
+                    <img src="../../assets/images/van_phu_phim_4.png" alt="Ảnh 3">
+                </div>
+                <div class="thumbnail-container" onclick="swapImage(this)">
+                    <img src="../../assets/images/van_phu_phim_5.png" alt="Ảnh 4">
+                </div>
+            </div>
+        </div>
+        <div class="product-specs">
+            <h2>Ván ép phủ phim</h2>
+
+            <div class="rating-stars">
+                <span class="filled">&starf;</span>
+                <span class="filled">&starf;</span>
+                <span class="filled">&starf;</span>
+                <span class="filled">&starf;</span>
+                <span class="half-filled"></span>
+                <span>&starf;</span>
+                <span style="color: #666; font-size: 1rem; margin-left: 10px;"> | (4.5/5)</span>
+            </div>
+            <span class="tag">#phuphim</span>
+
+            <p>
+                Ván ép phủ phim là loại ván ép được phủ một lớp phim bảo vệ trên bề mặt, thường là phim phenolic hoặc melamine, giúp tăng cường độ bền và khả năng chịu nước.
+            </p>
+
+            <div class="attribute-selector">
+                <h4>Mặt phủ</h4>
+                <div class="attribute-options" data-attribute="face">
+                    <button class="select-option" data-value="ABB" onclick="selectOption(this)">Phim Trơn</button>
+                    <button class="select-option" data-value="BB" onclick="selectOption(this)">Phim logo Plywood</button>
+                </div>
+
+                <h4>Kích thước</h4>
+                <div class="attribute-options" data-attribute="size">
+                    <button class="select-option" data-value="1220x2440" onclick="selectOption(this)">1220 x 2440mm</button>
+                    <button class="select-option" data-value="915x2135" onclick="selectOption(this)">Theo yêu cầu</button>
+                </div>
+
+                <h4>Độ dày</h4>
+                <div class="attribute-options" data-attribute="thickness">
+                    <button class="select-option" data-value="8mm" onclick="selectOption(this)">12mm - 7 lớp</button>
+                    <button class="select-option" data-value="12mm" onclick="selectOption(this)">14mm - 9 lớp</button>
+                    <button class="select-option" data-value="15mm" onclick="selectOption(this)">18mm - 11 lớp</button>
+                    <button class="select-option" data-value="c" onclick="selectOption(this)">Theo yêu cầu</button>
+                </div>
+            </div>
+            <a href="../concat" class="cta-button">LIÊN HỆ ĐẶT HÀNG VÀ NHẬN BÁO GIÁ &rarr;</a>
+
+            <div class="additional-info">
+                <div><strong>Loại Ván:</strong> Ván bóc</div>
+                <div><strong>Loại Lõi:</strong> Gỗ Keo</div>
+                <div><strong>Loại Keo:</strong> Keo Min 10%</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="feature-section">
+        <h3>VÁN ÉP PHỦ PHIM</h3>
+        <b>Ván ép phủ phim (Film Faced Plywood) là một trong những loại ván ép được sử dụng phổ biến nhất trong ngành xây dựng nhờ khả năng chịu nước tốt, bề mặt phẳng, độ bền cao và tái sử dụng nhiều lần. Đây là vật liệu quan trọng trong hệ cốp pha bê tông, giúp tối ưu chi phí và đảm bảo chất lượng bề mặt công trình.
+        </b>
+
+        <h4>1. Ván ép phủ phim là gì?</h4>
+        <p>Ván ép phủ phim là loại plywood được tạo từ nhiều lớp gỗ veneer ép chặt với keo chịu nước như keo phenolic (WBP) hoặc keo melamine (MR). Hai mặt tấm ván được phủ lớp film phenolic đen hoặc nâu, giúp chống thấm, chống trầy xước và hạn chế bám bẩn trong quá trình thi công. Đây là loại ván ép được ưa chuộng trong các công trình dân dụng và công nghiệp.</p>
+
+        <h4>2. Cấu tạo của ván ép phủ phim        </h4>
+        <p>Cấu trúc của ván gồm lõi gỗ keo hoặc bạch đàn, được sấy đạt độ ẩm tiêu chuẩn trước khi ép nóng. Các lớp veneer được liên kết bằng keo WBP hoặc MR tùy mục đích sử dụng. Bên ngoài là lớp phim phủ 120–220g/m² giúp tăng khả năng chống nước, bảo vệ lõi gỗ và giữ bề mặt tấm ván luôn phẳng – bóng.
+        </p>
+
+
+        <h4>3. Ưu điểm nổi bật của ván ép phủ phim</h4>
+        <p>Ván phủ phim được đánh giá cao nhờ độ bền cơ lý tốt, chống thấm hiệu quả, ít cong vênh và có khả năng tái sử dụng từ 6–10 lần tùy chất lượng. Bề mặt phim giúp tạo ra mặt bê tông mịn, đẹp, giảm thiểu công đoạn trát sửa sau khi tháo cốp pha.
+        </p>
+        <p>Đây là lý do dòng sản phẩm này được các nhà thầu lựa chọn cho những công trình yêu cầu độ chính xác và tính thẩm mỹ cao.
+        </p>
+
+        <h4>4. Ứng dụng của ván ép phủ phim trong thực tế</h4>
+        <p>Ván ép phủ phim được dùng nhiều nhất cho cốp pha sàn – cột – dầm – tường trong các công trình dân dụng và công nghiệp. Ngoài ra, dòng ván này còn được ứng dụng trong sàn xe tải, container, nhà kho tạm, hoặc các hạng mục cần mặt ván phẳng và chịu lực tốt.
+        </p>
+
+        <h4>5. Phân loại các dòng ván ép phủ phim phổ biến</h4>
+        <p>Trên thị trường có nhiều loại ván phủ phim khác nhau như:
+        </p>
+        <ul>
+            <li>Ván ép phủ phim keo WBP (chịu nước mạnh, tái sử dụng nhiều lần)</li>
+            <li>Ván ép phủ phim keo MR (giá tốt, phù hợp công trình ngắn hạn)</li>
+            <li>Ván ép phủ phim đen / nâu</li>
+            <li>Ván phủ phim mặt mịn hoặc mặt chống trượt (anti-slip)</li>
+        </ul>
+
+        <h4>6. Tiêu chí quan trọng khi chọn mua ván ép phủ phim
+        </h4>
+        <p>Chất lượng ván ép phụ thuộc vào nhiều yếu tố như: độ dày thực, độ cứng lõi, độ ẩm, loại keo, màu phim, độ kết dính và khả năng chống nước. Khách hàng B2B nên ưu tiên nhà sản xuất có quy trình kiểm soát chất lượng chặt chẽ, đảm bảo tấm ván phẳng, ít rỗng, ít mắt chết và đáp ứng đúng tiêu chuẩn yêu cầu của từng thị trường.
+        </p>
+
+        <h4>7. Ván ép phủ phim và tiêu chuẩn xuất khẩu
+
+        </h4>
+        <p>Đối với thị trường quốc tế như Hàn Quốc, Nhật Bản hay Malaysia, ván phủ phim phải đáp ứng các yêu cầu nghiêm ngặt về độ bền kéo, độ ổn định lõi, độ bám keo và độ đồng đều màu phim. Doanh nghiệp xuất khẩu cần cung cấp đầy đủ chứng từ như CO, CQ, packing list và hỗ trợ kiểm định theo yêu cầu.
+
+        </p>
+
+
+    </div>
+
+    <div class="related-products">
+        <h3>Sản phẩm liên quan</h3>
+        <div class="product-grid">
+            <a href="./van-ep-phu-phim.html" class="product-card">
+                <img src="../../assets/images/van_ep_phu_phim_1.png" alt="Ván ép phủ phim" >
+                <div class="product-card-content">
+                    <h4>Ván ép phủ phim</h4>
+                    <p>Chống nước, chống bám bẩn, độ bền cao, thường dùng làm ván khuôn trong xây dựng.</p>
+                </div>
+            </a>
+            <a href="./van-ep-bintagor.html" class="product-card">
+                <img src="../../assets/images/van_ep_bintagor_1.png" alt="Ván ép mặt bintagor" >
+                <div class="product-card-content">
+                    <h4>Ván ép mặt bintagor</h4>
+                    <p>Dùng trong các hạng mục nội thất tủ, kệ, vách ngăn, ốp tường, mang lại vẻ đẹp ấm cúng.</p>
+                </div>
+            </a>
+            <a href="./van-ep-okoume.html" class="product-card">
+                <img src="../../assets/images/van_ep_okoume.png" alt="Ván ép mặt okoume" >
+                <div class="product-card-content">
+                    <h4>Ván ép mặt okoume</h4>
+                    <p>Chuyên dùng cho gia công mộc công nghiệp, cắt CNC và các sản phẩm cần được ép phủ sơn hoàn thiện.</p>
+                </div>
+            </a>
+            <a href="./van-ep-mat-trang.html" class="product-card">
+                <img src="../../assets/images/van_ep_mat_trang.png" alt="Ván ép mặt trắng" >
+                <div class="product-card-content">
+                    <h4>Ván ép mặt trắng</h4>
+                    <p>Ván mặt trắng tinh gọn, dễ ứng dụng vào nhiều kiểu thiết kế, dùng cho nội thất cơ bản và pallet.</p>
+                </div>
+            </a>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="../products" class="view-more-button">XEM THÊM TẤT CẢ SẢN PHẨM &rarr;</a>
+        </div>
+    </div>
+
+</div>
+
+
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Vietplywood Co., Ltd</h3>
+                <p>Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Giới thiệu</h3>
+                <a href="../../">Trang chủ</a>
+                <a href="../products">Sản phẩm</a>
+                <a href="../blogs">Blog</a>
+                <a href="../concat">Liên hệ</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>(+84) 916 884 008</p>
+                <p >tmdvvietnam@gmail.com</p>
+                <p>Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Đăng ký để nhận thông tin</h3>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Nhập email của bạn" name="email" required>
+                    <input type="hidden" name="ctyName" value="">
+                    <input type="hidden" name="title" value="">
+                    <input type="hidden" name="content" value="">
+                    <input type="hidden" name="status" value="Đã gửi qua Form">
+                    <button type="submit">Đăng ký</button>
+                    <p id="form-message" style="margin-top: 10px; font-size: 14px;"></p>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 VIETPLYWOOD. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // ----------------------------------------------------------------
+    // JAVASCRIPT ĐÃ SỬA LỖI VÀ CẬP NHẬT
+    // ----------------------------------------------------------------
+
+    // 1. Image Swap Logic (Đã sửa để thực hiện SWAP SRC)
+    function swapImage(thumbnailContainer) {
+        const mainImage = document.getElementById('main-product-image');
+        const thumbnailImage = thumbnailContainer.querySelector('img');
+        const allThumbnails = document.querySelectorAll('.thumbnail-container');
+
+        // 1. Kiểm tra nếu ảnh đang hiển thị đã là ảnh chính, chỉ update active class và thoát
+        if (mainImage.src.endsWith(thumbnailImage.src.split('/').pop())) {
+            allThumbnails.forEach(thumb => thumb.classList.remove('active'));
+            thumbnailContainer.classList.add('active');
+            return;
+        }
+
+        // 2. Thực hiện SWAP (hoán đổi nguồn ảnh)
+        const tempSrc = mainImage.src;
+        mainImage.src = thumbnailImage.src;
+        thumbnailImage.src = tempSrc;
+
+        // 3. Cập nhật active class: Bỏ active cũ, thêm active vào thumbnail vừa được click
+        allThumbnails.forEach(thumb => thumb.classList.remove('active'));
+        thumbnailContainer.classList.add('active');
+
+        // Ghi chú: Vì chúng ta đã swap vật lý SRC, thumbnail này giờ đang chứa ảnh cũ,
+        // nhưng người dùng tương tác với element này để đưa ảnh vào khung lớn, nên nó được coi là "active"
+    }
+
+    // 2. Attribute Selector Logic (Đã sửa để cho phép CHỌN NHIỀU VÀ BỎ CHỌN)
+    function selectOption(button) {
+        // Toggles the 'selected' class on the clicked button.
+        // Điều này cho phép chọn nhiều tùy chọn (multi-select) và bỏ chọn chính tùy chọn đó (toggle-off).
+        button.classList.toggle('selected');
+
+        // Optional: Log the selection for development/debug
+        const attributeContainer = button.closest('.attribute-options');
+        const attributeName = attributeContainer.getAttribute('data-attribute');
+        const selectedValue = button.getAttribute('data-value');
+        const action = button.classList.contains('selected') ? 'Selected' : 'Deselected';
+        console.log(`${action} ${attributeName}: ${selectedValue}`);
+    }
+
+
+    // ----------------------------------------------------------------
+    // EXISTING JAVASCRIPT (GIỮ NGUYÊN)
+    // ----------------------------------------------------------------
+
+    // Hàm xử lý submit form và gọi API
+    document.getElementById('newsletter-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const messageElement = document.getElementById('form-message');
+        messageElement.textContent = 'Đang gửi...';
+        messageElement.style.color = '#8B6F47';
+
+        const formData = new FormData(form);
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+            data[key] = value;
+        }
+
+        // URL API Google Apps Script
+        const API_URL = 'https://script.google.com/macros/s/AKfycbwKifCX1VmaEhwjIFO_HUTK-MX2hxIPzIsokzO7BGC4OIHHKSXl6Qt345C8p8LW3fc/exec';
+
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            // Giả định thành công do sử dụng 'no-cors'
+            messageElement.textContent = 'Chúng tôi sẽ liên hệ với bạn!';
+            messageElement.style.color = 'green';
+            form.reset();
+
+        } catch (error) {
+            console.error('Lỗi khi gửi form:', error);
+            messageElement.textContent = 'Lỗi khi gửi yêu cầu. Vui lòng thử lại sau.';
+            messageElement.style.color = 'red';
+        }
+    });
+
+    // Hàm responsive menu
+    function toggleMenu() {
+        const navMenu = document.querySelector('.nav-menu');
+        navMenu.classList.toggle('active');
+    }
+</script>
+</body>
+</html>

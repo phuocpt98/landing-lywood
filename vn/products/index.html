@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/logo.svg" />
+    <title>Sản phẩm Ván Ép | Catalogue Chính Thức - VIETPLYWOOD</title>
+
+    <meta name="description" content="Khám phá các dòng sản phẩm ván ép chất lượng cao của VIETPLYWOOD: Ván Phủ Phim, Bintagor, Okoume, Ván Mặt Trắng. Xem chi tiết thông số kỹ thuật và báo giá mới nhất.">
+    <meta name="robots" content="index, follow">
+
+    <script type="application/ld+json">
+        [
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "VIETPLYWOOD",
+                "url": "https://vietplywood.com",
+                "logo": "https://vietplywood.com/assets/images/logo.svg",
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+84916884008",
+                    "contactType": "Sales"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Khu Liên Đồng, Xã Thanh Sơn",
+                    "addressLocality": "Phú Thọ",
+                    "addressRegion": "Phú Thọ",
+                    "addressCountry": "VN"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Trang chủ",
+                        "item": "https://vietplywood.com/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Sản phẩm"
+                    }
+                ]
+            }
+        ]
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Layout Fixes */
+        .container-header{
+            max-width: 95%;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 85%;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo */
+        .logo-link {
+            font-size: 24px;
+            font-weight: bold;
+            color: #513C2E;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-link img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* Menu - Đẩy menu vào giữa */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            flex-grow: 1;
+            justify-content: center;
+            padding-right: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        /* Đánh dấu trang hiện tại */
+        .nav-menu li:nth-child(2) a {
+            color: #8B6F47;
+            font-weight: 600;
+        }
+
+        .nav-menu a:hover {
+            color: #8B6F47;
+        }
+
+        /* Button VN - Đặt nút ngôn ngữ riêng biệt */
+        .lang-switch-btn {
+            background: #fff;
+            color: #8B6F47;
+            border: 1px solid #8B6F47;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .lang-switch-btn:hover {
+            background-color: #8B6F47;
+            color: white;
+        }
+
+        /* Menu Toggle (Ẩn trên desktop) */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #333;
+            padding: 5px;
+            order: 3;
+        }
+
+        /* ---------- HERO SECTION STYLES ---------- */
+        .hero-section {
+            background: linear-gradient(135deg, #f7f3f0 0%, #F3EDE7 100%);
+            padding: 100px 0 50px 0;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            color: #513C2E;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .breadcrumb {
+            color: #746456;
+            font-size: 1rem;
+            padding-top: 10px;
+        }
+
+        .breadcrumb a {
+            color: #8B6F47;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- PRODUCT LISTING STYLES ---------- */
+        .product-listing-container {
+            max-width: 85%;
+            margin: 6rem auto;
+        }
+
+        .product-intro {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .product-intro h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .product-intro h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #8B6F47;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .product-intro p {
+            color: #746456;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .product-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style cho thẻ IMG */
+        .product-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 4px solid #8B6F47;
+            transition: border-color 0.3s;
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #513C2E;
+        }
+
+        .product-content p {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 20px;
+            min-height: 4.5em;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-content .detail-link {
+            display: inline-block;
+            text-decoration: none;
+            color: #8B6F47;
+            font-weight: 700;
+            font-size: 1rem;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s, color 0.3s;
+            padding-bottom: 2px;
+        }
+
+        .product-content .detail-link:hover {
+            border-bottom: 2px solid #513C2E;
+            color: #513C2E;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #F3EDE7;
+            padding: 60px 0 30px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 2fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-section a:hover {
+            color: #8B6F47;
+        }
+
+        /* Footer Form */
+        .newsletter-form {
+            display: block;
+        }
+
+        .newsletter-form input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .newsletter-form button {
+            background: #8B6F47;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .newsletter-form button:hover {
+            background: #6d5636;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Giữ nguyên bố cục mobile đã đẹp */
+            .container, .container-header {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                padding: 10px 0;
+            }
+
+            .logo-link {
+                order: 1;
+            }
+
+            .lang-switch-btn {
+                display: block;
+                order: 2;
+                margin-left: auto;
+                margin-right: 15px;
+                padding: 6px 12px;
+            }
+
+            .menu-toggle {
+                display: block;
+                order: 3;
+            }
+
+            /* Menu ẩn/hiện dạng cột */
+            .nav-menu {
+                display: none;
+                order: 4;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                padding: 20px 0;
+                gap: 10px;
+                text-align: center;
+                flex-grow: 0;
+                justify-content: flex-start;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                padding: 10px 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 32px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
+
+            /* NEW: Responsive adjustments for product page */
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .product-intro h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="container-header">
+        <a href="../../index.html" class="logo-link">
+            <img src="../../assets/images/logo.svg" alt="Logo VietPlywood">
+            <span>VIETPLYWOOD</span>
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="../../">Trang chủ</a></li>
+            <li><a href="">Sản phẩm</a></li>
+            <li><a href="../blogs">Blog</a></li>
+            <li><a href="../concat">Liên hệ</a></li>
+        </ul>
+
+        <button class="lang-switch-btn" onclick="window.location.href='#'">🌐 VN</button>
+
+        <div class="menu-toggle" onclick="toggleMenu()">
+            &#9776;
+        </div>
+    </nav>
+</header>
+
+<section class="hero-section">
+    <h1>Sản phẩm</h1>
+    <div class="breadcrumb">
+        <a href="../../">Trang chủ</a> / Sản phẩm
+    </div>
+</section>
+
+<div class="product-listing-container">
+    <div class="product-intro">
+        <h2>Các dòng Ván Ép Chất lượng cao</h2>
+        <p>Vietplywood cung cấp đa dạng sản phẩm ván ép cho mọi nhu cầu xây dựng và nội thất, đạt tiêu chuẩn xuất khẩu quốc tế.</p>
+    </div>
+
+    <div class="product-grid">
+        <a href="./van-ep-phu-phim.html" class="product-card">
+            <img src="../../assets/images/van_ep_phu_phim_1.png" alt="Ván ép phủ phim chống nước và chịu lực tốt" class="product-image">
+            <div class="product-content">
+                <h3>Ván ép phủ phim</h3>
+                <p>
+                    Ván ép được phủ lớp phim phenolic chống nước, chống bám bẩn. Sản phẩm có độ bền và khả năng chịu lực vượt trội, thường dùng làm ván khuôn trong xây dựng.
+                </p>
+                <span class="detail-link">Xem chi tiết &rarr;</span>
+            </div>
+        </a>
+
+        <a href="./van-ep-bintagor.html" class="product-card">
+            <img src="../../assets/images/van_ep_bintagor_1.png" alt="Ván ép mặt bintagor cho nội thất cao cấp" class="product-image">
+            <div class="product-content">
+                <h3>Ván ép mặt bintagor</h3>
+                <p>
+                    Sản phẩm được phủ lớp veneer bintagor tự nhiên. Rất được ưa chuộng cho các hạng mục nội thất như tủ, kệ, vách ngăn và ốp tường, mang lại vẻ đẹp ấm cúng, sang trọng.
+                </p>
+                <span class="detail-link">Xem chi tiết &rarr;</span>
+            </div>
+        </a>
+
+        <a href="./van-ep-okoume.html" class="product-card">
+            <img src="../../assets/images/van_ep_okoume.png" alt="Ván ép mặt okoume gia công mộc công nghiệp" class="product-image">
+            <div class="product-content">
+                <h3>Ván ép mặt okoume</h3>
+                <p>
+                    Thường dùng trong gia công mộc công nghiệp, cắt CNC và các sản phẩm cần được ép phủ sơn hoàn thiện. Ván có bề mặt mịn, dễ dàng xử lý và hoàn thiện bề mặt.
+                </p>
+                <span class="detail-link">Xem chi tiết &rarr;</span>
+            </div>
+        </a>
+
+        <a href="./van-ep-bintagor.html" class="product-card">
+            <img src="../../assets/images/van_ep_mat_trang.png" alt="Ván ép mặt trắng dùng làm pallet và nội thất cơ bản" class="product-image">
+            <div class="product-content">
+                <h3>Ván ép mặt trắng</h3>
+                <p>
+                    Ván mặt trắng mang lại lợi thế lớn: hiện đại, tinh gọn, dễ ứng dụng vào nhiều kiểu thiết kế. Màu sắc bền, không lo ngả màu như veneer tự nhiên...
+                </p>
+                <span class="detail-link">Xem chi tiết &rarr;</span>
+            </div>
+        </a>
+    </div>
+</div>
+
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Vietplywood Co., Ltd</h3>
+                <p>Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Giới thiệu</h3>
+                <a href="../../">Trang chủ</a>
+                <a href="">Sản phẩm</a>
+                <a href="../blogs">Blog</a>
+                <a href="../concat">Liên hệ</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>(+84) 916 884 008</p>
+                <p >tmdvvietnam@gmail.com</p>
+                <p>Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Đăng ký để nhận thông tin</h3>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Nhập email của bạn" name="email" required>
+                    <input type="hidden" name="ctyName" value="">
+                    <input type="hidden" name="title" value="">
+                    <input type="hidden" name="content" value="">
+                    <input type="hidden" name="status" value="Đã gửi qua Form">
+                    <button type="submit">Đăng ký</button>
+                    <p id="form-message" style="margin-top: 10px; font-size: 14px;"></p>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 VIETPLYWOOD. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Hàm xử lý submit form và gọi API
+    document.getElementById('newsletter-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const messageElement = document.getElementById('form-message');
+        messageElement.textContent = 'Đang gửi...';
+        messageElement.style.color = '#8B6F47';
+
+        const formData = new FormData(form);
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+            data[key] = value;
+        }
+
+        // URL API Google Apps Script
+        const API_URL = 'https://script.google.com/macros/s/AKfycbwKifCX1VmaEhwjIFO_HUTK-MX2hxIPzIsokzO7BGC4OIHHKSXl6Qt345C8p8LW3fc/exec';
+
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            // Giả định thành công do sử dụng 'no-cors'
+            messageElement.textContent = 'Chúng tôi sẽ liên hệ với bạn!';
+            messageElement.style.color = 'green';
+            form.reset();
+
+        } catch (error) {
+            console.error('Lỗi khi gửi form:', error);
+            messageElement.textContent = 'Lỗi khi gửi yêu cầu. Vui lòng thử lại sau.';
+            messageElement.style.color = 'red';
+        }
+    });
+
+    // Hàm responsive menu
+    function toggleMenu() {
+        const navMenu = document.querySelector('.nav-menu');
+        navMenu.classList.toggle('active');
+    }
+</script>
+</body>
+</html>
