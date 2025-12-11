@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/logo.svg" />
 
-    <title>Tin tức & Hướng dẫn về Ván Ép | Blog Chính Thức - VIETPLYWOOD</title>
+    <title>So sánh Ván Ép Phủ Phim và Cốp Pha Thép: Bài toán kinh tế cho nhà thầu lớn | VIETPLYWOOD</title>
 
-    <meta name="description" content="Cập nhật những tin tức mới nhất, hướng dẫn kỹ thuật và phân tích thị trường về ván ép phủ phim, ván ép Okoume và các sản phẩm gỗ công nghiệp khác từ VIETPLYWOOD.">
+    <meta name="description" content="Phân tích chi phí, độ bền và hiệu suất thi công giữa Ván Ép Phủ Phim và Cốp Pha Thép. Giúp nhà thầu quyết định vật liệu nào tối ưu cho dự án của mình.">
     <meta name="robots" content="index, follow">
 
     <script type="application/ld+json">
@@ -44,7 +44,14 @@
                     {
                         "@type": "ListItem",
                         "position": 2,
-                        "name": "Blog" }
+                        "name": "Blog",
+                        "item": "https://vietplywood.com/blog"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "So sánh Ván Ép Phủ Phim và Cốp Pha Thép"
+                    }
                 ]
             }
         ]
@@ -91,7 +98,7 @@
 
         /* Logo */
         .logo-link {
-            font-size: 24px; /* Giữ kích thước desktop */
+            font-size: 24px;
             font-weight: bold;
             color: #513C2E;
             text-decoration: none;
@@ -100,7 +107,7 @@
         }
 
         .logo-link img {
-            height: 40px; /* Giữ kích thước desktop */
+            height: 40px;
             margin-right: 10px;
         }
 
@@ -191,13 +198,6 @@
             text-decoration: underline;
         }
 
-        /* ---------- PRODUCT LISTING STYLES (Giữ nguyên cho các trang khác) ---------- */
-        .product-listing-container {
-            max-width: 85%;
-            margin: 6rem auto;
-        }
-        /* ... (product listing styles) ... */
-
         /* ---------- BLOG SPECIFIC STYLES ---------- */
         .blog-container {
             max-width: 85%;
@@ -208,51 +208,42 @@
         }
 
         .main-content {
-            flex: 2.5; /* Chiếm nhiều không gian hơn */
+            flex: 2.5;
             min-width: 0;
         }
 
         .sidebar {
-            flex: 1; /* Chiếm ít không gian hơn */
+            flex: 1;
             position: sticky;
-            top: 100px; /* Giữ sidebar khi cuộn */
+            top: 100px;
         }
 
-        /* --- Blog Post Card Style --- */
-        .blog-post {
+        /* Detail Page Specific Styles */
+        .post-detail-article {
             background: #fff;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             overflow: hidden;
-            margin-bottom: 40px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            padding-bottom: 30px;
         }
 
-        .post-image img {
+        .post-detail-article .article-title {
+            padding: 25px 25px 5px;
+            font-size: 2.2rem;
+            color: #513C2E;
+            font-weight: 700;
+        }
+
+        .post-detail-article .post-image img {
             width: 100%;
             height: auto;
-            max-height: 400px;
+            max-height: 500px;
             object-fit: cover;
             display: block;
         }
 
-        .post-title {
-            padding: 15px 25px 5px;
-            font-size: 1.8rem;
-            color: #513C2E;
-        }
-
-        .post-title a {
-            text-decoration: none;
-            color: inherit;
-            transition: color 0.3s;
-        }
-
-        .post-title a:hover {
-            color: #8B6F47;
-        }
-
-        .post-meta {
+        .post-detail-article .post-meta {
             padding: 5px 25px 15px;
             font-size: 0.9rem;
             color: #746456;
@@ -260,29 +251,65 @@
             gap: 15px;
             border-bottom: 1px solid #eee;
         }
-        .post-meta span:before {
+        .post-detail-article .post-meta span:before {
             content: '•';
             margin-right: 5px;
             color: #8B6F47;
         }
-        .post-meta span:first-child:before {
+        .post-detail-article .post-meta span:first-child:before {
             content: none;
         }
 
-        .post-excerpt {
-            padding: 15px 25px;
-            color: #666;
+        .post-content-body {
+            padding: 0 25px;
         }
 
-        .read-more {
-            display: inline-block;
-            padding: 0 25px 25px;
-            font-weight: 600;
-            color: #8B6F47;
-            text-decoration: none;
-            transition: color 0.3s;
+        .post-content-body h2 {
+            font-size: 1.5rem;
+            color: #513C2E;
+            margin: 30px 0 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
         }
-        .read-more:hover {
+
+        .post-content-body h3 {
+            font-size: 1.2rem;
+            color: #8B6F47;
+            margin: 20px 0 10px;
+        }
+
+        .post-content-body p {
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        /* Table styles */
+        .post-content-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        .post-content-body th, .post-content-body td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .post-content-body th {
+            background-color: #f7f3f0;
+            color: #513C2E;
+            font-weight: 600;
+        }
+
+        /* Keywords box */
+        .keywords-box {
+            background: #F3EDE7;
+            border-left: 5px solid #8B6F47;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
             color: #513C2E;
         }
 
@@ -399,36 +426,6 @@
             color: #746456;
         }
 
-        /* --- Pagination Styles --- */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            padding: 20px 0;
-            gap: 10px;
-        }
-
-        .pagination a {
-            text-decoration: none;
-            color: #513C2E;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-
-        .pagination a:hover {
-            background-color: #f7f7f7;
-            border-color: #8B6F47;
-        }
-
-        .pagination a.active {
-            background-color: #8B6F47;
-            color: white;
-            border-color: #8B6F47;
-        }
-
         /* FOOTER */
         footer {
             background: #F3EDE7;
@@ -438,7 +435,7 @@
 
         .footer-content {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 2fr; /* SỬA: Khôi phục bố cục 4 cột */
+            grid-template-columns: 2fr 1fr 1fr 2fr;
             gap: 40px;
             margin-bottom: 40px;
         }
@@ -522,11 +519,11 @@
 
             .logo-link {
                 order: 1;
-                font-size: 20px; /* Điều chỉnh kích thước chữ của tên */
+                font-size: 20px;
             }
 
             .logo-link img {
-                height: 35px; /* Điều chỉnh kích thước ảnh logo */
+                height: 35px;
             }
 
             .lang-switch-btn {
@@ -574,7 +571,7 @@
             }
 
             .footer-content {
-                grid-template-columns: 1fr; /* SỬA: Footer thành 1 cột trên Mobile */
+                grid-template-columns: 1fr;
             }
 
             .newsletter-form input,
@@ -592,7 +589,7 @@
             }
 
             .sidebar {
-                position: static; /* Bỏ sticky trên mobile */
+                position: static;
                 top: auto;
                 width: 100%;
             }
@@ -601,8 +598,8 @@
                 width: 100%;
             }
 
-            .post-title {
-                font-size: 1.5rem; /* Giảm kích thước tiêu đề bài viết */
+            .post-detail-article .article-title {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -633,73 +630,107 @@
 <section class="hero-section">
     <h1>Blog</h1>
     <div class="breadcrumb">
-        <a href="../../">Trang chủ</a> / Blog </div>
+        <a href="../../">Trang chủ</a> / <a href="./">Blog</a> / So sánh Ván Ép Phủ Phim và Cốp Pha Thép
+    </div>
 </section>
 
 <div class="blog-container container">
     <div class="main-content">
-        <article class="blog-post">
-            <div class="post-image">
-                <img src="../../assets/images/blogs_post_1.png" alt="Dự báo giá ván ép phủ phim 2026">
-            </div>
+        <article class="post-detail-article">
+            <h1 class="article-title">So sánh Ván Ép Phủ Phim và Cốp Pha Thép: Bài toán kinh tế cho nhà thầu lớn</h1>
+
             <div class="post-meta">
                 <span>Admin</span>
-                <span>14 Oct 2022</span>
-                <span>Wood</span>
+                <span>25 Sep 2022</span>
+                <span>Technical</span>
             </div>
-            <h2 class="post-title">
-                <a href="post-1.html">Dự báo giá ván ép phủ phim 2026 tiếp tục tăng mạnh</a>
-            </h2>
-            <p class="post-excerpt">
-                Bước sang 2026, thị trường ván ép phủ phim dự đoán tiếp tục tăng trưởng mạnh mẽ do tác động từ đầu tư công và nhu cầu xây dựng. Hãy cùng tìm hiểu về diễn biến giá ván ép phủ phim...
-            </p>
-            <a href="post-1.html" class="read-more">Đọc thêm &rarr;</a>
-        </article>
 
-        <article class="blog-post">
             <div class="post-image">
-                <img src="../../assets/images/blogs_post_2.png" alt="Lót sàn khu vực máy móc">
+                <img src="../../assets/images/blogs_post_8.png" alt="So sánh cốp pha gỗ và cốp pha thép">
             </div>
-            <div class="post-meta">
-                <span>Admin</span>
-                <span>14 Oct 2022</span>
-                <span>Hardmode</span>
+
+
+
+            <div class="post-content-body">
+
+                <div class="keywords-box">
+                    **Từ khóa liên quan:** So sánh cốp pha thép và ván ép, bài toán kinh tế cốp pha, chi phí sử dụng ván khuôn, ván ép cho công trình lớn.
+                </div>
+
+                <h2>1. Ván Ép Phủ Phim và Cốp Pha Thép: Sự lựa chọn lưỡng nan</h2>
+                <p>
+                    Đối với các nhà thầu lớn thi công dự án công nghiệp, cao tầng hoặc hạ tầng, việc lựa chọn hệ thống ván khuôn (coppha) là một quyết định chiến lược, ảnh hưởng trực tiếp đến chi phí tổng thể và tiến độ thi công. Hai vật liệu phổ biến nhất là Ván Ép Phủ Phim (gọi tắt là Ván Ép) và Cốp Pha Thép/Nhôm (gọi tắt là Cốp Pha Kim Loại).
+                </p>
+                <p>
+                    Tuy Cốp Pha Kim Loại có ưu điểm vượt trội về độ bền, nhưng Ván Ép Phủ Phim vẫn giữ vị trí không thể thay thế nhờ chi phí đầu tư ban đầu thấp, tính linh hoạt cao và khả năng đáp ứng tiêu chuẩn chất lượng bề mặt nghiêm ngặt.
+                </p>
+
+                <h2>2. Phân tích Chi phí và Hiệu suất tái sử dụng</h2>
+                <p>
+                    Mối quan tâm hàng đầu của nhà thầu là **Chi phí sử dụng trên mỗi m² (Cost per Use)**.
+                </p>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Tiêu chí</th>
+                        <th>Ván Ép Phủ Phim (A1 Hardwood)</th>
+                        <th>Cốp Pha Kim Loại (Thép/Nhôm)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>**Chi phí đầu tư ban đầu**</td>
+                        <td>Thấp (Chỉ bằng 1/10 đến 1/5 kim loại)</td>
+                        <td>Rất cao (Đầu tư hệ thống cố định)</td>
+                    </tr>
+                    <tr>
+                        <td>**Số lần tái sử dụng**</td>
+                        <td>8 - 12 lần (Nếu bảo quản tốt)</td>
+                        <td>> 100 lần (Nếu bảo trì tốt)</td>
+                    </tr>
+                    <tr>
+                        <td>**Chi phí sử dụng (Cost per Use)**</td>
+                        <td>Thấp đến Trung bình</td>
+                        <td>Rất thấp (Về dài hạn)</td>
+                    </tr>
+                    <tr>
+                        <td>**Giá trị thanh lý phế liệu**</td>
+                        <td>Không có hoặc rất thấp</td>
+                        <td>Cao (Tái chế kim loại)</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h2>3. Ưu nhược điểm Kỹ thuật và Thi công</h2>
+                <p>
+                    Ngoài chi phí, khả năng ứng dụng thực tế tại công trường là yếu tố quan trọng:
+                </p>
+
+                <h3>Linh hoạt trong cấu kiện và Bề mặt</h3>
+                <ul>
+                    <li>**Ván Ép:** Dễ dàng cắt, khoan, tạo hình tại chỗ để đổ các cấu kiện phức tạp (cột tròn, dầm, vách cong, đà lật). Bề mặt bê tông trần đạt độ phẳng mịn cao, giảm công đoạn hoàn thiện.</li>
+                    <li>**Cốp Pha Kim Loại:** Thích hợp cho cấu kiện đơn giản, lặp lại (vách, sàn phẳng). Khó tùy chỉnh kích thước tại chỗ, và các mối nối thường rõ ràng hơn, đòi hỏi xử lý bề mặt sau khi tháo dỡ.</li>
+                </ul>
+
+                <h3>Vận chuyển, Lắp đặt và Rủi ro</h3>
+                <ul>
+                    <li>**Ván Ép:** Trọng lượng nhẹ (khoảng 36-38kg/tấm 18mm), dễ dàng vận chuyển và lắp đặt bằng sức người, không cần phụ thuộc nhiều vào cần cẩu. Dễ dàng thay thế tấm hỏng.</li>
+                    <li>**Cốp Pha Kim Loại:** Nặng, cần cẩu và nhân lực chuyên nghiệp để lắp đặt. Nếu một tấm bị hỏng, việc sửa chữa hoặc thay thế tốn kém và mất thời gian hơn.</li>
+                </ul>
+
+                <h2>4. Kết luận: Khi nào chọn Ván Ép Phủ Phim?</h2>
+                <p>
+                    Ván Ép Phủ Phim chất lượng cao (cốt Hardwood) vẫn là lựa chọn tối ưu trong các trường hợp sau:
+                </p>
+                <ol>
+                    <li>**Dự án quy mô trung bình (dưới 10 tầng):** Khi chi phí đầu tư hệ thống cốp pha kim loại quá lớn so với tổng giá trị dự án.</li>
+                    <li>**Cấu kiện phức tạp và yêu cầu Bê tông trần:** Khi dự án có nhiều cột, dầm, vách không đồng nhất, yêu cầu bề mặt bê tông đẹp, không cần trát.</li>
+                    <li>**Dự án cần tốc độ triển khai nhanh:** Ván ép có sẵn, thời gian chờ đợi ngắn hơn so với việc thiết kế và sản xuất cốp pha kim loại theo yêu cầu.</li>
+                </ol>
             </div>
-            <h2 class="post-title">
-                <a href="post-2.html">Ván Phủ Phim Cho Kho Lạnh – Bí quyết chống ẩm và tiết kiệm chi phí bảo trì</a>
-            </h2>
-            <p class="post-excerpt">
-                Trong các công xưởng, khu vực lắp đặt máy móc, sàn nhà không chỉ chịu lực thông thường mà còn phải chống chịu rung động. Ván phủ phim chịu lực cao là giải pháp được nhiều nhà máy lựa chọn...
-            </p>
-            <a href="post-2.html" class="read-more">Đọc thêm &rarr;</a>
+
         </article>
-
-        <article class="blog-post">
-            <div class="post-image">
-                <img src="../../assets/images/blogs_post_3.png" alt="Ván phủ phim làm sàn gác xép">
-            </div>
-            <div class="post-meta">
-                <span>Admin</span>
-                <span>14 Oct 2022</span>
-                <span>Wood</span>
-            </div>
-            <h2 class="post-title">
-                <a href="./post-3.html">Ván phủ phim có phù hợp làm sàn gác xép?</a>
-            </h2>
-            <p class="post-excerpt">
-                Tìm kiếm vật liệu thi công gác xép là một trong những nhu cầu phổ biến. Ván phủ phim có độ bền cao có thể được sử dụng làm sàn gác xép, đặc biệt với những công trình đòi hỏi vật liệu vững chắc.
-            </p>
-            <a href="./post-3.html" class="read-more">Đọc thêm &rarr;</a>
-        </article>
-
-        <div class="pagination">
-            <a href="">&larr; Previous</a>
-            <a href="" class="active">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">Next &rarr;</a>
-        </div>
-
     </div>
 
     <aside class="sidebar">
@@ -712,19 +743,24 @@
             <h3>Blog</h3>
             <ul class="category-list">
                 <li class="category-item">
-                    <a href="#">Bản tin Vietplywood</a> <span>2</span>
+                    <a href="#">Bản tin Vietplywood</a>
+                    <span>2</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Tin xuất khẩu</a> <span>8</span>
+                    <a href="#">Tin xuất khẩu</a>
+                    <span>8</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Sự kiện</a> <span>7</span>
+                    <a href="#">Sự kiện</a>
+                    <span>7</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Dành cho Doanh nghiệp</a> <span>1</span>
+                    <a href="#">Dành cho Doanh nghiệp</a>
+                    <span>1</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Hoạt động</a> <span>6</span>
+                    <a href="#">Hoạt động</a>
+                    <span>6</span>
                 </li>
             </ul>
         </div>
@@ -738,7 +774,7 @@
                             <img src="../../assets/images/blogs_list_1.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="">Dự báo giá ván ép phủ phim năm 2026 vẫn tiếp tục tăng</a>
+                            <a href="./post-1.html">Dự báo giá ván ép phủ phim năm 2026 vẫn tiếp tục tăng</a>
                             <span class="recent-post-date">14 Oct 2022</span>
                         </div>
                     </div>
@@ -749,7 +785,7 @@
                             <img src="../../assets/images/blogs_list_2.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="">Ván phủ phim trong kho lạnh: bí quyết chống ẩm</a>
+                            <a href="./post-2.html">Ván phủ phim trong kho lạnh: bí quyết chống ẩm</a>
                             <span class="recent-post-date">12 Oct 2022</span>
                         </div>
                     </div>
@@ -760,8 +796,8 @@
                             <img src="../../assets/images/blogs_list_3.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="">Giá ván ép phủ phim tại Hà Nam mới nhất</a>
-                            <span class="recent-post-date">10 Oct 2022</span>
+                            <a href="./post-3.html">Trọng Lượng Ván Phủ Phim 18mm Chuẩn – Mẹo kiểm tra</a>
+                            <span class="recent-post-date">08 Oct 2022</span>
                         </div>
                     </div>
                 </li>
@@ -771,8 +807,8 @@
                             <img src="../../assets/images/blogs_list_4.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="">Nhu cầu ván ép phủ phim tăng mạnh trong năm 2025</a>
-                            <span class="recent-post-date">08 Oct 2022</span>
+                            <a href="./post-4.html">Báo Giá Ván Ép Phủ Phim Hà Nam 2026 – Mẹo Đàm Phán</a>
+                            <span class="recent-post-date">05 Oct 2022</span>
                         </div>
                     </div>
                 </li>
@@ -782,8 +818,41 @@
                             <img src="../../assets/images/blogs_list_5.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="">Ván phủ phim có phù hợp làm sàn gác xép?</a>
-                            <span class="recent-post-date">06 Oct 2022</span>
+                            <a href="./post-5.html">Nhu cầu ván ép phủ phim 2026 tăng mạnh do FDI</a>
+                            <span class="recent-post-date">03 Oct 2022</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="recent-post-item">
+                        <div class="recent-post-thumb">
+                            <img src="../../assets/images/blogs_list_6.png" alt="">
+                        </div>
+                        <div class="recent-post-content">
+                            <a href="./post-6.html">Ván Ép Phủ Phim: Bóc tách chất lượng cốt gỗ</a>
+                            <span class="recent-post-date">01 Oct 2022</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="recent-post-item">
+                        <div class="recent-post-thumb">
+                            <img src="../../assets/images/blogs_list_7.png" alt="">
+                        </div>
+                        <div class="recent-post-content">
+                            <a href="./post-7.html">Bí quyết bảo quản ván ép phủ phim tại công trường</a>
+                            <span class="recent-post-date">28 Sep 2022</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="recent-post-item">
+                        <div class="recent-post-thumb">
+                            <img src="../../assets/images/blogs_list_8.png" alt="">
+                        </div>
+                        <div class="recent-post-content">
+                            <a href="./post-8.html">So sánh Ván Ép Phủ Phim và Cốp Pha Thép</a>
+                            <span class="recent-post-date">25 Sep 2022</span>
                         </div>
                     </div>
                 </li>

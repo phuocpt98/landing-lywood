@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/logo.svg" />
 
-    <title>Tin tức & Hướng dẫn về Ván Ép | Blog Chính Thức - VIETPLYWOOD</title>
+    <title>Ván Phủ Phim Cho Kho Lạnh – Bí quyết chống ẩm và tiết kiệm chi phí bảo trì | VIETPLYWOOD</title>
 
-    <meta name="description" content="Cập nhật những tin tức mới nhất, hướng dẫn kỹ thuật và phân tích thị trường về ván ép phủ phim, ván ép Okoume và các sản phẩm gỗ công nghiệp khác từ VIETPLYWOOD.">
+    <meta name="description" content="Phân tích tại sao ván ép thông thường dễ hỏng trong kho lạnh. Khám phá sai lầm lớn nhất và bí quyết kỹ thuật (sơn keo chống thấm mép cắt) để tăng tuổi thọ ván phủ phim.">
     <meta name="robots" content="index, follow">
 
     <script type="application/ld+json">
@@ -44,7 +44,14 @@
                     {
                         "@type": "ListItem",
                         "position": 2,
-                        "name": "Blog" }
+                        "name": "Blog",
+                        "item": "https://vietplywood.com/blog"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Ván Phủ Phim Cho Kho Lạnh"
+                    }
                 ]
             }
         ]
@@ -91,7 +98,7 @@
 
         /* Logo */
         .logo-link {
-            font-size: 24px; /* Giữ kích thước desktop */
+            font-size: 24px;
             font-weight: bold;
             color: #513C2E;
             text-decoration: none;
@@ -100,7 +107,7 @@
         }
 
         .logo-link img {
-            height: 40px; /* Giữ kích thước desktop */
+            height: 40px;
             margin-right: 10px;
         }
 
@@ -191,13 +198,6 @@
             text-decoration: underline;
         }
 
-        /* ---------- PRODUCT LISTING STYLES (Giữ nguyên cho các trang khác) ---------- */
-        .product-listing-container {
-            max-width: 85%;
-            margin: 6rem auto;
-        }
-        /* ... (product listing styles) ... */
-
         /* ---------- BLOG SPECIFIC STYLES ---------- */
         .blog-container {
             max-width: 85%;
@@ -208,51 +208,42 @@
         }
 
         .main-content {
-            flex: 2.5; /* Chiếm nhiều không gian hơn */
+            flex: 2.5;
             min-width: 0;
         }
 
         .sidebar {
-            flex: 1; /* Chiếm ít không gian hơn */
+            flex: 1;
             position: sticky;
-            top: 100px; /* Giữ sidebar khi cuộn */
+            top: 100px;
         }
 
-        /* --- Blog Post Card Style --- */
-        .blog-post {
+        /* Detail Page Specific Styles */
+        .post-detail-article {
             background: #fff;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             overflow: hidden;
-            margin-bottom: 40px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            padding-bottom: 30px;
         }
 
-        .post-image img {
+        .post-detail-article .article-title {
+            padding: 25px 25px 5px;
+            font-size: 2.2rem;
+            color: #513C2E;
+            font-weight: 700;
+        }
+
+        .post-detail-article .post-image img {
             width: 100%;
             height: auto;
-            max-height: 400px;
+            max-height: 500px;
             object-fit: cover;
             display: block;
         }
 
-        .post-title {
-            padding: 15px 25px 5px;
-            font-size: 1.8rem;
-            color: #513C2E;
-        }
-
-        .post-title a {
-            text-decoration: none;
-            color: inherit;
-            transition: color 0.3s;
-        }
-
-        .post-title a:hover {
-            color: #8B6F47;
-        }
-
-        .post-meta {
+        .post-detail-article .post-meta {
             padding: 5px 25px 15px;
             font-size: 0.9rem;
             color: #746456;
@@ -260,29 +251,65 @@
             gap: 15px;
             border-bottom: 1px solid #eee;
         }
-        .post-meta span:before {
+        .post-detail-article .post-meta span:before {
             content: '•';
             margin-right: 5px;
             color: #8B6F47;
         }
-        .post-meta span:first-child:before {
+        .post-detail-article .post-meta span:first-child:before {
             content: none;
         }
 
-        .post-excerpt {
-            padding: 15px 25px;
-            color: #666;
+        .post-content-body {
+            padding: 0 25px;
         }
 
-        .read-more {
-            display: inline-block;
-            padding: 0 25px 25px;
-            font-weight: 600;
-            color: #8B6F47;
-            text-decoration: none;
-            transition: color 0.3s;
+        .post-content-body h2 {
+            font-size: 1.5rem;
+            color: #513C2E;
+            margin: 30px 0 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
         }
-        .read-more:hover {
+
+        .post-content-body h3 {
+            font-size: 1.2rem;
+            color: #8B6F47;
+            margin: 20px 0 10px;
+        }
+
+        .post-content-body p {
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        /* Table styles */
+        .post-content-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        .post-content-body th, .post-content-body td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .post-content-body th {
+            background-color: #f7f3f0;
+            color: #513C2E;
+            font-weight: 600;
+        }
+
+        /* Keywords box */
+        .keywords-box {
+            background: #F3EDE7;
+            border-left: 5px solid #8B6F47;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
             color: #513C2E;
         }
 
@@ -399,36 +426,6 @@
             color: #746456;
         }
 
-        /* --- Pagination Styles --- */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            padding: 20px 0;
-            gap: 10px;
-        }
-
-        .pagination a {
-            text-decoration: none;
-            color: #513C2E;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-
-        .pagination a:hover {
-            background-color: #f7f7f7;
-            border-color: #8B6F47;
-        }
-
-        .pagination a.active {
-            background-color: #8B6F47;
-            color: white;
-            border-color: #8B6F47;
-        }
-
         /* FOOTER */
         footer {
             background: #F3EDE7;
@@ -438,7 +435,7 @@
 
         .footer-content {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 2fr; /* SỬA: Khôi phục bố cục 4 cột */
+            grid-template-columns: 2fr 1fr 1fr 2fr;
             gap: 40px;
             margin-bottom: 40px;
         }
@@ -522,11 +519,11 @@
 
             .logo-link {
                 order: 1;
-                font-size: 20px; /* Điều chỉnh kích thước chữ của tên */
+                font-size: 20px;
             }
 
             .logo-link img {
-                height: 35px; /* Điều chỉnh kích thước ảnh logo */
+                height: 35px;
             }
 
             .lang-switch-btn {
@@ -574,7 +571,7 @@
             }
 
             .footer-content {
-                grid-template-columns: 1fr; /* SỬA: Footer thành 1 cột trên Mobile */
+                grid-template-columns: 1fr;
             }
 
             .newsletter-form input,
@@ -592,7 +589,7 @@
             }
 
             .sidebar {
-                position: static; /* Bỏ sticky trên mobile */
+                position: static;
                 top: auto;
                 width: 100%;
             }
@@ -601,8 +598,8 @@
                 width: 100%;
             }
 
-            .post-title {
-                font-size: 1.5rem; /* Giảm kích thước tiêu đề bài viết */
+            .post-detail-article .article-title {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -633,73 +630,79 @@
 <section class="hero-section">
     <h1>Blog</h1>
     <div class="breadcrumb">
-        <a href="../../">Trang chủ</a> / Blog </div>
+        <a href="../../">Trang chủ</a> / <a href="./">Blog</a> / Ván Phủ Phim Cho Kho Lạnh
+    </div>
 </section>
 
 <div class="blog-container container">
     <div class="main-content">
-        <article class="blog-post">
-            <div class="post-image">
-                <img src="../../assets/images/blogs_post_1.png" alt="Dự báo giá ván ép phủ phim 2026">
-            </div>
-            <div class="post-meta">
-                <span>Admin</span>
-                <span>14 Oct 2022</span>
-                <span>Wood</span>
-            </div>
-            <h2 class="post-title">
-                <a href="post-1.html">Dự báo giá ván ép phủ phim 2026 tiếp tục tăng mạnh</a>
-            </h2>
-            <p class="post-excerpt">
-                Bước sang 2026, thị trường ván ép phủ phim dự đoán tiếp tục tăng trưởng mạnh mẽ do tác động từ đầu tư công và nhu cầu xây dựng. Hãy cùng tìm hiểu về diễn biến giá ván ép phủ phim...
-            </p>
-            <a href="post-1.html" class="read-more">Đọc thêm &rarr;</a>
-        </article>
+        <article class="post-detail-article">
+            <h1 class="article-title">Ván Phủ Phim Cho Kho Lạnh – Bí quyết chống ẩm và tiết kiệm chi phí bảo trì</h1>
 
-        <article class="blog-post">
-            <div class="post-image">
-                <img src="../../assets/images/blogs_post_2.png" alt="Lót sàn khu vực máy móc">
-            </div>
             <div class="post-meta">
                 <span>Admin</span>
-                <span>14 Oct 2022</span>
+                <span>12 Oct 2022</span>
                 <span>Hardmode</span>
             </div>
-            <h2 class="post-title">
-                <a href="post-2.html">Ván Phủ Phim Cho Kho Lạnh – Bí quyết chống ẩm và tiết kiệm chi phí bảo trì</a>
-            </h2>
-            <p class="post-excerpt">
-                Trong các công xưởng, khu vực lắp đặt máy móc, sàn nhà không chỉ chịu lực thông thường mà còn phải chống chịu rung động. Ván phủ phim chịu lực cao là giải pháp được nhiều nhà máy lựa chọn...
-            </p>
-            <a href="post-2.html" class="read-more">Đọc thêm &rarr;</a>
-        </article>
 
-        <article class="blog-post">
             <div class="post-image">
-                <img src="../../assets/images/blogs_post_3.png" alt="Ván phủ phim làm sàn gác xép">
+                <img src="../../assets/images/blogs_post_2.png" alt="Ván phủ phim sử dụng trong kho lạnh">
             </div>
-            <div class="post-meta">
-                <span>Admin</span>
-                <span>14 Oct 2022</span>
-                <span>Wood</span>
+
+            <div class="post-content-body">
+
+                <div class="keywords-box">
+                    **Từ khóa liên quan:** Ván phủ phim kho lạnh, ván ép chịu ẩm, bí quyết chống cong vênh, ván cốp pha cho môi trường nhiệt độ thấp.
+                </div>
+
+                <h2>1. Tại sao kho lạnh là "ác mộng" của ván ép thông thường?</h2>
+                <p>
+                    Kho lạnh là môi trường khắc nghiệt đặc thù, khác biệt hoàn toàn so với công trường xây dựng thông thường. Nhiệt độ cực thấp (thường dưới 0°C) kết hợp với độ ẩm cao (khi mở/đóng cửa và quá trình làm lạnh) tạo ra một chu trình đông-tan liên tục. Ván ép tiêu chuẩn không chịu được sự co giãn đột ngột này.
+                </p>
+                <p>
+                    Nhiệt độ thấp làm keo dán lõi ván cứng lại và trở nên giòn. Độ ẩm cao, đặc biệt là khi hơi nước ngưng tụ, xâm nhập vào lõi ván qua các mép cắt hoặc lỗ khoan, dẫn đến: Phồng rộp, tách lớp (delamination), và cuối cùng là nấm mốc, mục nát. Điều này làm tăng đáng kể chi phí bảo trì và thay thế vật tư.
+                </p>
+
+                <h2>2. Lợi thế vượt trội của Ván Phủ Phim chịu nước</h2>
+                <p>
+                    Ván ép phủ phim được thiết kế để chống lại sự xâm nhập của nước. Lớp màng phim Phenolic hoặc Melamine cứng cáp bao bọc bên ngoài tạo ra một rào cản vật lý tuyệt vời, giúp bảo vệ cốt gỗ bên trong khỏi sự tấn công trực tiếp của hơi ẩm.
+                </p>
+
+                <h3>Keo dán chuyên dụng WBP</h3>
+                <p>
+                    Lõi ván thường được dán bằng keo WBP (Water Boiled Proof - chống nước sôi) hoặc keo Phenol Formaldehyde chịu nước tuyệt đối. Loại keo này duy trì tính ổn định và độ kết dính của nó ngay cả khi nhiệt độ thay đổi đột ngột, giúp ngăn ngừa tách lớp cốt gỗ trong môi trường kho lạnh.
+                </p>
+
+                <h2>3. Sai lầm "chết người" mà 90% nhà thầu mắc phải</h2>
+                <p>
+                    Đây là sai lầm phổ biến nhất, biến một tấm ván ép chịu nước tuyệt vời thành một vật liệu dễ bị hỏng: **Không sơn keo chống thấm tại mép cắt và lỗ khoan.**
+                </p>
+                <p>
+                    Khi ván được cắt theo kích thước hoặc khoan lỗ để lắp đặt, lớp phim bảo vệ bị mất đi. Phần cốt gỗ lộ ra trở thành cửa ngõ cho hơi ẩm và nước ngưng tụ tấn công. Chỉ cần một mép cắt không được xử lý, độ ẩm sẽ len lỏi vào từng lớp ván, gây phồng rộp toàn bộ tấm ván chỉ trong vài tuần, làm giảm tuổi thọ đáng kể.
+                </p>
+
+                <h2>4. Bí quyết tăng tuổi thọ ván và tiết kiệm chi phí bảo trì</h2>
+                <p>
+                    Để tối ưu hóa tuổi thọ ván phủ phim trong kho lạnh và giảm chi phí thay thế, hãy tuân thủ quy trình sau:
+                </p>
+
+                <h3>Quy trình xử lý kỹ thuật</h3>
+                <p>
+                    1. **Sơn keo chuyên dụng:** Sau khi cắt ván, phải sơn một lớp keo chống thấm chuyên dụng (thường là sơn chống thấm Epoxy hoặc sơn keo gốc dầu) vào tất cả các mép cắt và lỗ khoan. Đảm bảo lớp keo phủ kín và dày.
+                </p>
+                <p>
+                    2. **Chọn cốt ván (Core):** Ưu tiên chọn ván có cốt gỗ cứng (Hardwood) hoặc lõi bạch dương (Birch Plywood) vì chúng có mật độ gỗ dày đặc, độ bền cơ học cao hơn, chịu lực và chịu ẩm tốt hơn so với cốt gỗ mềm thông thường.
+                </p>
+                <p>
+                    3. **Vệ sinh và Tái sử dụng:** Sau khi tháo dỡ hoặc di chuyển, vệ sinh bề mặt ván ngay lập tức và kiểm tra lại tình trạng lớp keo chống thấm ở mép trước khi lưu trữ.
+                </p>
+                <p>
+                    Việc tuân thủ nghiêm ngặt các bước này sẽ giúp ván ép phủ phim của bạn có thể sử dụng bền bỉ trong môi trường kho lạnh, tiết kiệm chi phí bảo trì và thay thế đáng kể.
+                </p>
+
             </div>
-            <h2 class="post-title">
-                <a href="./post-3.html">Ván phủ phim có phù hợp làm sàn gác xép?</a>
-            </h2>
-            <p class="post-excerpt">
-                Tìm kiếm vật liệu thi công gác xép là một trong những nhu cầu phổ biến. Ván phủ phim có độ bền cao có thể được sử dụng làm sàn gác xép, đặc biệt với những công trình đòi hỏi vật liệu vững chắc.
-            </p>
-            <a href="./post-3.html" class="read-more">Đọc thêm &rarr;</a>
+
         </article>
-
-        <div class="pagination">
-            <a href="">&larr; Previous</a>
-            <a href="" class="active">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">Next &rarr;</a>
-        </div>
-
     </div>
 
     <aside class="sidebar">
@@ -712,19 +715,24 @@
             <h3>Blog</h3>
             <ul class="category-list">
                 <li class="category-item">
-                    <a href="#">Bản tin Vietplywood</a> <span>2</span>
+                    <a href="#">Bản tin Vietplywood</a>
+                    <span>2</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Tin xuất khẩu</a> <span>8</span>
+                    <a href="#">Tin xuất khẩu</a>
+                    <span>8</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Sự kiện</a> <span>7</span>
+                    <a href="#">Sự kiện</a>
+                    <span>7</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Dành cho Doanh nghiệp</a> <span>1</span>
+                    <a href="#">Dành cho Doanh nghiệp</a>
+                    <span>1</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Hoạt động</a> <span>6</span>
+                    <a href="#">Hoạt động</a>
+                    <span>6</span>
                 </li>
             </ul>
         </div>
@@ -738,7 +746,7 @@
                             <img src="../../assets/images/blogs_list_1.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="">Dự báo giá ván ép phủ phim năm 2026 vẫn tiếp tục tăng</a>
+                            <a href="./post-1.html">Dự báo giá ván ép phủ phim năm 2026 vẫn tiếp tục tăng</a>
                             <span class="recent-post-date">14 Oct 2022</span>
                         </div>
                     </div>
@@ -749,7 +757,7 @@
                             <img src="../../assets/images/blogs_list_2.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="">Ván phủ phim trong kho lạnh: bí quyết chống ẩm</a>
+                            <a href="./post-2.html">Ván phủ phim trong kho lạnh: bí quyết chống ẩm</a>
                             <span class="recent-post-date">12 Oct 2022</span>
                         </div>
                     </div>

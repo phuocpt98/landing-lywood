@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/logo.svg" />
 
-    <title>Tin tức & Hướng dẫn về Ván Ép | Blog Chính Thức - VIETPLYWOOD</title>
+    <title>Trọng Lượng Ván Ép Phủ Phim 18mm Chuẩn – Mẹo kiểm tra nhanh | VIETPLYWOOD</title>
 
-    <meta name="description" content="Cập nhật những tin tức mới nhất, hướng dẫn kỹ thuật và phân tích thị trường về ván ép phủ phim, ván ép Okoume và các sản phẩm gỗ công nghiệp khác từ VIETPLYWOOD.">
+    <meta name="description" content="Cung cấp tiêu chuẩn trọng lượng ván ép phủ phim 18mm chuẩn (từ 33kg đến 38kg). Hướng dẫn nhà thầu kiểm tra nhanh chất lượng ván ngay tại công trình bằng cách cân.">
     <meta name="robots" content="index, follow">
 
     <script type="application/ld+json">
@@ -44,7 +44,14 @@
                     {
                         "@type": "ListItem",
                         "position": 2,
-                        "name": "Blog" }
+                        "name": "Blog",
+                        "item": "https://vietplywood.com/blog"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Trọng Lượng Ván Phủ Phim 18mm Chuẩn"
+                    }
                 ]
             }
         ]
@@ -91,7 +98,7 @@
 
         /* Logo */
         .logo-link {
-            font-size: 24px; /* Giữ kích thước desktop */
+            font-size: 24px;
             font-weight: bold;
             color: #513C2E;
             text-decoration: none;
@@ -100,7 +107,7 @@
         }
 
         .logo-link img {
-            height: 40px; /* Giữ kích thước desktop */
+            height: 40px;
             margin-right: 10px;
         }
 
@@ -191,13 +198,6 @@
             text-decoration: underline;
         }
 
-        /* ---------- PRODUCT LISTING STYLES (Giữ nguyên cho các trang khác) ---------- */
-        .product-listing-container {
-            max-width: 85%;
-            margin: 6rem auto;
-        }
-        /* ... (product listing styles) ... */
-
         /* ---------- BLOG SPECIFIC STYLES ---------- */
         .blog-container {
             max-width: 85%;
@@ -208,51 +208,42 @@
         }
 
         .main-content {
-            flex: 2.5; /* Chiếm nhiều không gian hơn */
+            flex: 2.5;
             min-width: 0;
         }
 
         .sidebar {
-            flex: 1; /* Chiếm ít không gian hơn */
+            flex: 1;
             position: sticky;
-            top: 100px; /* Giữ sidebar khi cuộn */
+            top: 100px;
         }
 
-        /* --- Blog Post Card Style --- */
-        .blog-post {
+        /* Detail Page Specific Styles */
+        .post-detail-article {
             background: #fff;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             overflow: hidden;
-            margin-bottom: 40px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            padding-bottom: 30px;
         }
 
-        .post-image img {
+        .post-detail-article .article-title {
+            padding: 25px 25px 5px;
+            font-size: 2.2rem;
+            color: #513C2E;
+            font-weight: 700;
+        }
+
+        .post-detail-article .post-image img {
             width: 100%;
             height: auto;
-            max-height: 400px;
+            max-height: 500px;
             object-fit: cover;
             display: block;
         }
 
-        .post-title {
-            padding: 15px 25px 5px;
-            font-size: 1.8rem;
-            color: #513C2E;
-        }
-
-        .post-title a {
-            text-decoration: none;
-            color: inherit;
-            transition: color 0.3s;
-        }
-
-        .post-title a:hover {
-            color: #8B6F47;
-        }
-
-        .post-meta {
+        .post-detail-article .post-meta {
             padding: 5px 25px 15px;
             font-size: 0.9rem;
             color: #746456;
@@ -260,29 +251,65 @@
             gap: 15px;
             border-bottom: 1px solid #eee;
         }
-        .post-meta span:before {
+        .post-detail-article .post-meta span:before {
             content: '•';
             margin-right: 5px;
             color: #8B6F47;
         }
-        .post-meta span:first-child:before {
+        .post-detail-article .post-meta span:first-child:before {
             content: none;
         }
 
-        .post-excerpt {
-            padding: 15px 25px;
-            color: #666;
+        .post-content-body {
+            padding: 0 25px;
         }
 
-        .read-more {
-            display: inline-block;
-            padding: 0 25px 25px;
-            font-weight: 600;
-            color: #8B6F47;
-            text-decoration: none;
-            transition: color 0.3s;
+        .post-content-body h2 {
+            font-size: 1.5rem;
+            color: #513C2E;
+            margin: 30px 0 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
         }
-        .read-more:hover {
+
+        .post-content-body h3 {
+            font-size: 1.2rem;
+            color: #8B6F47;
+            margin: 20px 0 10px;
+        }
+
+        .post-content-body p {
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        /* Table styles */
+        .post-content-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        .post-content-body th, .post-content-body td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .post-content-body th {
+            background-color: #f7f3f0;
+            color: #513C2E;
+            font-weight: 600;
+        }
+
+        /* Keywords box */
+        .keywords-box {
+            background: #F3EDE7;
+            border-left: 5px solid #8B6F47;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
             color: #513C2E;
         }
 
@@ -399,36 +426,6 @@
             color: #746456;
         }
 
-        /* --- Pagination Styles --- */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            padding: 20px 0;
-            gap: 10px;
-        }
-
-        .pagination a {
-            text-decoration: none;
-            color: #513C2E;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-
-        .pagination a:hover {
-            background-color: #f7f7f7;
-            border-color: #8B6F47;
-        }
-
-        .pagination a.active {
-            background-color: #8B6F47;
-            color: white;
-            border-color: #8B6F47;
-        }
-
         /* FOOTER */
         footer {
             background: #F3EDE7;
@@ -438,7 +435,7 @@
 
         .footer-content {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 2fr; /* SỬA: Khôi phục bố cục 4 cột */
+            grid-template-columns: 2fr 1fr 1fr 2fr;
             gap: 40px;
             margin-bottom: 40px;
         }
@@ -522,11 +519,11 @@
 
             .logo-link {
                 order: 1;
-                font-size: 20px; /* Điều chỉnh kích thước chữ của tên */
+                font-size: 20px;
             }
 
             .logo-link img {
-                height: 35px; /* Điều chỉnh kích thước ảnh logo */
+                height: 35px;
             }
 
             .lang-switch-btn {
@@ -574,7 +571,7 @@
             }
 
             .footer-content {
-                grid-template-columns: 1fr; /* SỬA: Footer thành 1 cột trên Mobile */
+                grid-template-columns: 1fr;
             }
 
             .newsletter-form input,
@@ -592,7 +589,7 @@
             }
 
             .sidebar {
-                position: static; /* Bỏ sticky trên mobile */
+                position: static;
                 top: auto;
                 width: 100%;
             }
@@ -601,8 +598,8 @@
                 width: 100%;
             }
 
-            .post-title {
-                font-size: 1.5rem; /* Giảm kích thước tiêu đề bài viết */
+            .post-detail-article .article-title {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -633,73 +630,110 @@
 <section class="hero-section">
     <h1>Blog</h1>
     <div class="breadcrumb">
-        <a href="../../">Trang chủ</a> / Blog </div>
+        <a href="../../">Trang chủ</a> / <a href="./">Blog</a> / Trọng Lượng Ván Phủ Phim 18mm Chuẩn
+    </div>
 </section>
 
 <div class="blog-container container">
     <div class="main-content">
-        <article class="blog-post">
-            <div class="post-image">
-                <img src="../../assets/images/blogs_post_1.png" alt="Dự báo giá ván ép phủ phim 2026">
-            </div>
+        <article class="post-detail-article">
+            <h1 class="article-title">Trọng Lượng Ván Phủ Phim 18mm Chuẩn – Mẹo kiểm tra giúp Nhà thầu tránh gian lận</h1>
+
             <div class="post-meta">
                 <span>Admin</span>
-                <span>14 Oct 2022</span>
-                <span>Wood</span>
+                <span>08 Oct 2022</span>
+                <span>Technical</span>
             </div>
-            <h2 class="post-title">
-                <a href="post-1.html">Dự báo giá ván ép phủ phim 2026 tiếp tục tăng mạnh</a>
-            </h2>
-            <p class="post-excerpt">
-                Bước sang 2026, thị trường ván ép phủ phim dự đoán tiếp tục tăng trưởng mạnh mẽ do tác động từ đầu tư công và nhu cầu xây dựng. Hãy cùng tìm hiểu về diễn biến giá ván ép phủ phim...
-            </p>
-            <a href="post-1.html" class="read-more">Đọc thêm &rarr;</a>
-        </article>
 
-        <article class="blog-post">
             <div class="post-image">
-                <img src="../../assets/images/blogs_post_2.png" alt="Lót sàn khu vực máy móc">
+                <img src="../../assets/images/blogs_post_3.png" alt="Kiểm tra trọng lượng ván ép phủ phim 18mm">
             </div>
-            <div class="post-meta">
-                <span>Admin</span>
-                <span>14 Oct 2022</span>
-                <span>Hardmode</span>
+
+            <div class="post-content-body">
+
+                <div class="keywords-box">
+                    **Từ khóa liên quan:** Trọng lượng ván ép phủ phim 18mm, thông số kỹ thuật ván coppha, kiểm tra chất lượng ván bằng trọng lượng, ván ép chất lượng A1.
+                </div>
+
+                <h2>1. Vì sao Trọng lượng là tiêu chí quan trọng nhất để đánh giá chất lượng?</h2>
+                <p>
+                    Trong ngành ván ép, trọng lượng của một tấm ván là chỉ số vật lý dễ kiểm tra nhất nhưng lại phản ánh chính xác nhất về chất lượng bên trong. Một tấm ván 18mm có kích thước tiêu chuẩn (1220 x 2440mm) nhưng nhẹ hơn bình thường cho thấy:
+                </p>
+                <ul>
+                    <li>**Mật độ Cốt Gỗ Thấp:** Cốt ván được làm bằng gỗ mềm (như gỗ tạp, gỗ Poplar non) thay vì gỗ cứng (Hardwood) hoặc lõi bạch dương (Birch) có mật độ cao hơn.</li>
+                    <li>**Lượng Keo Dán Thiếu:** Lượng keo (thường là WBP) ít hơn tiêu chuẩn, làm giảm độ kết dính và khả năng chịu nước, dẫn đến ván dễ bị tách lớp (delamination) sau vài lần sử dụng.</li>
+                </ul>
+                <p>
+                    Nhà thầu có thể dùng thước đo độ dày và cân để phát hiện hàng gian lận chỉ trong 2 phút.
+                </p>
+
+                <h2>2. Tiêu chuẩn Trọng lượng Ván 18mm (1220x2440mm) theo Phân khúc Chất lượng</h2>
+                <p>
+                    Để đảm bảo đạt số lần tái sử dụng như cam kết, bộ phận thu mua nên đối chiếu trọng lượng thực tế với bảng tiêu chuẩn sau:
+                </p>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Phân khúc Chất lượng</th>
+                        <th>Trọng lượng Chuẩn (kg/tấm)</th>
+                        <th>Lõi gỗ chính</th>
+                        <th>Số lần Tái sử dụng (TB)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>A1 (Cao cấp - Vietplywood)</td>
+                        <td>**36 - 38 kg**</td>
+                        <td>Hardwood/Birch Nguyên Khối</td>
+                        <td>>10 lần</td>
+                    </tr>
+                    <tr>
+                        <td>A2 (Tiêu chuẩn)</td>
+                        <td>**33 - 35 kg**</td>
+                        <td>Hardwood hỗn hợp</td>
+                        <td>6 - 9 lần</td>
+                    </tr>
+                    <tr>
+                        <td>B (Giá rẻ/Hàng trộn)</td>
+                        <td>**< 33 kg**</td>
+                        <td>Poplar/Gỗ tạp</td>
+                        <td>< 5 lần</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p style="font-style: italic; font-size: 0.9em; margin-top: 10px;">
+                    *Lưu ý: Bảng trọng lượng áp dụng cho ván ép 18mm, kích thước 1220 x 2440mm.
+                </p>
+
+                <h2>3. Kỹ thuật Kiểm tra nhanh tại công trình</h2>
+                <p>
+                    Phương pháp kiểm tra chất lượng ván hiệu quả nhất là kết hợp giữa độ dày và trọng lượng:
+                </p>
+
+                <h3>Kiểm tra trọng lượng (Weight Check)</h3>
+                <p>
+                    Sử dụng cân treo (móc) chuyên dụng hoặc cân điện tử có tải trọng tối thiểu 50kg. Chọn ngẫu nhiên 5-10 tấm ván trong lô hàng để cân. Nếu trọng lượng trung bình nằm trong phân khúc A1 (36-38kg), đây là ván chất lượng cao, có thể yên tâm sử dụng cho các dự án đòi hỏi bề mặt bê tông trần.
+                </p>
+
+                <h3>Kiểm tra độ dày (Thickness Check)</h3>
+                <p>
+                    Dùng thước kẹp (caliper) để đo độ dày ván tại ít nhất 3 điểm khác nhau. Ván 18mm đạt chuẩn cần có độ dày thực tế từ 17.5mm đến 18.2mm. Ván kém chất lượng thường chỉ đạt 16mm hoặc 17mm.
+                </p>
+
+                <h2>4. Hậu quả của việc dùng ván thiếu trọng lượng</h2>
+                <p>
+                    Việc ham rẻ ban đầu và chọn ván dưới 33kg/tấm sẽ dẫn đến chi phí vận hành tăng gấp đôi:
+                </p>
+                <ul>
+                    <li>**Tăng Chi phí Khấu hao:** Số lần tái sử dụng giảm mạnh (< 5 lần), buộc nhà thầu phải mua ván mới thường xuyên hơn.</li>
+                    <li>**Chất lượng Bê tông:** Lõi gỗ lỏng lẻo dễ bị biến dạng khi đổ bê tông và rung đầm, dẫn đến bề mặt bê tông không phẳng, tốn kém chi phí xử lý hoàn thiện.</li>
+                    <li>**Rủi ro Tách Lớp:** Ván nhẹ thường dùng keo kém chịu nước, dễ bị tách lớp khi dính mưa hoặc ngâm nước tại công trường, gây thất thoát vật tư.</li>
+                </ul>
+
             </div>
-            <h2 class="post-title">
-                <a href="post-2.html">Ván Phủ Phim Cho Kho Lạnh – Bí quyết chống ẩm và tiết kiệm chi phí bảo trì</a>
-            </h2>
-            <p class="post-excerpt">
-                Trong các công xưởng, khu vực lắp đặt máy móc, sàn nhà không chỉ chịu lực thông thường mà còn phải chống chịu rung động. Ván phủ phim chịu lực cao là giải pháp được nhiều nhà máy lựa chọn...
-            </p>
-            <a href="post-2.html" class="read-more">Đọc thêm &rarr;</a>
+
         </article>
-
-        <article class="blog-post">
-            <div class="post-image">
-                <img src="../../assets/images/blogs_post_3.png" alt="Ván phủ phim làm sàn gác xép">
-            </div>
-            <div class="post-meta">
-                <span>Admin</span>
-                <span>14 Oct 2022</span>
-                <span>Wood</span>
-            </div>
-            <h2 class="post-title">
-                <a href="./post-3.html">Ván phủ phim có phù hợp làm sàn gác xép?</a>
-            </h2>
-            <p class="post-excerpt">
-                Tìm kiếm vật liệu thi công gác xép là một trong những nhu cầu phổ biến. Ván phủ phim có độ bền cao có thể được sử dụng làm sàn gác xép, đặc biệt với những công trình đòi hỏi vật liệu vững chắc.
-            </p>
-            <a href="./post-3.html" class="read-more">Đọc thêm &rarr;</a>
-        </article>
-
-        <div class="pagination">
-            <a href="">&larr; Previous</a>
-            <a href="" class="active">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">Next &rarr;</a>
-        </div>
-
     </div>
 
     <aside class="sidebar">
@@ -712,19 +746,24 @@
             <h3>Blog</h3>
             <ul class="category-list">
                 <li class="category-item">
-                    <a href="#">Bản tin Vietplywood</a> <span>2</span>
+                    <a href="#">Bản tin Vietplywood</a>
+                    <span>2</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Tin xuất khẩu</a> <span>8</span>
+                    <a href="#">Tin xuất khẩu</a>
+                    <span>8</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Sự kiện</a> <span>7</span>
+                    <a href="#">Sự kiện</a>
+                    <span>7</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Dành cho Doanh nghiệp</a> <span>1</span>
+                    <a href="#">Dành cho Doanh nghiệp</a>
+                    <span>1</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Hoạt động</a> <span>6</span>
+                    <a href="#">Hoạt động</a>
+                    <span>6</span>
                 </li>
             </ul>
         </div>
@@ -738,7 +777,7 @@
                             <img src="../../assets/images/blogs_list_1.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="">Dự báo giá ván ép phủ phim năm 2026 vẫn tiếp tục tăng</a>
+                            <a href="./post-1.html">Dự báo giá ván ép phủ phim năm 2026 vẫn tiếp tục tăng</a>
                             <span class="recent-post-date">14 Oct 2022</span>
                         </div>
                     </div>
@@ -749,7 +788,7 @@
                             <img src="../../assets/images/blogs_list_2.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="">Ván phủ phim trong kho lạnh: bí quyết chống ẩm</a>
+                            <a href="./post-2.html">Ván phủ phim trong kho lạnh: bí quyết chống ẩm</a>
                             <span class="recent-post-date">12 Oct 2022</span>
                         </div>
                     </div>
@@ -760,8 +799,8 @@
                             <img src="../../assets/images/blogs_list_3.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="">Giá ván ép phủ phim tại Hà Nam mới nhất</a>
-                            <span class="recent-post-date">10 Oct 2022</span>
+                            <a href="./post-3.html">Trọng Lượng Ván Phủ Phim 18mm Chuẩn – Mẹo kiểm tra</a>
+                            <span class="recent-post-date">08 Oct 2022</span>
                         </div>
                     </div>
                 </li>
