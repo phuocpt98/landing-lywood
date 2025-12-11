@@ -3,7 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - VietPlywood</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/logo.svg" />
+    <title>Sản phẩm Ván Ép | Catalogue Chính Thức - VIETPLYWOOD</title>
+
+    <meta name="description" content="Khám phá các dòng sản phẩm ván ép chất lượng cao của VIETPLYWOOD: Ván Phủ Phim, Bintagor, Okoume, Ván Mặt Trắng. Xem chi tiết thông số kỹ thuật và báo giá mới nhất.">
+    <meta name="robots" content="index, follow">
+
+    <script type="application/ld+json">
+        [
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "VIETPLYWOOD",
+                "url": "https://vietplywood.com",
+                "logo": "https://vietplywood.com/assets/images/logo.svg",
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+84916884008",
+                    "contactType": "Sales"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Khu Liên Đồng, Xã Thanh Sơn",
+                    "addressLocality": "Phú Thọ",
+                    "addressRegion": "Phú Thọ",
+                    "addressCountry": "VN"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Trang chủ",
+                        "item": "https://vietplywood.com/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Blog"
+                    }
+                ]
+            }
+        ]
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -12,379 +58,188 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             color: #333;
             line-height: 1.6;
-            background: #fff;
         }
 
+        /* Layout Fixes */
+        .container-header{
+            max-width: 95%;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 85%;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
         header {
             background: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
+        /* Logo */
+        .logo-link {
+            font-size: 24px; /* Giữ kích thước desktop */
+            font-weight: bold;
+            color: #513C2E;
+            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-            color: #333;
-            font-size: 1.2rem;
-            text-decoration: none;
         }
 
-        .logo img {
-            width: 30px;
-            height: 30px;
-            background: #e0e0e0; /* Placeholder color */
+        .logo-link img {
+            height: 40px; /* Giữ kích thước desktop */
+            margin-right: 10px;
         }
 
-        nav {
+        /* Menu - Đẩy menu vào giữa */
+        .nav-menu {
             display: flex;
-            gap: 2rem;
-            align-items: center;
+            list-style: none;
+            gap: 40px;
+            flex-grow: 1;
+            justify-content: center;
+            padding-right: 20px;
         }
 
-        nav a {
+        .nav-menu a {
             text-decoration: none;
             color: #333;
-            font-size: 0.95rem;
+            font-weight: 500;
             transition: color 0.3s;
         }
-
-        nav a:hover {
-            color: #b8904d;
+        /* Đánh dấu trang hiện tại */
+        .nav-menu li:nth-child(3) a { /* Blog là mục thứ 3 */
+            color: #8B6F47;
+            font-weight: 600;
         }
 
-        .header-icons {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
+        .nav-menu a:hover {
+            color: #8B6F47;
         }
 
-        .icon-btn {
-            background: none;
-            border: none;
+        /* Button VN - Đặt nút ngôn ngữ riêng biệt */
+        .lang-switch-btn {
+            background: #fff;
+            color: #8B6F47;
+            border: 1px solid #8B6F47;
+            padding: 5px 10px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 1.2rem;
-            color: #333;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #333;
-            border-radius: 2px;
+            font-weight: 600;
+            font-size: 14px;
             transition: all 0.3s;
         }
 
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
+        .lang-switch-btn:hover {
+            background-color: #8B6F47;
+            color: white;
         }
 
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        .mobile-menu {
+        /* Menu Toggle (Ẩn trên desktop) */
+        .menu-toggle {
             display: none;
-            position: absolute;
-            top: 60px;
-            left: 0;
-            right: 0;
-            background: #fff;
-            border-top: 1px solid #eee;
-            padding: 1rem;
-            flex-direction: column;
-            gap: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .mobile-menu.active {
-            display: flex;
-        }
-
-        .mobile-menu a {
-            padding: 0.8rem 1rem;
+            font-size: 30px;
+            cursor: pointer;
             color: #333;
-            text-decoration: none;
-            font-size: 0.95rem;
-            border-radius: 4px;
-            transition: background 0.3s;
+            padding: 5px;
+            order: 3;
         }
 
-        .mobile-menu a:hover {
-            background: #f5f5f5;
-            color: #b8904d;
-        }
-
+        /* ---------- HERO SECTION STYLES ---------- */
         .hero-section {
+            background: linear-gradient(135deg, #f7f3f0 0%, #F3EDE7 100%);
+            padding: 100px 0 50px 0;
+            text-align: center;
             position: relative;
-            height: 300px;
-            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), #e8e1d5;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
         }
 
         .hero-section h1 {
-            font-size: 2.5rem;
-            color: #333;
+            font-size: 3.5rem;
+            color: #513C2E;
             margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .breadcrumb {
-            color: #666;
-            font-size: 0.9rem;
+            color: #746456;
+            font-size: 1rem;
+            padding-top: 10px;
         }
 
         .breadcrumb a {
-            color: #666;
+            color: #8B6F47;
             text-decoration: none;
+            transition: color 0.3s;
         }
 
-        /* --- BLOG STYLES --- */
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- PRODUCT LISTING STYLES (Giữ nguyên cho các trang khác) ---------- */
+        .product-listing-container {
+            max-width: 85%;
+            margin: 6rem auto;
+        }
+        /* ... (product listing styles) ... */
+
+        /* ---------- BLOG SPECIFIC STYLES ---------- */
         .blog-container {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 4rem;
+            max-width: 85%;
+            margin: 6rem auto;
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
         }
 
         .main-content {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
+            flex: 2.5; /* Chiếm nhiều không gian hơn */
+            min-width: 0;
         }
 
         .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
+            flex: 1; /* Chiếm ít không gian hơn */
+            position: sticky;
+            top: 100px; /* Giữ sidebar khi cuộn */
         }
 
-        /* Sidebar Widget Styles */
-        .sidebar-widget {
-            border: 1px solid #eee; /* Khung viền cũ */
-            padding: 1.5rem;
-            border-radius: 4px;
-        }
-
-        /* Sidebar: Search Bar */
-        .search-bar {
-            position: relative;
-            /* Không có khung viền */
-        }
-
-        .search-bar input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 0.95rem;
-        }
-
-        .search-bar button {
-            position: absolute;
-            right: 0;
-            top: 0;
-            height: 100%;
-            background: none;
-            border: none;
-            padding: 0 1rem;
-            cursor: pointer;
-            font-size: 1.2rem;
-            color: #666;
-            transition: color 0.3s;
-        }
-
-        .search-bar button:hover {
-            color: #b8904d;
-        }
-
-        /* Sidebar: Blog Categories */
-        .sidebar-categories {
-            /* Không có khung viền */
-        }
-
-        .sidebar-categories h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .category-list {
-            list-style: none;
-        }
-
-        .category-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .category-item:last-child {
-            border-bottom: none;
-        }
-
-        .category-item a {
-            text-decoration: none;
-            color: #333;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        .category-item a:hover {
-            color: #b8904d;
-        }
-
-        .category-item span {
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        /* Sidebar: Recent Posts (Gần đây) - Có khung viền */
-        .sidebar-recent-posts {
-            /* Sử dụng lớp sidebar-widget để có khung viền */
-        }
-
-        .sidebar-recent-posts h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .recent-post-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem; /* Tăng khoảng cách giữa các bài viết */
-        }
-
-        .recent-post-item {
-            display: flex;
-            gap: 1rem; /* Khoảng cách giữa ảnh và nội dung */
-            align-items: flex-start; /* Căn trên cùng */
-        }
-
-        .recent-post-thumb {
-            width: 70px; /* Kích thước ảnh nhỏ */
-            height: 70px;
-            flex-shrink: 0; /* Không cho ảnh co lại */
-            overflow: hidden;
-            border-radius: 4px; /* Bo góc ảnh */
-            background: #e0e0e0; /* Placeholder color */
-        }
-
-        .recent-post-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .recent-post-content a {
-            text-decoration: none;
-            color: #333;
-            font-size: 0.95rem;
-            line-height: 1.3; /* Khoảng cách dòng cho tiêu đề */
-            font-weight: 500;
-            transition: color 0.3s;
-            display: block; /* Để tiêu đề chiếm hết chiều rộng và ngày xuống dòng */
-            margin-bottom: 0.3rem;
-        }
-
-        .recent-post-content a:hover {
-            color: #b8904d;
-        }
-
-        .recent-post-date {
-            font-size: 0.85rem;
-            color: #999;
-        }
-
-
+        /* --- Blog Post Card Style --- */
         .blog-post {
             background: #fff;
-        }
-
-        .post-image {
-            width: 100%;
-            height: 250px;
-            background: #e0e0e0; /* Placeholder color */
-            margin-bottom: 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
             overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
 
         .post-image img {
             width: 100%;
-            height: 100%;
+            height: auto;
+            max-height: 400px;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            display: block;
         }
-
-        .blog-post:hover .post-image img {
-            transform: scale(1.05);
-        }
-
-        .post-meta {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.85rem;
-            color: #999;
-            margin-bottom: 0.8rem;
-        }
-
-        .post-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .post-meta span::before {
-            content: "•";
-            color: #b8904d;
-            font-weight: bold;
-        }
-
-        .post-meta span:first-child::before {
-            content: none;
-        }
-
 
         .post-title {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 0.8rem;
-            line-height: 1.4;
+            padding: 15px 25px 5px;
+            font-size: 1.8rem;
+            color: #513C2E;
         }
 
         .post-title a {
@@ -394,195 +249,337 @@
         }
 
         .post-title a:hover {
-            color: #b8904d;
+            color: #8B6F47;
+        }
+
+        .post-meta {
+            padding: 5px 25px 15px;
+            font-size: 0.9rem;
+            color: #746456;
+            display: flex;
+            gap: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .post-meta span:before {
+            content: '•';
+            margin-right: 5px;
+            color: #8B6F47;
+        }
+        .post-meta span:first-child:before {
+            content: none;
         }
 
         .post-excerpt {
+            padding: 15px 25px;
             color: #666;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
         }
 
         .read-more {
+            display: inline-block;
+            padding: 0 25px 25px;
+            font-weight: 600;
+            color: #8B6F47;
             text-decoration: none;
-            color: #b8904d;
+            transition: color 0.3s;
+        }
+        .read-more:hover {
+            color: #513C2E;
+        }
+
+        /* --- Sidebar Styles --- */
+        .search-bar {
+            display: flex;
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-bar input[type="text"] {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-bar button {
+            background: #8B6F47;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .search-bar button:hover {
+            background: #6d5636;
+        }
+
+        .sidebar-categories, .sidebar-recent-posts {
+            background: #F3EDE7;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar h3 {
+            font-size: 1.2rem;
+            color: #513C2E;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #8B6F47;
+            padding-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .category-list, .recent-post-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .category-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        .category-item a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+        .category-item a:hover {
+            color: #8B6F47;
+        }
+
+        .category-item span {
+            color: #8B6F47;
             font-weight: 600;
             font-size: 0.9rem;
-            display: inline-block;
-            transition: opacity 0.3s;
+        }
+        .category-item:last-child {
+            border-bottom: none;
         }
 
-        .read-more:hover {
-            opacity: 0.8;
+        /* Recent Posts */
+        .recent-post-item {
+            display: flex;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        .recent-post-item:last-child {
+            border-bottom: none;
         }
 
+        .recent-post-thumb img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .recent-post-content a {
+            font-size: 0.95rem;
+            color: #513C2E;
+            text-decoration: none;
+            font-weight: 600;
+            line-height: 1.3;
+            display: block;
+            margin-bottom: 3px;
+        }
+        .recent-post-content a:hover {
+            color: #8B6F47;
+        }
+
+        .recent-post-date {
+            font-size: 0.8rem;
+            color: #746456;
+        }
+
+        /* --- Pagination Styles --- */
         .pagination {
             display: flex;
-            gap: 1rem;
             justify-content: center;
-            align-items: center;
-            margin-top: 2rem;
+            margin-top: 20px;
+            padding: 20px 0;
+            gap: 10px;
         }
 
         .pagination a {
             text-decoration: none;
-            color: #333;
-            padding: 0.5rem 1rem;
+            color: #513C2E;
+            padding: 10px 15px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            transition: background 0.3s, color 0.3s;
+            transition: all 0.3s;
+            font-weight: 600;
         }
 
-        .pagination a:hover,
+        .pagination a:hover {
+            background-color: #f7f7f7;
+            border-color: #8B6F47;
+        }
+
         .pagination a.active {
-            background: #b8904d;
-            color: #fff;
-            border-color: #b8904d;
+            background-color: #8B6F47;
+            color: white;
+            border-color: #8B6F47;
         }
 
-
-        /* --- END BLOG STYLES --- */
-
-
+        /* FOOTER */
         footer {
-            background: #f8f8f8;
-            padding: 3rem 2rem 1.5rem;
-            margin-top: 5rem;
+            background: #F3EDE7;
+            padding: 60px 0 30px;
+            margin-top: 40px;
         }
+        /* ... (Footer styles) ... */
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
 
-        .footer-section h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            font-size: 0.9rem;
-            color: #666;
-            text-decoration: none;
-            line-height: 1.8;
-        }
-
-        .footer-section a:hover {
-            color: #b8904d;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-contact p {
-            line-height: 1.8;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 2rem auto 0;
-            padding-top: 1.5rem;
-            border-top: 1px solid #ddd;
-            text-align: center;
-            color: #666;
-            font-size: 0.85rem;
-        }
-
+        /* Responsive adjustments */
         @media (max-width: 992px) {
-            .blog-container {
-                grid-template-columns: 1fr;
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             }
         }
-
 
         @media (max-width: 768px) {
-            .header-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 1rem 2rem;
-            }
 
-            .hamburger {
-                display: flex;
+            /* Giữ nguyên bố cục mobile đã đẹp */
+            .container, .container-header {
+                max-width: 100%;
+                padding: 0 15px;
             }
 
             nav {
+                flex-wrap: wrap;
+                padding: 10px 0;
+            }
+
+            .logo-link {
+                order: 1;
+                font-size: 20px; /* NEW: Điều chỉnh kích thước chữ của tên */
+            }
+
+            .logo-link img {
+                height: 35px; /* NEW: Điều chỉnh kích thước ảnh logo */
+            }
+
+            .lang-switch-btn {
+                display: block;
+                order: 2;
+                margin-left: auto;
+                margin-right: 15px;
+                padding: 6px 12px;
+            }
+
+            .menu-toggle {
+                display: block;
+                order: 3;
+            }
+
+            /* Menu ẩn/hiện dạng cột */
+            .nav-menu {
                 display: none;
+                order: 4;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                padding: 20px 0;
+                gap: 10px;
+                text-align: center;
+                flex-grow: 0;
+                justify-content: flex-start;
             }
 
-            .header-icons {
+            .nav-menu.active {
                 display: flex;
-                gap: 1rem;
             }
 
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
+            .nav-menu a {
+                padding: 10px 0;
+                border-bottom: 1px solid #eee;
             }
-        }
 
-        @media (max-width: 480px) {
             .hero-section h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
+
+            /* CẬP NHẬT: Responsive cho Blog Container */
+            .blog-container {
+                flex-direction: column;
+                gap: 30px;
+                margin: 3rem auto;
+                max-width: 100%;
+                padding: 0 15px;
+            }
+
+            .sidebar {
+                position: static; /* Bỏ sticky trên mobile */
+                top: auto;
+                width: 100%;
+            }
+
+            .main-content {
+                width: 100%;
+            }
+
+            .post-title {
+                font-size: 1.5rem; /* Giảm kích thước tiêu đề bài viết */
             }
         }
     </style>
 </head>
 <body>
 <header>
-    <div class="header-container">
-        <a href="./index.html" class="logo">
-            <img src="" alt="Logo">
+    <nav class="container-header">
+        <a href="../../index.html" class="logo-link">
+            <img src="../../assets/images/logo.svg" alt="Logo VietPlywood">
             <span>VIETPLYWOOD</span>
         </a>
-        <nav>
-            <a href="./index.html">Trang chủ</a>
-            <a href="./product.html">Sản phẩm</a>
-            <a href="./blog.html" style="color: #b8904d;">Blog</a>
-            <a href="./contact.html">Liên hệ</a>
-        </nav>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div class="header-icons">
-            <button class="icon-btn" aria-label="Tìm kiếm">🔍</button>
-            <button class="icon-btn" aria-label="Ngôn ngữ">EN</button>
+
+        <ul class="nav-menu">
+            <li><a href="../../">Trang chủ</a></li>
+            <li><a href="../products">Sản phẩm</a></li>
+            <li><a href="./">Blog</a></li>
+            <li><a href="../concat">Liên hệ</a></li>
+        </ul>
+
+        <button class="lang-switch-btn" onclick="window.location.href='#'">🌐 VN</button>
+
+        <div class="menu-toggle" onclick="toggleMenu()">
+            &#9776;
         </div>
-    </div>
-    <nav class="mobile-menu" id="mobile-menu">
-        <a href="./index.html">Trang chủ</a>
-        <a href="./product.html">Sản phẩm</a>
-        <a href="./blog.html">Blog</a>
-        <a href="./contact.html">Liên hệ</a>
     </nav>
 </header>
 
 <section class="hero-section">
     <h1>Blog</h1>
     <div class="breadcrumb">
-        <a href="./index.html">Trang chủ</a> / Blog
+        <a href="../../">Trang chủ</a> / Blog
     </div>
 </section>
 
-<div class="blog-container">
+<div class="blog-container container">
     <div class="main-content">
         <article class="blog-post">
             <div class="post-image">
-                <img src="placeholder-1.jpg" alt="Dự báo giá ván ép phủ phim 2026">
+                <img src="../../assets/images/blogs_post_1.png" alt="Dự báo giá ván ép phủ phim 2026">
             </div>
             <div class="post-meta">
                 <span>Admin</span>
@@ -600,7 +597,7 @@
 
         <article class="blog-post">
             <div class="post-image">
-                <img src="placeholder-2.jpg" alt="Lót sàn khu vực máy móc">
+                <img src="../../assets/images/blogs_post_2.png" alt="Lót sàn khu vực máy móc">
             </div>
             <div class="post-meta">
                 <span>Admin</span>
@@ -618,7 +615,7 @@
 
         <article class="blog-post">
             <div class="post-image">
-                <img src="placeholder-3.jpg" alt="Ván phủ phim làm sàn gác xép">
+                <img src="../../assets/images/blogs_post_3.png" alt="Ván phủ phim làm sàn gác xép">
             </div>
             <div class="post-meta">
                 <span>Admin</span>
@@ -635,11 +632,11 @@
         </article>
 
         <div class="pagination">
-            <a href="#">&larr; Previous</a>
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">Next &rarr;</a>
+            <a href="">&larr; Previous</a>
+            <a href="" class="active">1</a>
+            <a href="">2</a>
+            <a href="">3</a>
+            <a href="">Next &rarr;</a>
         </div>
 
     </div>
@@ -654,23 +651,23 @@
             <h3>Blog</h3>
             <ul class="category-list">
                 <li class="category-item">
-                    <a href="#">Bản tin Vietplywood</a>
+                    <p href="">Bản tin Vietplywood</p>
                     <span>2</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Tin xuất khẩu</a>
+                    <p href="">Tin xuất khẩu</p>
                     <span>8</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Sự kiện</a>
+                    <p href="">Sự kiện</p>
                     <span>7</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Dành cho Doanh nghiệp</a>
+                    <p href="">Dành cho Doanh nghiệp</p>
                     <span>1</span>
                 </li>
                 <li class="category-item">
-                    <a href="#">Hoạt động</a>
+                    <p href="">Hoạt động</p>
                     <span>6</span>
                 </li>
             </ul>
@@ -682,10 +679,10 @@
                 <li>
                     <div class="recent-post-item">
                         <div class="recent-post-thumb">
-                            <img src="thumb-1.jpg" alt="Ván ép phủ phim 2026">
+                            <img src="../../assets/images/blogs_list_1.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="#">Dự báo giá ván ép phủ phim năm 2026 vẫn tiếp tục tăng</a>
+                            <a href="">Dự báo giá ván ép phủ phim năm 2026 vẫn tiếp tục tăng</a>
                             <span class="recent-post-date">14 Oct 2022</span>
                         </div>
                     </div>
@@ -693,10 +690,10 @@
                 <li>
                     <div class="recent-post-item">
                         <div class="recent-post-thumb">
-                            <img src="thumb-2.jpg" alt="Ván phủ phim trong kho lạnh">
+                            <img src="../../assets/images/blogs_list_2.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="#">Ván phủ phim trong kho lạnh: bí quyết chống ẩm</a>
+                            <a href="">Ván phủ phim trong kho lạnh: bí quyết chống ẩm</a>
                             <span class="recent-post-date">12 Oct 2022</span>
                         </div>
                     </div>
@@ -704,10 +701,10 @@
                 <li>
                     <div class="recent-post-item">
                         <div class="recent-post-thumb">
-                            <img src="thumb-3.jpg" alt="Giá ván ép phủ phim Hà Nam">
+                            <img src="../../assets/images/blogs_list_3.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="#">Giá ván ép phủ phim tại Hà Nam mới nhất</a>
+                            <a href="">Giá ván ép phủ phim tại Hà Nam mới nhất</a>
                             <span class="recent-post-date">10 Oct 2022</span>
                         </div>
                     </div>
@@ -715,10 +712,10 @@
                 <li>
                     <div class="recent-post-item">
                         <div class="recent-post-thumb">
-                            <img src="thumb-4.jpg" alt="Nhu cầu ván ép phủ phim 2025">
+                            <img src="../../assets/images/blogs_list_4.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="#">Nhu cầu ván ép phủ phim tăng mạnh trong năm 2025</a>
+                            <a href="">Nhu cầu ván ép phủ phim tăng mạnh trong năm 2025</a>
                             <span class="recent-post-date">08 Oct 2022</span>
                         </div>
                     </div>
@@ -726,10 +723,10 @@
                 <li>
                     <div class="recent-post-item">
                         <div class="recent-post-thumb">
-                            <img src="thumb-5.jpg" alt="Ván phủ phim sàn gác xép">
+                            <img src="../../assets/images/blogs_list_5.png" alt="">
                         </div>
                         <div class="recent-post-content">
-                            <a href="#">Ván phủ phim có phù hợp làm sàn gác xép?</a>
+                            <a href="">Ván phủ phim có phù hợp làm sàn gác xép?</a>
                             <span class="recent-post-date">06 Oct 2022</span>
                         </div>
                     </div>
@@ -740,60 +737,119 @@
     </aside>
 </div>
 
-<footer>
-    <div class="footer-content">
-        <div class="footer-section footer-contact">
-            <h3>Vietplywood Co., Ltd</h3>
-            <p>Địa chỉ: Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
-            <p>Hotline: (+84)916 884 008</p>
-            <p>Email: tmdvvietnam@gmail.com</p>
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Vietplywood Co., Ltd</h3>
+                <p>Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Giới thiệu</h3>
+                <a href="../../">Trang chủ</a>
+                <a href="../products">Sản phẩm</a>
+                <a href="./">Blog</a>
+                <a href="../concat">Liên hệ</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>(+84) 916 884 008</p>
+                <p >tmdvvietnam@gmail.com</p>
+                <p>Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Đăng ký để nhận thông tin</h3>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Nhập email của bạn" name="email" required>
+                    <input type="hidden" name="ctyName" value="">
+                    <input type="hidden" name="title" value="">
+                    <input type="hidden" name="content" value="">
+                    <input type="hidden" name="status" value="">
+                    <button type="submit">Đăng ký</button>
+                    <p id="form-message" style="margin-top: 10px; font-size: 14px;"></p>
+                </form>
+            </div>
         </div>
 
-        <div class="footer-section">
-            <h3>Thông tin</h3>
-            <ul>
-                <li><a href="#">Giới thiệu</a></li>
-                <li><a href="#">Sản phẩm</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Liên hệ</a></li>
-            </ul>
+        <div class="footer-bottom">
+            <p>© 2024 VIETPLYWOOD. All rights reserved.</p>
         </div>
-
-        <div class="footer-section">
-            <h3>Hỗ trợ</h3>
-            <ul>
-                <li><a href="#">Chính sách đổi trả</a></li>
-                <li><a href="#">Điều khoản sử dụng</a></li>
-                <li><a href="#">Câu hỏi thường gặp</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-section">
-            <h3>Đăng ký nhận tin</h3>
-            <p>Đăng ký để nhận thông tin mới nhất về sản phẩm và khuyến mãi.</p>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <p>© 2024 CÔNG TY TNHH XUẤT NHẬP KHẨU TMDV VIỆT NAM. All rights reserved.</p>
     </div>
 </footer>
 
 <script>
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const API_URL = 'https://script.google.com/macros/s/AKfycbxrk4VOK1w2XNJfrRGYDyWkprMBPONZ5BNGCENr8pig99oMIQX2d9dR6UlwxB5vSp4/exec';
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
+    // Hàm responsive menu
+    function toggleMenu() {
+        const navMenu = document.querySelector('.nav-menu');
+        navMenu.classList.toggle('active');
+    }
+
+    // Hàm đóng menu
+    function closeMenu() {
+        const navMenu = document.querySelector('.nav-menu');
+        if (navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+        }
+    }
+
+    // Thêm event listener để đóng menu khi nhấp ra ngoài
+    document.addEventListener('click', function(event) {
+        const navMenu = document.querySelector('.nav-menu');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const header = document.querySelector('header');
+
+        // Kiểm tra xem cú nhấp chuột CÓ nằm ngoài menu và nút toggle hay không.
+        if (navMenu.classList.contains('active')) {
+            const isClickInsideNavMenu = navMenu.contains(event.target);
+            const isClickOnMenuToggle = menuToggle.contains(event.target);
+
+            // Nếu click ra ngoài cả menu và nút toggle, thì đóng menu
+            if (!isClickInsideNavMenu && !isClickOnMenuToggle) {
+                closeMenu();
+            }
+        }
     });
 
-    const menuLinks = mobileMenu.querySelectorAll('a');
-    menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
-        });
+    // Hàm xử lý submit form và gọi API
+    document.getElementById('newsletter-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const messageElement = document.getElementById('form-message');
+        messageElement.textContent = 'Đang gửi...';
+        messageElement.style.color = '#8B6F47';
+
+        const formData = new FormData(form);
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+            data[key] = value;
+        }
+
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            // Giả định thành công do sử dụng 'no-cors'
+            messageElement.textContent = 'Chúng tôi sẽ liên hệ với bạn!';
+            messageElement.style.color = 'green';
+            form.reset();
+
+        } catch (error) {
+            console.error('Lỗi khi gửi form:', error);
+            messageElement.textContent = 'Lỗi khi gửi yêu cầu. Vui lòng thử lại sau.';
+            messageElement.style.color = 'red';
+        }
     });
 </script>
 </body>
