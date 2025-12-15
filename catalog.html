@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <title>Catalog Ván Ép Bintangor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Catalog hình ảnh ván ép phủ mặt Bintangor chất lượng cao" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f3f3f3;
+        }
+
+        /* ===== SLIDER WRAPPER ===== */
+        .catalog-slider {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 60px auto;
+            overflow: hidden;
+            border-radius: 16px;
+            --bg-image: none;
+        }
+
+        /* BLUR BACKGROUND */
+        .catalog-slider::before {
+            content: "";
+            position: absolute;
+            inset: -40px;
+            background-image: var(--bg-image);
+            background-size: cover;
+            background-position: center;
+            filter: blur(32px) brightness(0.9);
+            transform: scale(1.2);
+            z-index: 0;
+        }
+
+        /* ===== TRACK ===== */
+        .slider-track {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            transition: transform 0.6s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .slide img {
+            max-width: 90%;
+            max-height: 520px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        /* ===== CONTROLS ===== */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .slider-btn:hover {
+            background: rgba(0,0,0,0.75);
+        }
+
+        .slider-btn.prev {
+            left: 16px;
+        }
+
+        .slider-btn.next {
+            right: 16px;
+        }
+
+        /* ===== INDICATOR ===== */
+        .indicator {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            font-size: 14px;
+            color: #fff;
+            background: rgba(0,0,0,0.45);
+            padding: 6px 12px;
+            border-radius: 999px;
+        }
+
+        /* ===== MOBILE ===== */
+        @media (max-width: 768px) {
+            .slide img {
+                max-height: 360px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<section class="catalog-slider" id="catalogSlider">
+    <button class="slider-btn prev" onclick="prevSlide()">‹</button>
+    <button class="slider-btn next" onclick="nextSlide()">›</button>
+
+    <div class="slider-track" id="sliderTrack"></div>
+
+    <div class="indicator" id="indicator">1 / 14</div>
+</section>
+
+<script>
+    const totalSlides = 14;
+    const track = document.getElementById("sliderTrack");
+    const slider = document.getElementById("catalogSlider");
+    const indicator = document.getElementById("indicator");
+
+    let currentIndex = 0;
+    let autoTimer = null;
+
+    // CREATE SLIDES
+    for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.createElement("div");
+        slide.className = "slide";
+        slide.innerHTML = `
+        <img
+          src="./assets/images/catalogs/${i}.png"
+          alt="Catalog ván ép Bintangor ${i}"
+          loading="lazy"
+          width="1200"
+          height="800"
+        />
+      `;
+        track.appendChild(slide);
+    }
+
+    function updateUI() {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        slider.style.setProperty(
+            "--bg-image",
+            `url('./assets/images/catalogs/${currentIndex + 1}.png')`
+        );
+        indicator.textContent = `${currentIndex + 1} / ${totalSlides}`;
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateUI();
+        resetAuto();
+    }
+
+    function prevSlide() {
+        currentIndex =
+            (currentIndex - 1 + totalSlides) % totalSlides;
+        updateUI();
+        resetAuto();
+    }
+
+    function startAuto() {
+        autoTimer = setInterval(nextSlide, 4500);
+    }
+
+    function resetAuto() {
+        clearInterval(autoTimer);
+        startAuto();
+    }
+
+    // INIT
+    updateUI();
+    startAuto();
+</script>
+
+</body>
+</html>
