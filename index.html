@@ -172,31 +172,16 @@
             font-size: 16px;
             cursor: pointer;
             transition: background 0.3s;
-            text-decoration: none; /* đảm bảo nút là link */
-            display: inline-block;
-            text-align: center;
         }
 
         .cta-button:hover {
             background: #6d5636;
         }
 
-        /* --- QUY TẮC TỐI ƯU HÓA KÍCH THƯỚC NÚT (CTA GROUP) --- */
         .hero-cta-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .hero-cta-group a {
-            flex-grow: 1; /* Cho phép cả hai thẻ a (chứa nút) mở rộng bằng nhau */
-            text-decoration: none; /* Xóa gạch chân khỏi link */
-        }
-
-        .hero-cta-group .cta-button {
-            width: 100%;
-            display: block; /* Đảm bảo nút chiếm hết chiều rộng của thẻ a */
-            text-align: center;
+            display: flex; /* Cho phép các nút nằm cạnh nhau */
+            gap: 15px; /* Khoảng cách giữa các nút */
+            flex-wrap: wrap; /* Đảm bảo xuống dòng trên mobile */
         }
 
         /* Tạo kiểu cho nút thứ hai (Tải Catalog) */
@@ -212,105 +197,20 @@
             color: white;
             border-color: #8B6F47;
         }
-        /* --- KẾT THÚC QUY TẮC TỐI ƯU HÓA KÍCH THƯỚC NÚT --- */
 
-        /* --- CSS CHO SLIDER ẢNH HERO (CẬP NHẬT CHO HIỆU ỨNG TRƯỢT NGANG VÀ TỶ LỆ DỌC) --- */
         .hero-image {
-            position: relative;
             width: 100%;
-            /* Thay đổi: Bỏ height cố định 400px, dùng max-height để giới hạn chiều cao tổng */
-            max-height: 550px;
+            height: 400px;
             background: #ccc;
             border-radius: 8px;
             overflow: hidden;
-            padding-bottom: 30px;
-            /* Đảm bảo khung ảnh luôn có chiều cao hợp lý để chứa các slide */
-            height: 550px;
         }
 
-        .slider-track {
-            display: flex;
+        .hero-image div {
+            background-size: cover;
+            background-position: center;
             height: 100%;
-            transition: transform 1s ease-in-out;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
         }
-
-        .hero-slide {
-            height: 100%;
-            flex-shrink: 0;
-            /* Căn giữa ảnh trong slide */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-slide img {
-            width: auto;
-            height: 100%; /* Đảm bảo hình ảnh chiếm hết chiều cao có sẵn */
-            max-width: 100%; /* Không vượt quá chiều rộng slide */
-            /* QUAN TRỌNG: Thay cover bằng contain để hiển thị toàn bộ ảnh tỷ lệ dọc (900x1273) */
-            object-fit: contain;
-        }
-
-        /* Navigation Arrows */
-        .prev-arrow, .next-arrow {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            margin-top: -22px;
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-            background-color: rgba(0,0,0,0.5);
-            border: none;
-            z-index: 900;
-        }
-
-        .next-arrow {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        .prev-arrow:hover, .next-arrow:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
-
-        /* Dots Container */
-        .slider-dots {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            z-index: 910;
-        }
-
-        .dot {
-            cursor: pointer;
-            height: 12px;
-            width: 12px;
-            margin: 0 4px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-            border: 2px solid rgba(255, 255, 255, 0.7);
-        }
-
-        .dot.active, .dot:hover {
-            background-color: #8B6F47;
-            border-color: #8B6F47;
-        }
-        /* --- KẾT THÚC CSS CHO SLIDER --- */
 
 
         section {
@@ -515,26 +415,11 @@
         }
 
         @media (max-width: 768px) {
-
-            /* --- CĂN CHỈNH MOBILE CHO NÚT CTA --- */
+            .hero-cta-group a {
+                width: 100%; /* Mỗi nút chiếm toàn bộ chiều rộng khi xuống dòng */
+            }
             .hero-cta-group {
                 flex-direction: column; /* Xếp các nút theo cột trên mobile */
-            }
-            .hero-cta-group a {
-                flex-grow: unset;
-                width: 100%;
-            }
-            /* --- KẾT THÚC CĂN CHỈNH MOBILE CHO NÚT CTA --- */
-
-            /* Giảm chiều cao slider trên mobile */
-            .hero-image {
-                height: 400px; /* Giảm chiều cao trên mobile */
-                max-height: 400px;
-            }
-            .prev-arrow, .next-arrow {
-                font-size: 16px;
-                padding: 10px;
-                margin-top: -15px;
             }
 
             /* Giữ nguyên bố cục mobile đã đẹp */
@@ -617,33 +502,33 @@
 </head>
 <body>
 <header>
-    <div class="container-header">
-        <nav>
-            <a href="./" class="logo-link">
-                <img src="./assets/images/logo.svg" alt="Logo VietPlywood">
-                VIETPLYWOOD
-            </a>
+    <nav class="container-header">
+        <a href="./index.html" class="logo-link">
+            <img src="./assets/images/logo.svg" alt="Logo VietPlywood">
+            <span>VIETPLYWOOD</span>
+        </a>
 
-            <ul class="nav-menu">
-                <li><a href="./">Trang chủ</a></li>
-                <li><a href="./vn/products">Sản phẩm</a></li>
-                <li><a href="./vn/blogs">Blog</a></li>
-                <li><a href="./vn/concat">Liên hệ</a></li>
-            </ul>
+        <ul class="nav-menu">
+            <li><a href="">Trang chủ</a></li>
+            <li><a href="./vn/products">Sản phẩm</a></li>
+            <li><a href="./vn/blogs">Blog</a></li>
+            <li><a href="./vn/concat">Liên hệ</a></li>
+        </ul>
 
-            <button class="lang-switch-btn">🌐 VN</button>
-            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-        </nav>
-    </div>
+        <button class="lang-switch-btn" onclick="window.location.href='#'">🌐 VN</button>
+
+        <div class="menu-toggle" onclick="toggleMenu()">
+            &#9776;
+        </div>
+    </nav>
 </header>
 
-<section class="hero">
+<section class="hero" id="home">
     <div class="container">
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Ván Ép Chất Lượng Cao — Tối Ưu Cho Doanh Nghiệp</h1>
                 <p>Cung cấp nguồn ván ép ổn định, đạt chuẩn xuất khẩu và phù hợp cho nhu cầu sản xuất</p>
-
                 <div class="hero-cta-group">
                     <a href="./vn/concat">
                         <button class="cta-button primary-cta">Liên hệ với chúng tôi</button>
@@ -653,259 +538,205 @@
                     </a>
                 </div>
             </div>
-
             <div class="hero-image">
-                <a href="./vn/catalog/" target="_blank" class="hero-image-wrapper">
-                <div class="slider-track">
-                    <div class="hero-slide"><img src="./assets/images/catalogs/1.png" alt="Ván ép mặt trắng 1"></div>
-                    <div class="hero-slide"><img src="./assets/images/catalogs/2.png" alt="Ván ép mặt trắng 2"></div>
-                    <div class="hero-slide"><img src="./assets/images/catalogs/3.png" alt="Ván ép mặt trắng 3"></div>
-                    <div class="hero-slide"><img src="./assets/images/catalogs/4.png" alt="Ván ép mặt trắng 4"></div>
-                    <div class="hero-slide"><img src="./assets/images/catalogs/5.png" alt="Ván ép mặt trắng 5"></div>
-                    <div class="hero-slide"><img src="./assets/images/catalogs/6.png" alt="Ván ép mặt trắng 6"></div>
-                    <div class="hero-slide"><img src="./assets/images/catalogs/7.png" alt="Ván ép mặt trắng 7"></div>
-                    <div class="hero-slide"><img src="./assets/images/catalogs/8.png" alt="Ván ép mặt trắng 8"></div>
-                    <div class="hero-slide"><img src="./assets/images/catalogs/9.png" alt="Ván ép mặt trắng 9"></div>
-                    <div class="hero-slide"><img src="./assets/images/catalogs/10.png" alt="Ván ép mặt trắng 10"></div>
-                    <div class="hero-slide"><img src="./assets/images/catalogs/11.png" alt="Ván ép mặt trắng 11"></div>
-                    <div class="hero-slide"><img src="./assets/images/catalogs/12.png" alt="Ván ép mặt trắng 12"></div>
-                    <div class="hero-slide"><img src="./assets/images/catalogs/13.png" alt="Ván ép mặt trắng 13"></div>
-                    <div class="hero-slide"><img src="./assets/images/catalogs/14.png" alt="Ván ép mặt trắng 14"></div>
-                </div>
-                </a>
-
-                <button class="prev-arrow" onclick="changeSlide(-1)">&#10094;</button>
-                <button class="next-arrow" onclick="changeSlide(1)">&#10095;</button>
-
-                <div class="slider-dots"></div>
+                <div style="background: url('./assets/images/index_background.png'); height: 100%;"></div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="products">
+<section id="products">
     <div class="container">
-        <h2 class="section-title">Các Dòng Ván Ép Chất Lượng Cao Nổi Bật</h2>
+        <h2 class="section-title">Sản phẩm ván ép</h2>
+
         <div class="products-grid">
-
-            <a href="./vn/products/van-ep-phu-phim.html" class="product-card">
-                <img src="./assets/images/van_phu_phim_1.jpg" alt="Ván ép phủ phim" class="product-image">
-                <div class="product-content">
-                    <h3>Ván ép phủ phim</h3>
-                    <p>Chống nước, chống bám bẩn, độ bền cao, thường dùng làm ván khuôn trong xây dựng.</p>
+            <a href="./vn/products/van-ep-phu-phim.html">
+                <div class="product-card">
+                    <img src="assets/images/van_phu_phim_1.jpg" alt="Ván ép phủ phim chống nước và chịu lực tốt" class="product-image">
+                    <div class="product-content">
+                        <h3>Ván ép phủ phim</h3>
+                        <p>Chống nước, chống bám bẩn, độ bền cao, chịu lực tốt, ...</p>
+                    </div>
                 </div>
             </a>
-
-            <a href="./vn/products/van-ep-bintagor.html" class="product-card">
-                <img src="./assets/images/van_bintangor_1.jpg" alt="Ván ép mặt bintagor" class="product-image">
-                <div class="product-content">
-                    <h3>Ván ép mặt bintagor</h3>
-                    <p>Dùng trong các hạng mục nội thất tủ, kệ, vách ngăn, ốp tường, mang lại vẻ đẹp ấm cúng.</p>
+            <a href="./vn/products/van-ep-bintagor.html">
+                <div class="product-card">
+                    <img src="assets/images/van_bintangor_1.jpg" alt="Ván ép mặt bintagor cho nội thất cao cấp" class="product-image">
+                    <div class="product-content">
+                        <h3>Ván ép mặt bintagor</h3>
+                        <p>Dùng trong các hạng mục nội thất: tủ, kệ, vách ngăn, ốp tường, ...</p>
+                    </div>
                 </div>
             </a>
-
-            <a href="./vn/products/van-ep-okoume.html" class="product-card">
-                <img src="./assets/images/van_okoume_1.jpg" alt="Ván ép mặt okoume" class="product-image">
-                <div class="product-content">
-                    <h3>Ván ép mặt okoume</h3>
-                    <p>Chuyên dùng cho gia công mộc công nghiệp, cắt CNC và các sản phẩm cần được ép phủ sơn hoàn thiện.</p>
+            <a href="./vn/products/van-ep-okoume.html">
+                <div class="product-card">
+                    <img src="assets/images/van_okoume_1.jpg" alt="Ván ép mặt okoume gia công mộc công nghiệp" class="product-image">
+                    <div class="product-content">
+                        <h3>Ván ép mặt okoume</h3>
+                        <p>Gia công mộc công nghiệp: cắt CNC, ép phủ, sơn hoàn thiện</p>
+                    </div>
                 </div>
             </a>
-
-            <a href="./vn/products/van-ep-mat-trang.html" class="product-card">
-                <img src="./assets/images/van_mat_trang_1.jpg" alt="Ván ép mặt trắng" class="product-image">
-                <div class="product-content">
-                    <h3>Ván ép mặt trắng</h3>
-                    <p>Ván mặt trắng tinh gọn, dễ ứng dụng vào nhiều kiểu thiết kế, dùng cho nội thất cơ bản và pallet.</p>
+            <a href="./vn/products/van-ep-mat-trang.html">
+                <div class="product-card">
+                    <img src="assets/images/van_mat_trang_1.jpg" alt="Ván ép mặt trắng dùng làm pallet và nội thất cơ bản" class="product-image">
+                    <div class="product-content">
+                        <h3>Ván ép mặt trắng</h3>
+                        <p>Dùng cho pallet, robbin, nội thất...</p>
+                    </div>
                 </div>
             </a>
         </div>
+
         <div class="view-more">
-            <a href="./vn/products">
-                <button class="view-more-button">XEM TẤT CẢ SẢN PHẨM</button>
-            </a>
+            <a href="./vn/products"><button class="view-more-button">Xem thêm</button></a>
+
         </div>
     </div>
 </section>
 
 <section class="reasons">
     <div class="container">
-        <h2 class="section-title">Vì Sao Doanh Nghiệp Nên Chọn VIETPLYWOOD?</h2>
+        <h2 class="section-title">Lý do lựa chọn VIỆT PLYWOOD</h2>
         <div class="reasons-grid">
             <div class="reason-card">
-                <div class="reason-icon">⭐</div>
-                <h3>Chất lượng xuất khẩu</h3>
-                <h4>Đạt chuẩn quốc tế</h4>
-                <p>Sản phẩm được kiểm tra nghiêm ngặt, đáp ứng các tiêu chuẩn chất lượng cao nhất cho thị trường Châu Á và Châu Âu.</p>
+                <div class="reason-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#28A745" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <path d="M22 4L12 14.01l-3-3"></path>
+                    </svg>
+                </div>
+                <h3>Chất lượng ổn định</h3>
+                <h4>Tiêu chuẩn thị trường</h4>
+                <p>Ván ép được kiểm soát nghiêm ngặt từ nguyên liệu đến thành phẩm, quy trình chuẩn hóa, đáp ứng tiêu chuẩn kỹ thuật của các thị trường châu Á.</p>
             </div>
+
             <div class="reason-card">
-                <div class="reason-icon">🏭</div>
+                <div class="reason-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#007BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9v-.09A1.65 1.65 0 0 0 12 4.6a1.65 1.65 0 0 0 1.51 1V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1.82.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9h.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </div>
                 <h3>Sản xuất chủ động</h3>
-                <h4>Giá thành tối ưu</h4>
-                <p>Chúng tôi làm chủ nguồn nguyên liệu và quy trình sản xuất tại Phú Thọ, đảm bảo nguồn cung ổn định và giá cạnh tranh.</p>
+                <h4>Đáp ứng mọi tiến độ</h4>
+                <p>Nhà máy Phú Thọ chủ động nguồn cung, đáp ứng đơn hàng container, đảm bảo tiến độ giao hàng cho khách B2B và các dự án lớn.</p>
             </div>
+
             <div class="reason-card">
-                <div class="reason-icon">📦</div>
-                <h3>Đáp ứng số lượng lớn</h3>
-                <h4>Hàng hóa dồi dào</h4>
-                <p>Khả năng cung ứng liên tục, đáp ứng các đơn hàng container lớn và giải quyết nhu cầu sản xuất hàng loạt của doanh nghiệp.</p>
+                <div class="reason-icon">
+                    <svg width="50" height="50" viewBox="0 0 394 511.98" xmlns="http://www.w3.org/2000/svg"
+                         shape-rendering="geometricPrecision"
+                         text-rendering="geometricPrecision" image-rendering="optimizeQuality"
+                         fill-rule="evenodd" clip-rule="evenodd">
+                        <path fill="#FFC107" d="M158.912 88.115c-7.903-23.315-15.02-46.892-21.026-70.838 22.398-24.583 108.964-21.316 133.86-.384l-23.05 54.803c12.396-16.286 16.563-22.97 23.958-32.043a71.446 71.446 0 018.787 6.814c6.557 5.936 12.412 12.495 13.597 21.638.768 5.929-.927 11.952-6.203 18.111l-52.884 61.595c-6.807-1.116-13.459-2.75-19.914-5.044 2.999-7.058 6.616-14.823 9.615-21.882l-19.253 20.795c-20.058-4.232-36.188-1.707-51.219 6.242l-53.632-64.366c-3.186-3.839-4.636-7.678-4.624-11.517.051-15.559 23.218-28.987 35.396-34.07l26.592 50.146z"/>
+                        <path fill="#FFC107" d="M139.295 22.806l-1.408-5.53C143 11.665 151.46 7.507 161.763 4.679c5.995 22.606 12.85 44.928 20.344 67.037l-29.499-55.63c-3.764 1.569-8.476 3.862-13.313 6.72zm109.086 110.528l-12.431 14.478c-6.806-1.117-13.459-2.75-19.912-5.045 1.85-4.358 3.936-8.983 5.968-13.548 4.105.354 8.356.988 12.779 1.921l21.364-23.07c-3.329 7.831-7.343 16.447-10.667 24.276.963.343 1.929.672 2.899.988zm-30.215-4.365l-11.768 12.711c-20.057-4.231-36.186-1.706-51.217 6.243l-53.633-64.368c-3.185-3.839-4.636-7.676-4.623-11.516.03-9.258 8.247-17.761 17.463-24.201-.668 1.974-1.042 3.993-1.049 6.045-.013 4.259 1.595 8.516 5.128 12.775l59.5 71.407c12.315-6.511 25.294-9.743 40.199-9.096z"/>
+                        <path fill="#FFC107" d="M227.639 204.409l-10.467-47.871c44.832 8.338 116.691 99.534 139.911 140.998 11.852 21.164 22.232 44.48 30.731 70.545 16.931 63.08.622 122.093-67.807 135.838-42.877 8.614-122.838 9.224-167.93 6.891-48.476-2.509-123.494-2.432-143.09-52.204-31.628-80.338 26.319-176.045 79.155-234.623 6.952-7.708 14.141-14.892 21.579-21.522 19.219-16.91 39.943-36.976 64.682-45.319l-23.895 44.495 34.705-46.011h18.288l24.138 48.783z"/>
+                        <path fill="#FFC107" d="M227.64 204.408l-10.467-47.871c100.985 37.366 274.435 303.922 75.77 306.108-337.547 3.716-272.661-41.47-183.221-260.184 19.219-16.909 39.944-36.976 64.681-45.32l-23.896 44.496 34.707-46.01h18.287l24.139 48.781z"/>
+                        <path fill="#FFC107" d="M227.64 204.408l-4.535-20.74c78.872 60.049 179.837 226.097 103.746 274.941-9.691 2.5-20.964 2.775-33.908 4.036-342.946 33.418-276.078-22.116-183.221-260.184 12.559-11.05 25.761-23.448 40.305-33.041l-22.496 41.89 34.707-46.009h7.782l-19.513 36.336 27.41-36.336h2.608l24.139 48.78-10.467-47.871c6.331 2.637 13.063 6.403 20.031 11.094l13.412 27.104z"/>
+                        <circle fill="#8B6F47" transform="scale(24.9353) rotate(-61.974 15.208 .304)" r="3.937"/>
+                        <path fill="#8B6F47" fill-rule="nonzero" d="M176.84 389.739a344.11 344.11 0 01-8.232-1.271c-2.907-.561-5.609-1.196-8.473-1.931a5.014 5.014 0 01-3.716-4.841l-.007-21.937a5.018 5.018 0 015.017-5.017c6.329.402 12.39.905 18.75 1.102a43.1 43.1 0 01-4.227-.983c-12.046-3.478-18.731-11.564-20.572-24.055a53.289 53.289 0 01-.54-7.74v-3.986c0-2.573.204-5.04.614-7.393a33.338 33.338 0 011.888-6.746 27.874 27.874 0 013.291-5.999c3.627-5.067 9.997-9.536 16.012-11.356l.195-.073v-5.745a5.018 5.018 0 015.017-5.018h20.233a5.018 5.018 0 015.018 5.018v4.87c5.51.842 11.051 1.904 16.467 3.228a4.997 4.997 0 013.822 4.858l.02 21.967a5.018 5.018 0 01-5.017 5.018c-9.572-.556-18.687-1.428-28.352-1.241a50.147 50.147 0 00-3.352.328l1.037.043c7.481 0 14.333-.429 21.469 2.263a27.797 27.797 0 013.928 1.845c2.447 1.395 4.602 3.053 6.453 4.956a27.246 27.246 0 014.691 6.537 30.321 30.321 0 011.577 3.637c.455 1.238.837 2.53 1.135 3.859.296 1.318.523 2.657.667 3.989.157 1.411.236 2.791.236 4.13v3.986c0 2.015-.104 4.04-.304 6.056a45.438 45.438 0 01-.884 5.548c-.423 1.869-.953 3.58-1.578 5.119a25.894 25.894 0 01-2.371 4.517 26.55 26.55 0 01-2.957 3.736 25.421 25.421 0 01-3.579 3.111 26.466 26.466 0 01-4.085 2.416 28.22 28.22 0 01-4.536 1.714l-.723.19c-1.345.397-2.516.735-3.764 1.024v6.298a5.018 5.018 0 01-5.018 5.017h-20.233a5.017 5.017 0 01-5.017-5.017v-6.031z"/>
+                        <path fill="#8B6F47" fill-rule="nonzero" d="M181.858 385.337c-1.38-.098-2.224-.238-3.239-.401l-5.68-.815-3.506-.588a81.372 81.372 0 01-3.392-.68 75.17 75.17 0 01-3.277-.797l-1.335-.359v-21.939l6.204.505 4.555.27 4.78.212 4.841.151 4.706.091 4.372.021a39.76 39.76 0 003.49-.135 21.221 21.221 0 002.761-.416 9.117 9.117 0 001.938-.654 4.238 4.238 0 001.169-.805c.259-.258.457-.564.582-.91.146-.404.221-.887.221-1.441v-1.45c0-1.157-.372-2.001-1.113-2.526a5.122 5.122 0 00-1.511-.736c-.554-.172-1.176-.255-1.859-.255h-6.402c-4.822 0-9.099-.541-12.82-1.619-3.793-1.1-6.994-2.76-9.6-4.972-2.664-2.273-4.655-5.28-5.966-9.022-1.278-3.643-1.919-7.979-1.919-13.001v-3.986c0-4.651.711-8.745 2.127-12.279 3.296-8.22 11.275-13.864 19.873-15.301v-9.732h20.232v9.339c3.347.268 5.941.735 9.216 1.327l1.7.297c1.42.25 2.836.524 4.237.815 1.313.27 2.579.552 3.78.843l1.377.335v21.968l-1.953-.172a235.784 235.784 0 00-5.853-.437c-2.138-.134-4.33-.253-6.569-.348-2.34-.1-4.541-.178-6.576-.225a250.158 250.158 0 00-5.971-.068c-1.104 0-2.127.038-3.061.113-.978.076-1.87.188-2.663.333a7.684 7.684 0 00-1.908.586 4.397 4.397 0 00-1.244.857 2.806 2.806 0 00-.66 1.091c-.174.512-.264 1.136-.264 1.866v1.207c0 .777.113 1.435.336 1.962.206.488.518.902.929 1.237.442.359 1.036.639 1.773.834.823.217 1.831.329 3.016.329h7.972c2.929 0 5.646.287 8.14.851 2.522.573 4.797 1.44 6.818 2.59 4.056 2.311 7.114 5.459 9.165 9.435a26.366 26.366 0 012.281 6.301c.506 2.231.762 4.574.762 7.022v3.986c0 3.933-.352 7.439-1.048 10.506-.711 3.129-1.796 5.795-3.243 7.991-1.45 2.199-3.216 4.046-5.283 5.532-2.066 1.483-4.43 2.609-7.075 3.366l-.677.189c-2.581.743-4.448 1.282-7.454 1.611v10.532h-20.232v-10.432z"/>
+                    </svg>
+                </div>
+                <h3>Chi phí tối ưu</h3>
+                <h4>Tiết kiệm cho khách hàng</h4>
+                <p>Vị trí gần vùng nguyên liệu giúp tối ưu giá thành; đội ngũ tư vấn hỗ trợ giải pháp tiết kiệm chi phí và giảm rủi ro chuỗi cung ứng.</p>
             </div>
         </div>
     </div>
 </section>
 
-<footer>
+<footer id="contact">
     <div class="container">
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Vietplywood Co., Ltd</h3>
                 <p>Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
-                <p>Chúng tôi chuyên cung cấp các sản phẩm ván ép công nghiệp, ván gỗ dán chất lượng cao cho thị trường nội địa và xuất khẩu.</p>
             </div>
+
             <div class="footer-section">
                 <h3>Giới thiệu</h3>
-                <a href="./">Trang chủ</a>
+                <a href="">Trang chủ</a>
                 <a href="./vn/products">Sản phẩm</a>
                 <a href="./vn/blogs">Blog</a>
                 <a href="./vn/concat">Liên hệ</a>
             </div>
+
             <div class="footer-section">
                 <h3>Liên hệ</h3>
                 <p>(+84) 916 884 008</p>
-                <p>tmdvvietnam@gmail.com</p>
+                <p >tmdvvietnam@gmail.com</p>
                 <p>Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
             </div>
+
             <div class="footer-section">
                 <h3>Đăng ký để nhận thông tin</h3>
-                <form id="newsletter-form" class="newsletter-form" action="YOUR_FORM_ENDPOINT" method="POST">
-                    <input type="email" name="email" placeholder="Nhập email của bạn" required>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Nhập email của bạn" name="email" required>
+                    <input type="hidden" name="ctyName" value="">
+                    <input type="hidden" name="title" value="">
+                    <input type="hidden" name="content" value="">
+                    <input type="hidden" name="status" value="">
                     <button type="submit">Đăng ký</button>
-                    <div id="newsletter-message"></div>
+                    <p id="form-message" style="margin-top: 10px; font-size: 14px;"></p>
                 </form>
             </div>
         </div>
+
         <div class="footer-bottom">
-            © 2024 VIETPLYWOOD. All rights reserved. (CÔNG TY TNHH XUẤT NHẬP KHẨU TMDV VIỆT NAM)
+            <p>© 2024 VIETPLYWOOD. All rights reserved.</p>
         </div>
     </div>
 </footer>
 
 <script>
-    // --- LOGIC SLIDER ẢNH HERO (GIỮ NGUYÊN) ---
-    let currentSlideIndex = 0;
-    let slides = []; // Chứa các div.hero-slide
-    let dots = [];
-    let slideInterval;
-    let sliderTrack; // Element chứa các slides (slider-track)
-    const autoSlideDuration = 3000; // 3 giây
+    // Hàm xử lý submit form và gọi API
+    document.getElementById('newsletter-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
 
-    function showSlide(n) {
-        // Đảm bảo chỉ số nằm trong phạm vi
-        if (n >= slides.length) {n = 0}
-        else if (n < 0) {n = slides.length - 1}
+        const form = e.target;
+        const messageElement = document.getElementById('form-message');
+        messageElement.textContent = 'Đang gửi...';
+        messageElement.style.color = '#8B6F47';
 
-        currentSlideIndex = n;
-
-        // 1. Cập nhật vị trí của track để trượt (TranslateX)
-        const translateValue = currentSlideIndex * (-100 / slides.length);
-        sliderTrack.style.transform = `translateX(${translateValue}%)`;
-
-        // 2. Cập nhật dots
-        for (let i = 0; i < dots.length; i++) {
-            dots[i].classList.remove('active');
-        }
-        if (dots.length > 0) {
-            dots[currentSlideIndex].classList.add('active');
-        }
-    }
-
-    // Chuyển slide thủ công (dùng cho nút mũi tên)
-    function changeSlide(step) {
-        // Dừng interval cũ để reset thời gian chờ
-        clearInterval(slideInterval);
-
-        // Chuyển slide
-        showSlide(currentSlideIndex + step);
-
-        // Bắt đầu lại interval
-        slideInterval = setInterval(autoNextSlide, autoSlideDuration);
-    }
-
-    // Tự động chuyển slide (dùng cho setInterval)
-    function autoNextSlide() {
-        showSlide(currentSlideIndex + 1);
-    }
-
-    function startSlider() {
-        slides = document.querySelectorAll('.hero-slide');
-        sliderTrack = document.querySelector('.slider-track');
-        const dotContainer = document.querySelector('.slider-dots');
-
-        if (slides.length === 0 || !sliderTrack) return;
-
-        // Thiết lập chiều rộng cho track và slide (Quan trọng cho hiệu ứng trượt)
-        const totalSlides = slides.length;
-        sliderTrack.style.width = `${totalSlides * 100}%`;
-        const slideWidth = 100 / totalSlides;
-        slides.forEach(slide => {
-            slide.style.width = `${slideWidth}%`;
-        });
-
-        // 1. Tạo dots (chấm tròn) dựa trên số lượng slide
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            dot.onclick = (function(index) {
-                return function() {
-                    clearInterval(slideInterval); // Dừng auto
-                    showSlide(index); // Chuyển đến slide i
-                    slideInterval = setInterval(autoNextSlide, autoSlideDuration); // Bắt đầu lại auto
-                }
-            })(i);
-            dotContainer.appendChild(dot);
-            dots.push(dot);
+        const formData = new FormData(form);
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+            data[key] = value;
         }
 
-        // 2. Hiển thị slide đầu tiên (nếu chưa có)
-        showSlide(0);
+        // URL API Google Apps Script
+        const API_URL = 'https://script.google.com/macros/s/AKfycbxrk4VOK1w2XNJfrRGYDyWkprMBPONZ5BNGCENr8pig99oMIQX2d9dR6UlwxB5vSp4/exec';
 
-        // 3. Bắt đầu tự động chuyển slide
-        slideInterval = setInterval(autoNextSlide, autoSlideDuration);
-    }
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
 
-    // Gán hàm changeSlide vào window object để có thể gọi từ HTML (onclick)
-    window.changeSlide = changeSlide;
-    // --- KẾT THÚC LOGIC SLIDER ---
+            // Giả định thành công do sử dụng 'no-cors'
+            messageElement.textContent = 'Chúng tôi sẽ liên hệ với bạn!';
+            messageElement.style.color = 'green';
+            form.reset();
 
-
-    // Hàm xử lý Form
-    function handleNewsletterForm() {
-        document.getElementById('newsletter-form').addEventListener('submit', async function(event) {
-            event.preventDefault();
-            const form = event.target;
-            const messageElement = document.getElementById('newsletter-message');
-
-            try {
-                // Giả định thành công
-                messageElement.textContent = 'Cảm ơn bạn đã đăng ký!';
-                messageElement.style.color = 'green';
-                form.reset();
-
-            } catch (error) {
-                console.error('Lỗi khi gửi form:', error);
-                messageElement.textContent = 'Lỗi khi gửi yêu cầu. Vui lòng thử lại sau.';
-                messageElement.style.color = 'red';
-            }
-        });
-    }
+        } catch (error) {
+            console.error('Lỗi khi gửi form:', error);
+            messageElement.textContent = 'Lỗi khi gửi yêu cầu. Vui lòng thử lại sau.';
+            messageElement.style.color = 'red';
+        }
+    });
 
     // Hàm responsive menu
     function toggleMenu() {
         const navMenu = document.querySelector('.nav-menu');
         navMenu.classList.toggle('active');
     }
-    window.toggleMenu = toggleMenu; // Gán ra window để gọi từ HTML
-
+    // >>> ĐOẠN CODE BẠN CẦN THÊM HOẶC THIẾU <<<
     function closeMenu() {
         const navMenu = document.querySelector('.nav-menu');
         if (navMenu.classList.contains('active')) {
@@ -918,21 +749,17 @@
         const navMenu = document.querySelector('.nav-menu');
         const menuToggle = document.querySelector('.menu-toggle');
 
-        if (navMenu.classList.contains('active')) {
+        // Kiểm tra xem cú nhấp chuột CÓ nằm ngoài menu và nút toggle hay không.
+        if (navMenu.classList.contains('active')) { // Chỉ xử lý khi menu đang mở
             const isClickInsideNavMenu = navMenu.contains(event.target);
             const isClickOnMenuToggle = menuToggle.contains(event.target);
 
+            // Nếu click ra ngoài cả menu và nút toggle, thì đóng menu
             if (!isClickInsideNavMenu && !isClickOnMenuToggle) {
                 closeMenu();
             }
         }
-    });
-
-    // Gọi tất cả các hàm khởi tạo khi trang tải xong
-    window.onload = function() {
-        startSlider();
-        handleNewsletterForm();
-    };
+    })
 
 </script>
 </body>
