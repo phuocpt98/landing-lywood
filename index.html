@@ -178,10 +178,22 @@
             background: #6d5636;
         }
 
+        /* --- QUY TẮC TỐI ƯU HÓA KÍCH THƯỚC NÚT --- */
         .hero-cta-group {
-            display: flex; /* Cho phép các nút nằm cạnh nhau */
-            gap: 15px; /* Khoảng cách giữa các nút */
-            flex-wrap: wrap; /* Đảm bảo xuống dòng trên mobile */
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-cta-group a {
+            /* Quan trọng: Thiết lập cùng một tỷ lệ linh hoạt */
+            flex-grow: 1; /* Cho phép cả hai thẻ a (chứa nút) mở rộng bằng nhau */
+        }
+
+        .hero-cta-group .cta-button {
+            /* Quan trọng: Đảm bảo nút bên trong chiếm toàn bộ chiều rộng của thẻ a */
+            width: 100%;
+            text-align: center;
         }
 
         /* Tạo kiểu cho nút thứ hai (Tải Catalog) */
@@ -189,6 +201,8 @@
             background: #fff;
             color: #8B6F47;
             border: 2px solid #8B6F47;
+            /* Kích thước padding, font-size, border-radius được kế thừa từ .cta-button,
+               nhưng ta có thể định nghĩa lại để đảm bảo tính đồng nhất */
             transition: all 0.3s;
         }
 
@@ -197,6 +211,7 @@
             color: white;
             border-color: #8B6F47;
         }
+        /* --- KẾT THÚC QUY TẮC TỐI ƯU HÓA KÍCH THƯỚC NÚT --- */
 
         .hero-image {
             width: 100%;
@@ -415,12 +430,16 @@
         }
 
         @media (max-width: 768px) {
-            .hero-cta-group a {
-                width: 100%; /* Mỗi nút chiếm toàn bộ chiều rộng khi xuống dòng */
-            }
+
+            /* --- CĂN CHỈNH MOBILE CHO NÚT CTA --- */
             .hero-cta-group {
                 flex-direction: column; /* Xếp các nút theo cột trên mobile */
             }
+            .hero-cta-group a {
+                flex-grow: unset;
+                width: 100%;
+            }
+            /* --- KẾT THÚC CĂN CHỈNH MOBILE CHO NÚT CTA --- */
 
             /* Giữ nguyên bố cục mobile đã đẹp */
             .container, .container-header {
@@ -510,6 +529,7 @@
 
         <ul class="nav-menu">
             <li><a href="">Trang chủ</a></li>
+            <li><a href="./vn/catalog">Catalog</a></li>
             <li><a href="./vn/products">Sản phẩm</a></li>
             <li><a href="./vn/blogs">Blog</a></li>
             <li><a href="./vn/concat">Liên hệ</a></li>
