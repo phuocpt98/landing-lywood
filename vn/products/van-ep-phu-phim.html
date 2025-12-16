@@ -145,12 +145,44 @@
             background-color: #f7f7f7;
         }
 
+        /* ĐÃ THÊM: CSS CHO NÚT NEXT/PREV */
+        .gallery-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: background 0.3s;
+            user-select: none;
+        }
+        .gallery-nav-btn:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .prev-btn {
+            left: 10px;
+            border-radius: 0 4px 4px 0;
+        }
+        .next-btn {
+            right: 10px;
+            border-radius: 4px 0 0 4px;
+        }
+
         .thumbnail-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
         }
+        /* ĐÃ CẬP NHẬT: Căn giữa ảnh và kích thước 70% */
         .thumbnail-container {
+            display: flex; /* Đảm bảo căn giữa */
+            justify-content: center; /* Đảm bảo căn giữa */
+            align-items: center; /* Đảm bảo căn giữa */
             cursor: pointer;
             border: 2px solid transparent;
             border-radius: 4px;
@@ -158,7 +190,7 @@
             transition: border-color 0.3s;
         }
         .thumbnail-container img {
-            width: 100%;
+            width: 70%; /* ĐÃ SỬA: Theo yêu cầu 70% */
             height: 70px;
             object-fit: cover;
             display: block;
@@ -370,19 +402,22 @@
         <div class="product-gallery">
             <div class="main-image-container">
                 <img id="main-product-image" src="../../assets/images/van_phu_phim_1.jpg" alt="Ván ép phủ phim - Ảnh chính">
+
+                <button id="prev-main-image" class="gallery-nav-btn prev-btn">&lt;</button>
+                <button id="next-main-image" class="gallery-nav-btn next-btn">&gt;</button>
             </div>
             <div class="thumbnail-grid" id="thumbnail-gallery">
                 <div class="thumbnail-container active" onclick="swapImage(this)">
-                    <img src="../../assets/images/van_phu_phim_2.jpg" alt="Ảnh 1">
+                    <img src="../../assets/images/van_phu_phim_1.jpg" alt="Ảnh 1">
                 </div>
                 <div class="thumbnail-container" onclick="swapImage(this)">
-                    <img src="../../assets/images/van_phu_phim_3.jpg" alt="Ảnh 2">
+                    <img src="../../assets/images/van_phu_phim_2.jpg" alt="Ảnh 2">
                 </div>
                 <div class="thumbnail-container" onclick="swapImage(this)">
-                    <img src="../../assets/images/van_phu_phim_4.jpg" alt="Ảnh 3">
+                    <img src="../../assets/images/van_phu_phim_3.jpg" alt="Ảnh 3">
                 </div>
                 <div class="thumbnail-container" onclick="swapImage(this)">
-                    <img src="../../assets/images/van_phu_phim_5.jpg" alt="Ảnh 4">
+                    <img src="../../assets/images/van_phu_phim_4.jpg" alt="Ảnh 4">
                 </div>
             </div>
         </div>
@@ -569,10 +604,10 @@
 
 <script>
     // ----------------------------------------------------------------
-    // JAVASCRIPT ĐÃ SỬA LỖI VÀ CẬP NHẬT
+    // JAVASCRIPT ĐÃ CẬP NHẬT: Logic cho Gallery
     // ----------------------------------------------------------------
 
-    // 1. Image Swap Logic (Hoán đổi SRC giữa ảnh chính và ảnh nhỏ)
+    // 1. Image Swap Logic (Cập nhật ảnh chính khi click thumbnail - Hoán đổi SRC)
     function swapImage(thumbnailContainer) {
         const mainImage = document.getElementById('main-product-image');
         const thumbnailImage = thumbnailContainer.querySelector('img');
@@ -601,9 +636,47 @@
         thumbnailContainer.classList.add('active');
     }
 
-    // 2. Attribute Selector Logic (Cho phép chọn nhiều và bỏ chọn)
+    // 2. Logic cho nút Next/Prev (ĐÃ THÊM)
+    function changeMainImage(direction) {
+        const allThumbnails = document.querySelectorAll('.thumbnail-container');
+        const mainImage = document.getElementById('main-product-image');
+
+        // Tìm thumbnail có src trùng với ảnh chính hiện tại
+        let currentIndex = -1;
+        Array.from(allThumbnails).forEach((thumb, index) => {
+            const thumbSrcFileName = thumb.querySelector('img').src.split('/').pop();
+            const mainSrcFileName = mainImage.src.split('/').pop();
+
+            if (thumbSrcFileName === mainSrcFileName) {
+                currentIndex = index;
+            }
+        });
+
+        // Nếu không tìm thấy (ví dụ: ảnh chính không nằm trong 4 thumbnail), mặc định là 0
+        if (currentIndex === -1) {
+            currentIndex = 0;
+        }
+
+        let nextIndex = currentIndex + direction;
+
+        // Xử lý lặp lại (Looping)
+        if (nextIndex < 0) {
+            nextIndex = allThumbnails.length - 1; // Quay lại ảnh cuối
+        } else if (nextIndex >= allThumbnails.length) {
+            nextIndex = 0; // Chuyển sang ảnh đầu tiên
+        }
+
+        const nextThumbnail = allThumbnails[nextIndex];
+        // Chỉ chuyển ảnh nếu có thumbnail hợp lệ
+        if (nextThumbnail) {
+            // Tự động gọi swapImage để đổi ảnh chính và cập nhật active class
+            swapImage(nextThumbnail);
+        }
+    }
+
+
+    // 3. Attribute Selector Logic (Giữ nguyên)
     function selectOption(button) {
-        // Sử dụng toggle() để thêm/xóa class 'selected'
         button.classList.toggle('selected');
 
         const attributeContainer = button.closest('.attribute-options');
@@ -614,16 +687,36 @@
     }
 
 
-    // 3. Hàm responsive menu
+    // 4. Hàm responsive menu (Giữ nguyên)
     function toggleMenu() {
         const navMenu = document.querySelector('.nav-menu');
-        // Toggle class 'active' để hiện/ẩn menu trên mobile
         navMenu.classList.toggle('active');
     }
 
+    // 5. Thêm Event Listeners cho nút Next/Prev và khởi tạo trạng thái (ĐÃ THÊM)
+    document.addEventListener('DOMContentLoaded', () => {
+        // Event listeners cho nút Next/Prev
+        const prevButton = document.getElementById('prev-main-image');
+        const nextButton = document.getElementById('next-main-image');
+
+        if (prevButton && nextButton) {
+            prevButton.addEventListener('click', () => changeMainImage(-1));
+            nextButton.addEventListener('click', () => changeMainImage(1));
+        }
+
+        // Đảm bảo thumbnail đầu tiên được chọn khi tải trang
+        const firstThumbnail = document.querySelector('.thumbnail-container');
+        if (firstThumbnail && !firstThumbnail.classList.contains('active')) {
+            firstThumbnail.classList.add('active');
+        }
+    });
+
     // ----------------------------------------------------------------
-    // EXISTING JAVASCRIPT (GIỮ NGUYÊN)
+    // EXISTING JAVASCRIPT (Giữ nguyên)
     // ----------------------------------------------------------------
+
+    // URL API Google Apps Script
+    const API_URL = 'https://script.google.com/macros/s/AKfycbxrk4VOK1w2XNJfrRGYDyWkprMBPONZ5BNGCENr8pig99oMIQX2d9dR6UlwxB5vSp4/exec';
 
     // Hàm xử lý submit form và gọi API
     document.getElementById('newsletter-form').addEventListener('submit', async function(e) {
@@ -639,9 +732,6 @@
         for (let [key, value] of formData.entries()) {
             data[key] = value;
         }
-
-        // URL API Google Apps Script
-        const API_URL = 'https://script.google.com/macros/s/AKfycbxrk4VOK1w2XNJfrRGYDyWkprMBPONZ5BNGCENr8pig99oMIQX2d9dR6UlwxB5vSp4/exec';
 
         try {
             const response = await fetch(API_URL, {
@@ -664,7 +754,7 @@
             messageElement.style.color = 'red';
         }
     });
-    // >>> ĐOẠN CODE BẠN CẦN THÊM HOẶC THIẾU <<<
+
     function closeMenu() {
         const navMenu = document.querySelector('.nav-menu');
         if (navMenu.classList.contains('active')) {

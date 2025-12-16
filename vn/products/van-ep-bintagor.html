@@ -145,12 +145,48 @@
             background-color: #f7f7f7;
         }
 
+        /* THÊM: CSS cho nút Next/Prev trên ảnh chính */
+        .gallery-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: background 0.3s;
+            user-select: none;
+        }
+        .gallery-nav-btn:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .prev-btn {
+            left: 10px;
+            border-radius: 0 4px 4px 0;
+        }
+        .next-btn {
+            right: 10px;
+            border-radius: 4px 0 0 4px;
+        }
+        /* KẾT THÚC THÊM NÚT NAV */
+
+
         .thumbnail-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
         }
+        /* SỬA: Thêm flexbox để căn giữa ảnh nhỏ bên trong */
         .thumbnail-container {
+            /* Thêm 3 dòng này để căn giữa ảnh */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Existing styles */
             cursor: pointer;
             border: 2px solid transparent;
             border-radius: 4px;
@@ -158,7 +194,7 @@
             transition: border-color 0.3s;
         }
         .thumbnail-container img {
-            width: 100%;
+            width: 70%;
             height: 70px;
             object-fit: cover;
             display: block;
@@ -359,19 +395,22 @@
         <div class="product-gallery">
             <div class="main-image-container">
                 <img id="main-product-image" src="../../assets/images/van_bintangor_1.jpg" alt="Ván ép mặt Bintangor - Ảnh chính">
+
+                <button id="prev-main-image" class="gallery-nav-btn prev-btn">&lt;</button>
+                <button id="next-main-image" class="gallery-nav-btn next-btn">&gt;</button>
             </div>
             <div class="thumbnail-grid" id="thumbnail-gallery">
                 <div class="thumbnail-container active" onclick="swapImage(this)">
-                    <img src="../../assets/images/van_bintangor_2.jpg" alt="Ảnh Bề mặt Bintangor AA">
+                    <img src="../../assets/images/van_bintangor_1.jpg" alt="Ảnh Bề mặt Bintangor AA">
+                </div>
+                <div class="thumbnail-container active" onclick="swapImage(this)">
+                    <img src="../../assets/images/van_bintangor_5.jpg" alt="Ảnh Bề mặt Bintangor AA">
                 </div>
                 <div class="thumbnail-container" onclick="swapImage(this)">
                     <img src="../../assets/images/van_bintangor_3.jpg" alt="Ảnh Ván ép mặt Bintangor cắt ngang">
                 </div>
                 <div class="thumbnail-container" onclick="swapImage(this)">
                     <img src="../../assets/images/van_bintangor_4.jpg" alt="Ảnh Ván ép mặt Bintangor ứng dụng nội thất">
-                </div>
-                <div class="thumbnail-container" onclick="swapImage(this)">
-                    <img src="../../assets/images/van_bintangor_5.jpg" alt="Ảnh Lõi ván ép Bintangor">
                 </div>
             </div>
         </div>
@@ -559,35 +598,45 @@
 
 <script>
     // ----------------------------------------------------------------
-    // JAVASCRIPT: Giữ nguyên logic Hoán đổi ảnh, Chọn thuộc tính và Toggle Menu
+    // JAVASCRIPT: Đã cập nhật logic ảnh để hỗ trợ Next/Prev
     // ----------------------------------------------------------------
 
-    // 1. Image Swap Logic (Hoán đổi SRC giữa ảnh chính và ảnh nhỏ)
+    // 1. SỬA: Image Swap Logic (Tải ảnh từ thumbnail lên ảnh chính)
     function swapImage(thumbnailContainer) {
         const mainImage = document.getElementById('main-product-image');
         const thumbnailImage = thumbnailContainer.querySelector('img');
         const allThumbnails = document.querySelectorAll('.thumbnail-container');
 
-        const thumbnailSrcFileName = thumbnailImage.src.split('/').pop();
-        const mainSrcFileName = mainImage.src.split('/').pop();
-
-        if (mainSrcFileName === thumbnailSrcFileName) {
-            allThumbnails.forEach(thumb => thumb.classList.remove('active'));
-            thumbnailContainer.classList.add('active');
-            return;
-        }
-
-        const tempSrc = mainImage.src;
+        // 1. Cập nhật ảnh chính
         mainImage.src = thumbnailImage.src;
-        thumbnailImage.src = tempSrc;
 
-        allThumbnails.forEach(thumb => {
-            thumb.classList.remove('active');
-        });
+        // 2. Cập nhật trạng thái active
+        allThumbnails.forEach(thumb => thumb.classList.remove('active'));
         thumbnailContainer.classList.add('active');
     }
 
-    // 2. Attribute Selector Logic (Cho phép chọn nhiều và bỏ chọn)
+    // 2. THÊM: Logic cho nút Next/Prev
+    function changeMainImage(direction) {
+        const allThumbnails = document.querySelectorAll('.thumbnail-container');
+        const currentActive = document.querySelector('.thumbnail-container.active');
+
+        // Tìm vị trí ảnh đang hoạt động
+        let currentIndex = Array.from(allThumbnails).indexOf(currentActive);
+
+        let nextIndex = currentIndex + direction;
+
+        // Xử lý lặp lại (Looping)
+        if (nextIndex < 0) {
+            nextIndex = allThumbnails.length - 1; // Quay lại ảnh cuối
+        } else if (nextIndex >= allThumbnails.length) {
+            nextIndex = 0; // Chuyển sang ảnh đầu tiên
+        }
+
+        const nextThumbnail = allThumbnails[nextIndex];
+        swapImage(nextThumbnail); // Sử dụng lại hàm swapImage đã cập nhật
+    }
+
+    // 3. Attribute Selector Logic (Giữ nguyên)
     function selectOption(button) {
         button.classList.toggle('selected');
 
@@ -599,15 +648,33 @@
     }
 
 
-    // 3. Hàm responsive menu
+    // 4. Hàm responsive menu (Giữ nguyên)
     function toggleMenu() {
         const navMenu = document.querySelector('.nav-menu');
         navMenu.classList.toggle('active');
     }
 
+    // 5. Thêm Event Listeners cho nút Next/Prev và khởi tạo trạng thái
+    document.addEventListener('DOMContentLoaded', () => {
+        // Event listeners cho nút Next/Prev
+        document.getElementById('prev-main-image').addEventListener('click', () => changeMainImage(-1));
+        document.getElementById('next-main-image').addEventListener('click', () => changeMainImage(1));
+
+        // Đảm bảo thumbnail đầu tiên được chọn khi tải trang (Nếu chưa có)
+        const firstThumbnail = document.querySelector('.thumbnail-container');
+        if (firstThumbnail && !firstThumbnail.classList.contains('active')) {
+            firstThumbnail.classList.add('active');
+        }
+    });
+
+
     // ----------------------------------------------------------------
-    // EXISTING JAVASCRIPT (GIỮ NGUYÊN)
+    // CÁC PHẦN JAVASCRIPT KHÁC (GIỮ NGUYÊN)
     // ----------------------------------------------------------------
+
+    // URL API Google Apps Script
+    const API_URL = 'https://script.google.com/macros/s/AKfycbxrk4VOK1w2XNJfrRGYDyWkprMBPONZ5BNGCENr8pig99oMIQX2d9dR6UlwxB5vSp4/exec';
+
 
     // Hàm xử lý submit form và gọi API
     document.getElementById('newsletter-form').addEventListener('submit', async function(e) {
@@ -623,9 +690,6 @@
         for (let [key, value] of formData.entries()) {
             data[key] = value;
         }
-
-        // URL API Google Apps Script
-        const API_URL = 'https://script.google.com/macros/s/AKfycbxrk4VOK1w2XNJfrRGYDyWkprMBPONZ5BNGCENr8pig99oMIQX2d9dR6UlwxB5vSp4/exec';
 
         try {
             const response = await fetch(API_URL, {
@@ -649,7 +713,7 @@
         }
     });
 
-    // >>> ĐOẠN CODE BẠN CẦN THÊM HOẶC THIẾU <<<
+
     function closeMenu() {
         const navMenu = document.querySelector('.nav-menu');
         if (navMenu.classList.contains('active')) {
