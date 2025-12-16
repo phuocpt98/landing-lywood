@@ -605,58 +605,30 @@
 
 <script>
     // ----------------------------------------------------------------
-    // JAVASCRIPT ĐÃ CẬP NHẬT: Logic cho Gallery
+    // JAVASCRIPT: ĐÃ CẬP NHẬT LOGIC ẢNH ĐỂ HỖ TRỢ NEXT/PREV
     // ----------------------------------------------------------------
 
-    // 1. Image Swap Logic (Cập nhật ảnh chính khi click thumbnail - Hoán đổi SRC)
+    // 1. SỬA: Image Swap Logic (Tải ảnh từ thumbnail lên ảnh chính)
     function swapImage(thumbnailContainer) {
         const mainImage = document.getElementById('main-product-image');
         const thumbnailImage = thumbnailContainer.querySelector('img');
         const allThumbnails = document.querySelectorAll('.thumbnail-container');
 
-        // Lấy tên file để so sánh
-        const thumbnailSrcFileName = thumbnailImage.src.split('/').pop();
-        const mainSrcFileName = mainImage.src.split('/').pop();
-
-        // Nếu ảnh đang hiển thị đã là ảnh chính, chỉ cần update active class và thoát
-        if (mainSrcFileName === thumbnailSrcFileName) {
-            allThumbnails.forEach(thumb => thumb.classList.remove('active'));
-            thumbnailContainer.classList.add('active');
-            return;
-        }
-
-        // Thực hiện SWAP (hoán đổi nguồn ảnh)
-        const tempSrc = mainImage.src;
+        // 1. Cập nhật ảnh chính
         mainImage.src = thumbnailImage.src;
-        thumbnailImage.src = tempSrc;
 
-        // Cập nhật active class: Bỏ active cũ, thêm active vào thumbnail vừa được click
-        allThumbnails.forEach(thumb => {
-            thumb.classList.remove('active');
-        });
+        // 2. Cập nhật trạng thái active
+        allThumbnails.forEach(thumb => thumb.classList.remove('active'));
         thumbnailContainer.classList.add('active');
     }
 
-    // 2. Logic cho nút Next/Prev (ĐÃ THÊM)
+    // 2. THÊM: Logic cho nút Next/Prev
     function changeMainImage(direction) {
         const allThumbnails = document.querySelectorAll('.thumbnail-container');
-        const mainImage = document.getElementById('main-product-image');
+        const currentActive = document.querySelector('.thumbnail-container.active');
 
-        // Tìm thumbnail có src trùng với ảnh chính hiện tại
-        let currentIndex = -1;
-        Array.from(allThumbnails).forEach((thumb, index) => {
-            const thumbSrcFileName = thumb.querySelector('img').src.split('/').pop();
-            const mainSrcFileName = mainImage.src.split('/').pop();
-
-            if (thumbSrcFileName === mainSrcFileName) {
-                currentIndex = index;
-            }
-        });
-
-        // Nếu không tìm thấy (ví dụ: ảnh chính không nằm trong 4 thumbnail), mặc định là 0
-        if (currentIndex === -1) {
-            currentIndex = 0;
-        }
+        // Tìm vị trí ảnh đang hoạt động
+        let currentIndex = Array.from(allThumbnails).indexOf(currentActive);
 
         let nextIndex = currentIndex + direction;
 
@@ -670,8 +642,7 @@
         const nextThumbnail = allThumbnails[nextIndex];
         // Chỉ chuyển ảnh nếu có thumbnail hợp lệ
         if (nextThumbnail) {
-            // Tự động gọi swapImage để đổi ảnh chính và cập nhật active class
-            swapImage(nextThumbnail);
+            swapImage(nextThumbnail); // Sử dụng lại hàm swapImage đã cập nhật
         }
     }
 
