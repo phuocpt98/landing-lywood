@@ -1,20 +1,432 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8" />
-    <title>Catalog Ván Ép Bintangor</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Catalog hình ảnh ván ép phủ mặt Bintangor chất lượng cao" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/logo.svg" />
+    <title>VIETPLYWOOD - Ván Ép Chất Lượng Cao</title>
+
+    <meta name="description" content="VIETPLYWOOD chuyên cung cấp Ván Ép Chất Lượng Cao, đạt chuẩn xuất khẩu cho doanh nghiệp và dự án lớn. Sản xuất chủ động tại Phú Thọ. Liên hệ ngay để nhận báo giá tối ưu.">
+    <meta name="robots" content="index, follow">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "VIETPLYWOOD",
+            "url": "https://vietplywood.com",
+            "logo": "./assets/images/logo.svg",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+84916884008",
+                "contactType": "Sales"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Khu Liên Đồng, Xã Thanh Sơn",
+                "addressLocality": "Phú Thọ",
+                "addressRegion": "Phú Thọ",
+                "addressCountry": "VN"
+            }
+        }
+    </script>
 
     <style>
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            margin: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #f3f3f3;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Layout Fixes */
+        .container-header{
+            max-width: 95%; /* Sát lề hơn trên Desktop */
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 85%; /* Sát lề hơn trên Desktop */
+            margin: 0 auto;
+        }
+
+        header {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        /* Đánh dấu trang hiện tại */
+        .nav-menu li:nth-child(2) a {
+            color: #8B6F47;
+            font-weight: 600;
+        }
+        /* Logo */
+        .logo-link {
+            font-size: 20px;
+            font-weight: bold;
+            color: #513C2E;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-link img {
+            height: 35px;
+            margin-right: 10px;
+        }
+
+        /* Menu - Đẩy menu vào giữa */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            flex-grow: 1;
+            justify-content: center;
+            padding-right: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #8B6F47;
+        }
+
+        /* Button VN - Đặt nút ngôn ngữ riêng biệt */
+        .lang-switch-btn {
+            background: #fff;
+            color: #8B6F47;
+            border: 1px solid #8B6F47;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .lang-switch-btn:hover {
+            background-color: #8B6F47;
+            color: white;
+        }
+
+        /* Menu Toggle (Ẩn trên desktop) */
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #333;
+            padding: 5px;
+            order: 3;
+        }
+
+        /* Hero và các phần khác không thay đổi */
+        .hero {
+            background: #F3EDE7;
+            padding: 80px 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            color: #746456;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: rgba(116, 100, 86, 0.7);
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background: #8B6F47;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #6d5636;
+        }
+
+        /* --- QUY TẮC TỐI ƯU HÓA KÍCH THƯỚC NÚT --- */
+        .hero-cta-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-cta-group a {
+            /* Quan trọng: Thiết lập cùng một tỷ lệ linh hoạt */
+            flex-grow: 1; /* Cho phép cả hai thẻ a (chứa nút) mở rộng bằng nhau */
+        }
+
+        .hero-cta-group .cta-button {
+            /* Quan trọng: Đảm bảo nút bên trong chiếm toàn bộ chiều rộng của thẻ a */
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Tạo kiểu cho nút thứ hai (Tải Catalog) */
+        .secondary-cta {
+            background: #fff;
+            color: #8B6F47;
+            border: 2px solid #8B6F47;
+            /* Kích thước padding, font-size, border-radius được kế thừa từ .cta-button,
+               nhưng ta có thể định nghĩa lại để đảm bảo tính đồng nhất */
+            transition: all 0.3s;
+        }
+
+        .secondary-cta:hover {
+            background: #8B6F47;
+            color: white;
+            border-color: #8B6F47;
+        }
+        /* --- KẾT THÚC QUY TẮC TỐI ƯU HÓA KÍCH THƯỚC NÚT --- */
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            background: #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .hero-image div {
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+        }
+
+
+        section {
+            padding: 20px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        /* QUY TẮC MỚI ĐÃ THÊM: Xóa gạch chân cho link sản phẩm */
+        .products-grid a {
+            text-decoration: none;
+            color: inherit; /* Giữ màu chữ không bị đổi */
+        }
+
+        /* SEO FIX: Style cho thẻ IMG mới */
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-content p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        .view-more {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .view-more-button {
+            background: white;
+            color: #8B6F47;
+            border: 2px solid #8B6F47;
+            padding: 12px 40px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .view-more-button:hover {
+            background: #8B6F47;
+            color: white;
+        }
+
+        .reasons {
+            background: #F3EDE7;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .reason-card {
+            background: rgba(190, 164, 142, 0.5);
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .reason-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reason-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .reason-card h4 {
+            font-size: 16px;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .reason-card p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: #F3EDE7;
+            padding: 60px 0 30px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 2fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-section a:hover {
+            color: #8B6F47;
+        }
+
+        /* Footer Form */
+        .newsletter-form {
+            display: block;
+        }
+
+        .newsletter-form input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .newsletter-form button {
+            background: #8B6F47;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .newsletter-form button:hover {
+            background: #6d5636;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 14px;
         }
 
         /* ===== SLIDER WRAPPER ===== */
@@ -59,7 +471,7 @@
 
         .slide img {
             max-width: 90%;
-            max-height: 520px;
+            max-height: 600px;
             object-fit: contain;
             border-radius: 12px;
             background: #fff;
@@ -109,16 +521,123 @@
             border-radius: 999px;
         }
 
-        /* ===== MOBILE ===== */
+
         @media (max-width: 768px) {
             .slide img {
                 max-height: 360px;
             }
+
+            /* --- CĂN CHỈNH MOBILE CHO NÚT CTA --- */
+            .hero-cta-group {
+                flex-direction: column; /* Xếp các nút theo cột trên mobile */
+            }
+            .hero-cta-group a {
+                flex-grow: unset;
+                width: 100%;
+            }
+            /* --- KẾT THÚC CĂN CHỈNH MOBILE CHO NÚT CTA --- */
+
+            /* Giữ nguyên bố cục mobile đã đẹp */
+            .container, .container-header {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                padding: 10px 0;
+            }
+
+            .logo-link {
+                order: 1;
+            }
+
+            .lang-switch-btn {
+                display: block;
+                order: 2;
+                margin-left: auto;
+                margin-right: 15px;
+                padding: 6px 12px;
+            }
+
+            .menu-toggle {
+                display: block;
+                order: 3;
+            }
+
+            /* Menu ẩn/hiện dạng cột */
+            .nav-menu {
+                display: none;
+                order: 4;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                padding: 20px 0;
+                gap: 10px;
+                text-align: center;
+                flex-grow: 0;
+                justify-content: flex-start;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                padding: 10px 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 32px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
         }
     </style>
 </head>
-
 <body>
+<header>
+    <nav class="container-header">
+        <a href="../../index.html" class="logo-link">
+            <img src="../../assets/images/logo.svg" alt="Logo VietPlywood">
+            <span>VIETPLYWOOD</span>
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="../../">Trang chủ</a></li>
+            <li><a href="">Catalog</a></li>
+            <li><a href="../products">Sản phẩm</a></li>
+            <li><a href="../blogs">Blog</a></li>
+            <li><a href=".../concat">Liên hệ</a></li>
+        </ul>
+
+        <button class="lang-switch-btn" onclick="window.location.href='#'">🌐 VN</button>
+
+        <div class="menu-toggle" onclick="toggleMenu()">
+            &#9776;
+        </div>
+    </nav>
+</header>
 
 <section class="catalog-slider" id="catalogSlider">
     <button class="slider-btn prev" onclick="prevSlide()">‹</button>
@@ -129,7 +648,52 @@
     <div class="indicator" id="indicator">1 / 14</div>
 </section>
 
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Vietplywood Co., Ltd</h3>
+                <p>Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Giới thiệu</h3>
+                <a href="../../">Trang chủ</a>
+                <a href="">Catalog</a>
+                <a href="../products">Sản phẩm</a>
+                <a href="../blogs">Blog</a>
+                <a href="../concat">Liên hệ</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>(+84) 916 884 008</p>
+                <p >tmdvvietnam@gmail.com</p>
+                <p>Khu Liên Đồng, Xã Thanh Sơn, tỉnh Phú Thọ, Việt Nam</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Đăng ký để nhận thông tin</h3>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Nhập email của bạn" name="email" required>
+                    <input type="hidden" name="ctyName" value="">
+                    <input type="hidden" name="title" value="">
+                    <input type="hidden" name="content" value="">
+                    <input type="hidden" name="status" value="">
+                    <button type="submit">Đăng ký</button>
+                    <p id="form-message" style="margin-top: 10px; font-size: 14px;"></p>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 VIETPLYWOOD. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
 <script>
+
     const totalSlides = 14;
     const track = document.getElementById("sliderTrack");
     const slider = document.getElementById("catalogSlider");
@@ -148,7 +712,7 @@
           alt="Catalog ván ép Bintangor ${i}"
           loading="lazy"
           width="1200"
-          height="800"
+          height="1400"
         />
       `;
         track.appendChild(slide);
@@ -177,7 +741,7 @@
     }
 
     function startAuto() {
-        autoTimer = setInterval(nextSlide, 4500);
+        autoTimer = setInterval(nextSlide, 450000);
     }
 
     function resetAuto() {
@@ -188,7 +752,77 @@
     // INIT
     updateUI();
     startAuto();
-</script>
 
+    // Hàm xử lý submit form và gọi API
+    document.getElementById('newsletter-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const messageElement = document.getElementById('form-message');
+        messageElement.textContent = 'Đang gửi...';
+        messageElement.style.color = '#8B6F47';
+
+        const formData = new FormData(form);
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+            data[key] = value;
+        }
+
+        // URL API Google Apps Script
+        const API_URL = 'https://script.google.com/macros/s/AKfycbxrk4VOK1w2XNJfrRGYDyWkprMBPONZ5BNGCENr8pig99oMIQX2d9dR6UlwxB5vSp4/exec';
+
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            // Giả định thành công do sử dụng 'no-cors'
+            messageElement.textContent = 'Chúng tôi sẽ liên hệ với bạn!';
+            messageElement.style.color = 'green';
+            form.reset();
+
+        } catch (error) {
+            console.error('Lỗi khi gửi form:', error);
+            messageElement.textContent = 'Lỗi khi gửi yêu cầu. Vui lòng thử lại sau.';
+            messageElement.style.color = 'red';
+        }
+    });
+
+    // Hàm responsive menu
+    function toggleMenu() {
+        const navMenu = document.querySelector('.nav-menu');
+        navMenu.classList.toggle('active');
+    }
+    // >>> ĐOẠN CODE BẠN CẦN THÊM HOẶC THIẾU <<<
+    function closeMenu() {
+        const navMenu = document.querySelector('.nav-menu');
+        if (navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+        }
+    }
+
+    // Thêm event listener để đóng menu khi nhấp ra ngoài
+    document.addEventListener('click', function(event) {
+        const navMenu = document.querySelector('.nav-menu');
+        const menuToggle = document.querySelector('.menu-toggle');
+
+        // Kiểm tra xem cú nhấp chuột CÓ nằm ngoài menu và nút toggle hay không.
+        if (navMenu.classList.contains('active')) { // Chỉ xử lý khi menu đang mở
+            const isClickInsideNavMenu = navMenu.contains(event.target);
+            const isClickOnMenuToggle = menuToggle.contains(event.target);
+
+            // Nếu click ra ngoài cả menu và nút toggle, thì đóng menu
+            if (!isClickInsideNavMenu && !isClickOnMenuToggle) {
+                closeMenu();
+            }
+        }
+    })
+
+</script>
 </body>
 </html>
